@@ -76,6 +76,36 @@
             border-right:1px solid rgba(255,255,255,0.05);
         }
 
+        #story-box{
+    background:#161b22;
+    padding:20px;
+    border-radius:15px;
+    margin-top:20px;
+}
+
+#choices{
+    margin-top:20px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+#choices button{
+    padding:10px 15px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    background:#6ee7b7;
+    color:#0f1115;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+#choices button:hover{
+    transform:scale(1.05);
+    background:white;
+}
+
         .sidebar.active{
             left:0;
         }
@@ -335,6 +365,63 @@
             // Fermer le menu
             document.getElementById("sidebar").classList.remove("active");
         }
+
+        function choice1(){
+    document.getElementById("story-text").innerText =
+        "Tu avances doucement... et tu découvres un loup solitaire blessé.";
+
+    document.getElementById("choices").innerHTML = `
+        <button onclick="helpWolf()">Aider le loup</button>
+        <button onclick="runAway()">Fuir</button>
+    `;
+}
+
+function choice2(){
+    document.getElementById("story-text").innerText =
+        "Tu restes caché... mais quelque chose s'approche lentement.";
+
+    document.getElementById("choices").innerHTML = `
+        <button onclick="wait()">Attendre</button>
+        <button onclick="runAway()">Fuir</button>
+    `;
+}
+
+function helpWolf(){
+    document.getElementById("story-text").innerText =
+        "Le loup devient ton allié. Tu gagnes la confiance de la forêt.";
+
+    document.getElementById("choices").innerHTML = `
+        <button onclick="restartStory()">Recommencer</button>
+    `;
+}
+
+function runAway(){
+    document.getElementById("story-text").innerText =
+        "Tu t'enfuis dans la forêt... mais tu es perdu.";
+
+    document.getElementById("choices").innerHTML = `
+        <button onclick="restartStory()">Recommencer</button>
+    `;
+}
+
+function wait(){
+    document.getElementById("story-text").innerText =
+        "Un patrouilleur du Clan de l’Ombre te trouve... tu es capturé.";
+
+    document.getElementById("choices").innerHTML = `
+        <button onclick="restartStory()">Recommencer</button>
+    `;
+}
+
+function restartStory(){
+    document.getElementById("story-text").innerText =
+        "Tu te réveilles dans la forêt obscure. Le vent souffle entre les arbres...";
+
+    document.getElementById("choices").innerHTML = `
+        <button onclick="choice1()">Aller vers le bruit</button>
+        <button onclick="choice2()">Rester caché</button>
+    `;
+}
 
         function goHome(){
             hideAllSections();
