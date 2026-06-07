@@ -333,13 +333,6 @@
         </div>
     </section>
 
-    <section class="page" id="histoirePage">
-        <div class="page-content">
-            <h1>📖 Histoire</h1>
-            <p>Ajoute ici l'histoire des clans.</p>
-        </div>
-    </section>
-
     <section class="page" id="galeriePage">
         <div class="page-content">
             <h1>🖼️ Galerie</h1>
@@ -399,6 +392,9 @@
     </section>
 
     <script>
+
+        let player = null;
+        
         function toggleMenu(){
             document.getElementById("sidebar").classList.toggle("active");
         }
@@ -474,6 +470,11 @@ function huntMission(){
 }
 
 function startGame(){
+
+    if(!player){
+        alert("Crée d'abord ton personnage !");
+        return;
+    }
 
     showPage("gamePage");
 
@@ -780,26 +781,55 @@ function spyMeeting(){
         return;
     }
 
+    player = {
+        nom: name,
+        clan: clan,
+        rang: rank,
+        reputation: 0,
+        vie: 100
+    };
+
     document.getElementById("characterCard").innerHTML = `
-        <h2>${name}</h2>
+        <h2>${player.nom}</h2>
 
-        <p>🐾 Rang : ${rank}</p>
+        <p>🐾 Rang : ${player.rang}</p>
 
-        <p>${clan}</p>
+        <p>${player.clan}</p>
 
-        <p>❤️ Vie : 100</p>
+        <p>❤️ Vie : ${player.vie}</p>
 
-        <p>⭐ Réputation : 0</p>
+        <p>⭐ Réputation : ${player.reputation}</p>
 
         <p>🎒 Inventaire : Vide</p>
     `;
 
-        document.getElementById("startGameArea").innerHTML = `
+    document.getElementById("startGameArea").innerHTML = `
         <button onclick="startGame()">
             ▶ Commencer l'aventure
         </button>
     `;
 }
+
+function gainRep(amount){
+
+    player.reputation += amount;
+
+    document.getElementById("characterCard").innerHTML = `
+        <h2>${player.nom}</h2>
+
+        <p>🐾 Rang : ${player.rang}</p>
+
+        <p>${player.clan}</p>
+
+        <p>❤️ Vie : ${player.vie}</p>
+
+        <p>⭐ Réputation : ${player.reputation}</p>
+
+        <p>🎒 Inventaire : Vide</p>
+    `;
+}
+
+        
 
         
         function goHome(){
