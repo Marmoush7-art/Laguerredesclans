@@ -232,6 +232,7 @@
             <a onclick="showPage('histoirePage')">📖 Histoire</a>
             <a onclick="showPage('galeriePage')">🖼 Galerie</a>
             <a onclick="showPage('personnagePage')">🐱 Mon personnage</a>
+            <a onclick="showPage('gamePage')">🎮 Aventure</a>
         </nav>
     </aside>
 
@@ -253,6 +254,26 @@
         </div>
 
     </div>
+</section>
+
+    <section class="page" id="gamePage">
+
+    <div class="page-content">
+
+        <h1>🎮 Aventure</h1>
+
+        <div id="story-box">
+
+            <p id="gameText">
+                Crée d'abord ton personnage.
+            </p>
+
+            <div id="gameChoices"></div>
+
+        </div>
+
+    </div>
+
 </section>
 
     <section class="hero" id="hero">
@@ -366,6 +387,7 @@
             </button>
 
             <div id="characterCard" style="margin-top:30px;"></div>
+            <div id="startGameArea"></div>
 
         </div>
 
@@ -424,6 +446,58 @@ function choice2(){
     document.getElementById("choices").innerHTML = `
         <button onclick="wait()">Attendre</button>
         <button onclick="runAway()">Fuir</button>
+    `;
+}
+
+function forestMission(){
+
+    gainRep(10);
+
+    document.getElementById("gameText").innerText =
+        "Tu explores la forêt et aides un ancien. +10 réputation";
+}
+
+function patrolMission(){
+
+    gainRep(15);
+
+    document.getElementById("gameText").innerText =
+        "Tu protèges la frontière du clan. +15 réputation";
+}
+
+function huntMission(){
+
+    gainRep(5);
+
+    document.getElementById("gameText").innerText =
+        "Tu attrapes plusieurs souris. +5 réputation";
+}
+
+function startGame(){
+
+    showPage("gamePage");
+
+    document.getElementById("gameText").innerHTML = `
+        Bienvenue <b>${player.nom}</b>.
+
+        Tu es un ${player.rang}
+        du ${player.clan}.
+
+        Une nouvelle aventure commence...
+    `;
+
+    document.getElementById("gameChoices").innerHTML = `
+        <button onclick="forestMission()">
+            🌲 Explorer la forêt
+        </button>
+
+        <button onclick="patrolMission()">
+            🐾 Faire une patrouille
+        </button>
+
+        <button onclick="huntMission()">
+            🐭 Chasser
+        </button>
     `;
 }
 
@@ -718,6 +792,12 @@ function spyMeeting(){
         <p>⭐ Réputation : 0</p>
 
         <p>🎒 Inventaire : Vide</p>
+    `;
+
+        document.getElementById("startGameArea").innerHTML = `
+        <button onclick="startGame()">
+            ▶ Commencer l'aventure
+        </button>
     `;
 }
 
