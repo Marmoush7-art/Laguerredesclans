@@ -186,6 +186,110 @@
             transition:0.3s;
         }
 
+        .player-card{
+
+    margin-top:30px;
+
+    background:#161b22;
+
+    border:1px solid rgba(110,231,183,0.4);
+
+    border-radius:25px;
+
+    padding:30px;
+
+    display:flex;
+    align-items:center;
+    gap:40px;
+
+    color:white;
+}
+
+.player-avatar{
+
+    width:180px;
+    height:180px;
+
+    border-radius:50%;
+
+    overflow:hidden;
+
+    border:4px solid #6ee7b7;
+
+    box-shadow:0 0 25px rgba(110,231,183,0.5);
+
+    flex-shrink:0;
+}
+
+.player-avatar img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+}
+
+.player-info{
+
+    flex:1;
+}
+
+.player-info h2{
+
+    font-size:52px;
+
+    color:#6ee7b7;
+
+    margin-bottom:20px;
+}
+
+.player-info p,
+.player-stats p{
+
+    font-size:30px;
+
+    margin:12px 0;
+
+    color:white;
+}
+
+.player-stats{
+
+    min-width:320px;
+}
+
+.start-btn{
+
+    width:100%;
+
+    margin-top:25px;
+
+    padding:22px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:#6ee7b7;
+
+    color:#0f1115;
+
+    font-size:30px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.start-btn:hover{
+
+    transform:scale(1.02);
+
+    background:white;
+}
+
         .hero-content button:hover{ transform:scale(1.05); background:white; }
 
         /* PAGES GENERAL STYLES */
@@ -381,6 +485,38 @@
 
             <div id="characterCard" style="margin-top:30px;"></div>
             <div id="startGameArea"></div>
+
+            <div class="player-card">
+
+    <div class="player-avatar">
+        <img src="mon-chat.png" alt="Mon chat">
+    </div>
+
+    <div class="player-info">
+
+        <h2 id="playerName">Plume d'Oie</h2>
+
+        <p>🐾 Rang : <span id="playerRank">Guérisseur</span></p>
+
+        <p>🌪 Clan : <span id="playerClan">Clan du Vent</span></p>
+
+        <p>❤️ Vie : <span id="playerLife">100</span></p>
+
+    </div>
+
+    <div class="player-stats">
+
+        <p>⭐ Réputation : <span id="playerRep">0</span></p>
+
+        <p>🎒 Inventaire : <span id="playerInventory">Vide</span></p>
+
+    </div>
+
+</div>
+
+<button class="start-btn">
+    ▶ Commencer l'aventure
+</button>
 
         </div>
 
