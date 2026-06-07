@@ -253,6 +253,21 @@
     color:white;
 }
 
+.player-avatar{
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    overflow:hidden;
+    border:4px solid #6ee7b7;
+    box-shadow:0 0 25px rgba(110,231,183,0.5);
+}
+
+.player-avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
 .player-stats{
 
     min-width:320px;
@@ -477,6 +492,17 @@
                 <option>Chef</option>
             </select>
 
+            <div class="player-avatar">
+    <img id="avatarImage" src="images/chat-par-defaut.png" alt="Avatar">
+</div>
+
+<input
+    type="file"
+    id="avatarInput"
+    accept="image/*"
+    onchange="changeAvatar(event)"
+>
+
             <br><br>
 
             <button onclick="createCharacter()">
@@ -485,24 +511,6 @@
 
             <div id="characterCard" style="margin-top:30px;"></div>
             <div id="startGameArea"></div>
-
-            <div class="player-card">
-
-    <div class="player-avatar">
-        <img src="mon-chat.png" alt="Mon chat">
-    </div>
-
-    <div class="player-info">
-
-        <h2 id="playerName">Plume d'Oie</h2>
-
-        <p>🐾 Rang : <span id="playerRank">Guérisseur</span></p>
-
-        <p>🌪 Clan : <span id="playerClan">Clan du Vent</span></p>
-
-        <p>❤️ Vie : <span id="playerLife">100</span></p>
-
-    </div>
 
     <div class="player-stats">
 
@@ -522,6 +530,18 @@
 
     </div>
 </section>
+
+        <div class="player-info">
+            <h2>${name}</h2>
+            <p>🐾 Rang : ${rank}</p>
+            <p>${clan}</p>
+            <p>❤️ Vie : 100</p>
+            <p>⭐ Réputation : 0</p>
+            <p>🎒 Inventaire : Vide</p>
+        </div>
+
+    </div>
+`;
 
     <section class="map-section" id="map">
         <img src="carte.jpg" alt="Carte des clans">
@@ -561,6 +581,21 @@
             document.getElementById("sidebar").classList.remove("active");
         }
 
+function changeAvatar(event){
+
+    const file = event.target.files[0];
+
+    if(!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = function(e){
+        document.getElementById("avatarImage").src = e.target.result;
+    }
+
+    reader.readAsDataURL(file);
+}
+        
         function choice1(){
     document.getElementById("story-text").innerText =
         "Tu avances doucement... et tu découvres un loup solitaire blessé.";
@@ -926,6 +961,23 @@ function spyMeeting(){
     };
 
     document.getElementById("characterCard").innerHTML = `
+    <div class="player-card">
+        ...
+    </div>
+`;
+
+    const avatarSrc =
+document.getElementById("avatarImage").src;
+
+document.getElementById("characterCard").innerHTML = `
+<div class="player-card">
+
+    <div class="player-avatar">
+        <img src="${avatarSrc}">
+    </div>
+
+    <div class="player-info">
+
         <h2>${player.nom}</h2>
 
         <p>🐾 Rang : ${player.rang}</p>
@@ -937,7 +989,11 @@ function spyMeeting(){
         <p>⭐ Réputation : ${player.reputation}</p>
 
         <p>🎒 Inventaire : Vide</p>
-    `;
+
+    </div>
+
+</div>
+`;
 
     document.getElementById("startGameArea").innerHTML = `
         <button onclick="startGame()">
