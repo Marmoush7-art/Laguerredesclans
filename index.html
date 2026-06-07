@@ -14,11 +14,11 @@
             box-sizing:border-box;
         }
 
-        body{
-            font-family:Arial, Helvetica, sans-serif;
-            background:#0f1115;
-            color:white;
-            overflow-x:hidden;
+        body{ 
+            font-family:Arial, Helvetica, sans-serif; 
+            background:#0f1115; 
+            color:white; 
+            overflow-x:hidden; 
         }
 
         /* MENU BUTTON */
@@ -51,44 +51,14 @@
             transition:0.3s;
         }
 
-        .menu-btn:hover{
-            transform:scale(1.05);
-        }
+        .menu-btn:hover{ transform:scale(1.05); }
 
         /* SIDEBAR */
 
-        .sidebar{
-            position:fixed;
-            left:-260px;
-            top:0;
-
-            width:260px;
-            height:100vh;
-
-            background:#161b22;
-
-            padding:30px 20px;
-
-            transition:0.4s;
-
-            z-index:1000;
-
-            border-right:1px solid rgba(255,255,255,0.05);
-        }
-
-        #story-box{
-    background:#161b22;
-    padding:20px;
-    border-radius:15px;
-    margin-top:20px;
-}
-
-#choices{
-    margin-top:20px;
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-}
+        .sidebar{position:fixed; left:-260px; top:0; width:260px; height:100vh; background:#161b22; padding:30px 20px; transition:0.4s; z-index:1000; border-right:1px solid rgba(255,255,255,0.05); }
+        #story-box{ background:#161b22; padding:20px; border-radius:15px; margin-top:20px; }
+        #choices{ margin-top:20px; display:flex; gap:10px; flex-wrap:wrap; }
+        .histoire-titre{ color:white; }
 
 #choices button{
     padding:10px 15px;
@@ -243,7 +213,7 @@
     <section class="page" id="histoirePage">
     <div class="page-content">
 
-        <h1>📖 Histoire interactive</h1>
+        <h1 class="histoire-titre">📖 Histoire interactive</h1>
 
         <div id="story-box">
             <p id="story-text">
@@ -423,6 +393,81 @@ function restartStory(){
     `;
 }
 
+function helpWolf(){
+    document.getElementById("story-text").innerText =
+        "Le loup te remercie. Avant de partir, il te révèle l'emplacement d'un ancien camp abandonné.";
+
+    document.getElementById("choices").innerHTML = `
+        <button onclick="exploreCamp()">Explorer le camp</button>
+        <button onclick="joinWolf()">Suivre le loup</button>
+    `;
+}
+
+function exploreCamp(){
+    document.getElementById("story-text").innerText =
+        "Dans le camp abandonné, tu découvres une mystérieuse plume de geai.";
+
+    document.getElementById("choices").innerHTML = `
+        <button onclick="takeFeather()">Prendre la plume</button>
+        <button onclick="leaveFeather()">La laisser</button>
+    `;
+}
+
+function joinWolf(){
+    document.getElementById("story-text").innerText =
+        "Le loup te conduit jusqu'à la frontière du Clan du Tonnerre.";
+
+    document.getElementById("choices").innerHTML = `
+        <button onclick="meetThunderClan()">Approcher le clan</button>
+        <button onclick="hideAndWatch()">Observer de loin</button>
+    `;
+}
+
+function takeFeather(){
+    document.getElementById("story-text").innerText =
+        "La plume appartenait à un guérisseur. Tu gagnes un signe du Clan des Étoiles.";
+
+    document.getElementById("choices").innerHTML = `
+        <button onclick="restartStory()">Recommencer</button>
+    `;
+}
+
+function leaveFeather(){
+    document.getElementById("story-text").innerText =
+        "Tu respectes les anciens lieux. Une patrouille t'offre sa confiance.";
+
+    document.getElementById("choices").innerHTML = `
+        <button onclick="restartStory()">Recommencer</button>
+    `;
+}
+
+function meetThunderClan(){
+    document.getElementById("story-text").innerText =
+        "Les guerriers du Clan du Tonnerre t'accueillent dans leur camp.";
+
+    document.getElementById("choices").innerHTML = `
+        <button onclick="restartStory()">Recommencer</button>
+    `;
+}
+
+function hideAndWatch(){
+    document.getElementById("story-text").innerText =
+        "Tu observes une réunion secrète entre deux clans rivaux.";
+
+    document.getElementById("choices").innerHTML = `
+        <button onclick="spyMeeting()">Écouter davantage</button>
+        <button onclick="restartStory()">Partir discrètement</button>
+    `;
+}
+
+function spyMeeting(){
+    document.getElementById("story-text").innerText =
+        "Tu découvres un complot contre le Clan de la Rivière. Ton aventure ne fait que commencer...";
+
+    document.getElementById("choices").innerHTML = `
+        <button onclick="restartStory()">Nouvelle partie</button>
+    `;
+        
         function goHome(){
             hideAllSections();
             
