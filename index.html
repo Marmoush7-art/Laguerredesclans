@@ -88,6 +88,13 @@
     font-size:16px;
 }
 
+.clans-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    margin-top:20px;
+}
+
 #characterCard{
     background:#21262d;
     color:white;
@@ -263,13 +270,6 @@
             cursor:pointer;
             transition:0.3s;
         }
-
-        .clans-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
-    margin-top:20px;
-}
 
 .clan-card{
     background:#161b22;
@@ -491,11 +491,33 @@
         }
 
         .map-section img{
-            max-width:90%;
-            max-height:90vh;
-            border-radius:20px;
-            box-shadow:0 0 30px rgba(0,0,0,0.3);
-        }
+    max-width:90%;
+    max-height:90vh;
+    border-radius:20px;
+    box-shadow:0 0 30px rgba(0,0,0,0.3);
+}
+
+/* CARTE D'IDENTITÉ DES CLANS */
+
+.identity-card{
+    margin-top:30px;
+    padding:25px;
+
+    background:#111827;
+
+    border-radius:20px;
+
+    border:2px solid #6ee7b7;
+
+    box-shadow:0 0 20px rgba(110,231,183,0.2);
+
+    color:white;
+}
+
+.identity-card h2{
+    color:#6ee7b7;
+    margin-bottom:15px;
+}
 
     </style>
 </head>
@@ -567,36 +589,38 @@
     </section>
 
     <section class="page" id="clansPage">
-        <div class="page-content">
-            <h1>⚔ Les Clans</h1>
-            <p>Il y a 4 clans qui se partagent la forêt depuis longtemps :</p>
-            <br>
+    <div class="page-content">
 
-    <div class="clans-grid">
-            
-    <div class="clan-card">
-        <h2>⚡ Clan du Tonnerre</h2>
-        <p>Clan courageux et loyal.</p>
-    </div>
+        <h1>⚔ Les Clans</h1>
 
-    <div class="clan-card">
-        <h2>🌪 Clan du Vent</h2>
-        <p>Les plus rapides de la forêt.</p>
-    </div>
+        <div class="clans-grid">
 
-    <div class="clan-card">
-        <h2>🌊 Clan de la Rivière</h2>
-        <p>Excellents nageurs.</p>
-    </div>
+            <div class="clan-card" onclick="showClan('tonnerre')">
+                <h2>⚡ Clan du Tonnerre</h2>
+                <p>Clan courageux et loyal.</p>
+            </div>
 
-    <div class="clan-card">
-        <h2>🌑 Clan de l'Ombre</h2>
-        <p>Discrets et rusés.</p>
-    </div>
+            <div class="clan-card" onclick="showClan('vent')">
+                <h2>🌪 Clan du Vent</h2>
+                <p>Les plus rapides de la forêt.</p>
+            </div>
 
-</div>
+            <div class="clan-card" onclick="showClan('riviere')">
+                <h2>🌊 Clan de la Rivière</h2>
+                <p>Excellents nageurs.</p>
+            </div>
+
+            <div class="clan-card" onclick="showClan('ombre')">
+                <h2>🌑 Clan de l'Ombre</h2>
+                <p>Discrets et rusés.</p>
+            </div>
+
         </div>
-    </section> 
+
+        <div id="clanIdentity"></div>
+
+    </div>
+</section>
 
     <section class="page" id="guerriersPage">
         <div class="page-content">
@@ -934,6 +958,107 @@ function riverRescue(){
         <button onclick="saveWarrior()">Le sauver</button>
         <button onclick="staySafe()">Rester sur la berge</button>
     `;
+}
+
+function showClan(clan){
+
+    const card = document.getElementById("clanIdentity");
+
+    if(clan === "tonnerre"){
+
+        card.innerHTML = `
+        <div class="identity-card">
+
+            <h2>⚡ Clan du Tonnerre</h2>
+
+            <p><b>Chef :</b> Étoile de Feu</p>
+
+            <p><b>Territoire :</b> Forêt dense</p>
+
+            <p><b>Qualités :</b> Courage, loyauté, honneur</p>
+
+            <p><b>Proie favorite :</b> Souris et écureuils</p>
+
+            <p><b>Description :</b>
+            Le Clan du Tonnerre est réputé pour sa bravoure
+            et son respect du Code du Guerrier.
+            </p>
+
+        </div>
+        `;
+    }
+
+    else if(clan === "vent"){
+
+        card.innerHTML = `
+        <div class="identity-card">
+
+            <h2>🌪 Clan du Vent</h2>
+
+            <p><b>Chef :</b> Étoile Solitaire</p>
+
+            <p><b>Territoire :</b> Landes ouvertes</p>
+
+            <p><b>Qualités :</b> Rapidité, endurance</p>
+
+            <p><b>Proie favorite :</b> Lapins</p>
+
+            <p><b>Description :</b>
+            Les chats du Vent sont les plus rapides
+            de toute la forêt.
+            </p>
+
+        </div>
+        `;
+    }
+
+    else if(clan === "riviere"){
+
+        card.innerHTML = `
+        <div class="identity-card">
+
+            <h2>🌊 Clan de la Rivière</h2>
+
+            <p><b>Chef :</b> Étoile de Léopard</p>
+
+            <p><b>Territoire :</b> Rivières et marais</p>
+
+            <p><b>Qualités :</b> Natation, pêche</p>
+
+            <p><b>Proie favorite :</b> Poissons</p>
+
+            <p><b>Description :</b>
+            Les guerriers de la Rivière sont célèbres
+            pour leurs talents de nageurs.
+            </p>
+
+        </div>
+        `;
+    }
+
+    else if(clan === "ombre"){
+
+        card.innerHTML = `
+        <div class="identity-card">
+
+            <h2>🌑 Clan de l'Ombre</h2>
+
+            <p><b>Chef :</b> Étoile du Tigre</p>
+
+            <p><b>Territoire :</b> Marécages sombres</p>
+
+            <p><b>Qualités :</b> Ruse, discrétion</p>
+
+            <p><b>Proie favorite :</b> Grenouilles et lézards</p>
+
+            <p><b>Description :</b>
+            Le Clan de l'Ombre est mystérieux,
+            ambitieux et redouté.
+            </p>
+
+        </div>
+        `;
+    }
 }
 
 function saveWarrior(){
