@@ -358,10 +358,12 @@ function choice2(){
 
 function helpWolf(){
     document.getElementById("story-text").innerText =
-        "Le loup devient ton allié. Tu gagnes la confiance de la forêt.";
+        "Le loup te remercie. En échange, il te révèle plusieurs événements importants qui se déroulent dans la forêt.";
 
     document.getElementById("choices").innerHTML = `
-        <button onclick="restartStory()">Recommencer</button>
+        <button onclick="lostKit()">🐾 Chaton perdu</button>
+        <button onclick="battle()">⚔ Bataille</button>
+        <button onclick="prophecy()">🌙 Prophétie</button>
     `;
 }
 
@@ -410,6 +412,169 @@ function exploreCamp(){
     document.getElementById("choices").innerHTML = `
         <button onclick="takeFeather()">Prendre la plume</button>
         <button onclick="leaveFeather()">La laisser</button>
+    `;
+}
+
+        function lostKit(){
+    document.getElementById("story-text").innerText =
+        "Tu trouves un chaton perdu près de la frontière du Clan de la Rivière.";
+
+    document.getElementById("choices").innerHTML = `
+        <button onclick="returnKit()">Le ramener à son clan</button>
+        <button onclick="adoptKit()">Le garder avec toi</button>
+    `;
+}
+
+function returnKit(){
+    document.getElementById("story-text").innerText =
+        "Sa mère te remercie. Le Clan de la Rivière devient ton allié.";
+
+    endStory();
+}
+
+function adoptKit(){
+    document.getElementById("story-text").innerText =
+        "Le chaton devient ton fidèle compagnon.";
+
+    endStory();
+}
+
+function battle(){
+    document.getElementById("story-text").innerText =
+        "Une bataille éclate entre le Clan du Tonnerre et le Clan de l'Ombre.";
+
+    document.getElementById("choices").innerHTML = `
+        <button onclick="thunderSide()">Aider le Tonnerre</button>
+        <button onclick="shadowSide()">Aider l'Ombre</button>
+    `;
+}
+
+function thunderSide(){
+    document.getElementById("story-text").innerText =
+        "Grâce à toi, le Clan du Tonnerre remporte la victoire.";
+
+    endStory();
+}
+
+function shadowSide(){
+    document.getElementById("story-text").innerText =
+        "Le Clan de l'Ombre gagne du terrain grâce à ton aide.";
+
+    endStory();
+}
+
+function prophecy(){
+    document.getElementById("story-text").innerText =
+        "Le Clan des Étoiles t'envoie un signe mystérieux dans tes rêves.";
+
+    document.getElementById("choices").innerHTML = `
+        <button onclick="riverRescue()">🌊 Sauver un guerrier</button>
+        <button onclick="moonQuest()">⭐ Aller à la Pierre de Lune</button>
+    `;
+}
+
+function riverRescue(){
+    document.getElementById("story-text").innerText =
+        "Une crue emporte un guerrier du Clan de la Rivière.";
+
+    document.getElementById("choices").innerHTML = `
+        <button onclick="saveWarrior()">Le sauver</button>
+        <button onclick="staySafe()">Rester sur la berge</button>
+    `;
+}
+
+function saveWarrior(){
+    document.getElementById("story-text").innerText =
+        "Tu plonges dans les eaux et sauves le guerrier.";
+
+    endStory();
+}
+
+function staySafe(){
+    document.getElementById("story-text").innerText =
+        "Le courant est trop fort. Tu ne peux rien faire.";
+
+    endStory();
+}
+
+function moonQuest(){
+    document.getElementById("story-text").innerText =
+        "Tu pars vers la Pierre de Lune pour accomplir une quête sacrée.";
+
+    document.getElementById("choices").innerHTML = `
+        <button onclick="healerPath()">🌿 Devenir guérisseur</button>
+        <button onclick="leaderChoice()">👑 Choisir ton destin</button>
+    `;
+}
+
+function healerPath(){
+    document.getElementById("story-text").innerText =
+        "Tu deviens apprenti guérisseur et cherches des herbes rares.";
+
+    document.getElementById("choices").innerHTML = `
+        <button onclick="foxAttack()">🐍 Explorer la forêt</button>
+    `;
+}
+
+function foxAttack(){
+    document.getElementById("story-text").innerText =
+        "Un blaireau surgit des fougères et bloque ton chemin.";
+
+    endStory();
+}
+
+function leaderChoice(){
+    document.getElementById("story-text").innerText =
+        "Tu dois choisir ton avenir.";
+
+    document.getElementById("choices").innerHTML = `
+        <button onclick="beLeader()">Chef</button>
+        <button onclick="beHealer()">Guérisseur</button>
+        <button onclick="beWarrior()">Guerrier</button>
+    `;
+}
+
+function beLeader(){
+    document.getElementById("story-text").innerText =
+        "Tu deviens chef d'un grand clan.";
+
+    endStory();
+}
+
+function beHealer(){
+    document.getElementById("story-text").innerText =
+        "Tu consacres ta vie aux soins et aux prophéties.";
+
+    endStory();
+}
+
+function beWarrior(){
+    document.getElementById("story-text").innerText =
+        "Tu deviens un guerrier respecté dans toute la forêt.";
+
+    document.getElementById("choices").innerHTML = `
+        <button onclick="spyStory()">🕵️ Enquête</button>
+        <button onclick="forbiddenFriend()">💘 Amitié interdite</button>
+    `;
+}
+
+function spyStory(){
+    document.getElementById("story-text").innerText =
+        "Tu découvres un espion infiltré dans ton clan.";
+
+    endStory();
+}
+
+function forbiddenFriend(){
+    document.getElementById("story-text").innerText =
+        "Tu te lies d'amitié avec un chat d'un clan rival malgré les interdictions.";
+
+    endStory();
+}
+
+function endStory(){
+    document.getElementById("choices").innerHTML = `
+        <button onclick="restartStory()">🔄 Recommencer</button>
     `;
 }
 
