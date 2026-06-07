@@ -56,7 +56,20 @@
         /* SIDEBAR */
 
         .sidebar{position:fixed; left:-260px; top:0; width:260px; height:100vh; background:#161b22; padding:30px 20px; transition:0.4s; z-index:1000; border-right:1px solid rgba(255,255,255,0.05); }
-        #story-box{ background:#161b22; padding:20px; border-radius:15px; margin-top:20px; }
+        #story-box{
+    background:#0f172a;
+
+    border:1px solid rgba(110,231,183,0.5);
+
+    border-radius:25px;
+
+    padding:30px;
+
+    margin-top:20px;
+
+    box-shadow:
+    0 0 25px rgba(110,231,183,0.1);
+}
         #choices{ margin-top:20px; display:flex; gap:10px; flex-wrap:wrap; }
         .histoire-titre{ color:#facc15; /* jaune */ }
         #story-text{ color:white; }
@@ -158,6 +171,71 @@
             padding:20px;
         }
 
+        #personnagePage{
+    color:white;
+}
+
+#personnagePage label{
+    color:white;
+}
+
+#catName,
+#clan,
+#rank{
+    width:100%;
+    max-width:900px;
+
+    padding:18px;
+
+    font-size:28px;
+
+    background:#07111f;
+    color:white;
+
+    border:2px solid rgba(110,231,183,0.4);
+
+    border-radius:15px;
+}
+
+#personnagePage button{
+
+    background:
+    linear-gradient(
+    90deg,
+    #6ee7b7,
+    #4ade80);
+
+    color:#04111d;
+
+    padding:18px 35px;
+
+    font-size:26px;
+
+    font-weight:bold;
+
+    border:none;
+    border-radius:15px;
+
+    cursor:pointer;
+}
+
+#personnagePage h1{
+    color:white;
+    font-size:60px;
+    font-weight:900;
+    margin-bottom:30px;
+}
+#personnagePage p{
+    color:white;
+}
+
+#catName,
+#clan,
+#rank{
+    background:#111827;
+    color:white;
+}
+
         .hero-content h1{
             font-size:70px;
             margin-bottom:20px;
@@ -201,11 +279,41 @@
     border:1px solid rgba(110,231,183,0.3);
 }
 
+        .player-info h2{
+
+    color:#86efac;
+
+    font-size:55px;
+
+    text-shadow:
+    0 0 15px rgba(110,231,183,0.5);
+}
+
+        .start-btn{
+
+    background:
+    linear-gradient(
+    90deg,
+    #6ee7b7,
+    #4ade80);
+
+    color:#04111d;
+
+    font-size:36px;
+
+    font-weight:900;
+
+    box-shadow:
+    0 0 25px rgba(110,231,183,0.3);
+}
+
         .player-card{
 
-    margin-top:30px;
-
-    background:#161b22;
+    background:
+    linear-gradient(
+    90deg,
+    rgba(110,231,183,0.08),
+    rgba(15,23,42,0.95));
 
     border:1px solid rgba(110,231,183,0.4);
 
@@ -213,11 +321,8 @@
 
     padding:30px;
 
-    display:flex;
-    align-items:center;
-    gap:40px;
-
-    color:white;
+    box-shadow:
+    0 0 30px rgba(110,231,183,0.15);
 }
 
 .player-avatar{
@@ -323,9 +428,52 @@
         .hero-content button:hover{ transform:scale(1.05); background:white; }
 
         /* PAGES GENERAL STYLES */
-        .page{ display:none; min-height:100vh; background:white; color:black; padding:80px 40px; }
+        .page{
+    display:none;
+    min-height:100vh;
+
+    background:
+    radial-gradient(circle at top,
+    rgba(110,231,183,0.15),
+    transparent 40%),
+    #050b16;
+
+    color:white;
+    padding:80px 40px;
+}
         .page.active{ display:block; }
         .page-content{ max-width:1000px; margin:auto; }
+
+        .page h1,
+.page h2,
+.page h3,
+.page p,
+.page label,
+.page span{
+    color:white;
+}
+
+        #catName,
+#clan,
+#rank{
+    background:#111827;
+    color:white;
+    border:1px solid #6ee7b7;
+}
+
+#catName::placeholder{
+    color:#9ca3af;
+}
+
+        #personnagePage button{
+    background:#6ee7b7;
+    color:#0f1115;
+    border:none;
+    padding:14px 24px;
+    border-radius:12px;
+    font-weight:bold;
+    cursor:pointer;
+}
 
         /* MAP */
 
