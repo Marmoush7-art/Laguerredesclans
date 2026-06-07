@@ -395,16 +395,6 @@ function restartStory(){
     `;
 }
 
-function helpWolf(){
-    document.getElementById("story-text").innerText =
-        "Le loup te remercie. Avant de partir, il te révèle l'emplacement d'un ancien camp abandonné.";
-
-    document.getElementById("choices").innerHTML = `
-        <button onclick="exploreCamp()">Explorer le camp</button>
-        <button onclick="joinWolf()">Suivre le loup</button>
-    `;
-}
-
 function exploreCamp(){
     document.getElementById("story-text").innerText =
         "Dans le camp abandonné, tu découvres une mystérieuse plume de geai.";
@@ -632,6 +622,8 @@ function spyMeeting(){
     document.getElementById("choices").innerHTML = `
         <button onclick="restartStory()">Nouvelle partie</button>
     `;
+}
+
         
         function goHome(){
             hideAllSections();
