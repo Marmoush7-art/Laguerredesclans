@@ -1006,23 +1006,35 @@ function gainRep(amount){
 
     player.reputation += amount;
 
+    const avatarSrc =
+    document.getElementById("avatarImage").src;
+
     document.getElementById("characterCard").innerHTML = `
-        <h2>${player.nom}</h2>
+    <div class="player-card">
 
-        <p>🐾 Rang : ${player.rang}</p>
+        <div class="player-avatar">
+            <img src="${avatarSrc}">
+        </div>
 
-        <p>${player.clan}</p>
+        <div class="player-info">
 
-        <p>❤️ Vie : ${player.vie}</p>
+            <h2>${player.nom}</h2>
 
-        <p>⭐ Réputation : ${player.reputation}</p>
+            <p>🐾 Rang : ${player.rang}</p>
 
-        <p>🎒 Inventaire : Vide</p>
+            <p>${player.clan}</p>
+
+            <p>❤️ Vie : ${player.vie}</p>
+
+            <p>⭐ Réputation : ${player.reputation}</p>
+
+            <p>🎒 Inventaire : Vide</p>
+
+        </div>
+
+    </div>
     `;
 }
-
-        
-
         
         function goHome(){
             hideAllSections();
