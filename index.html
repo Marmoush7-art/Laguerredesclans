@@ -61,6 +61,29 @@
         .histoire-titre{ color:#facc15; /* jaune */ }
         #story-text{ color:white; }
 
+        #catName,
+#clan,
+#rank{
+    width:100%;
+    max-width:350px;
+
+    padding:12px;
+
+    border:none;
+    border-radius:10px;
+
+    font-size:16px;
+}
+
+#characterCard{
+    background:#21262d;
+    color:white;
+
+    padding:20px;
+
+    border-radius:15px;
+}
+
 #choices button{
     padding:10px 15px;
     border:none;
@@ -208,6 +231,7 @@
             <a onclick="showPage('territoiresPage')">🌲 Territoires</a>
             <a onclick="showPage('histoirePage')">📖 Histoire</a>
             <a onclick="showPage('galeriePage')">🖼 Galerie</a>
+            <a onclick="showPage('personnagePage')">🐱 Mon personnage</a>
         </nav>
     </aside>
 
@@ -301,6 +325,52 @@
             <p>Ajoute ici des images.</p>
         </div>
     </section>
+
+    <section class="page" id="personnagePage">
+    <div class="page-content">
+
+        <h1>🐱 Création du personnage</h1>
+
+        <div id="story-box">
+
+            <label>Nom du chat :</label><br><br>
+
+            <input type="text" id="catName" placeholder="Ex : Étoile de Feu">
+
+            <br><br>
+
+            <label>Choisis ton clan :</label><br><br>
+
+            <select id="clan">
+                <option>⚡ Clan du Tonnerre</option>
+                <option>🌪 Clan du Vent</option>
+                <option>🌊 Clan de la Rivière</option>
+                <option>🌑 Clan de l'Ombre</option>
+            </select>
+
+            <br><br>
+
+            <label>Choisis ton rang :</label><br><br>
+
+            <select id="rank">
+                <option>Apprenti</option>
+                <option>Guerrier</option>
+                <option>Guérisseur</option>
+                <option>Chef</option>
+            </select>
+
+            <br><br>
+
+            <button onclick="createCharacter()">
+                Créer mon personnage
+            </button>
+
+            <div id="characterCard" style="margin-top:30px;"></div>
+
+        </div>
+
+    </div>
+</section>
 
     <section class="map-section" id="map">
         <img src="carte.jpg" alt="Carte des clans">
@@ -622,6 +692,32 @@ function spyMeeting(){
 
     document.getElementById("choices").innerHTML = `
         <button onclick="restartStory()">Nouvelle partie</button>
+    `;
+}
+
+        function createCharacter(){
+
+    const name = document.getElementById("catName").value;
+    const clan = document.getElementById("clan").value;
+    const rank = document.getElementById("rank").value;
+
+    if(name === ""){
+        alert("Choisis un nom !");
+        return;
+    }
+
+    document.getElementById("characterCard").innerHTML = `
+        <h2>${name}</h2>
+
+        <p>🐾 Rang : ${rank}</p>
+
+        <p>${clan}</p>
+
+        <p>❤️ Vie : 100</p>
+
+        <p>⭐ Réputation : 0</p>
+
+        <p>🎒 Inventaire : Vide</p>
     `;
 }
 
