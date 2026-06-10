@@ -1031,6 +1031,15 @@ function showClan(clan){
     }
 }
 
+function endStory(){
+
+    document.getElementById("choices").innerHTML = `
+        <button onclick="showStory(1)">
+            🔄 Recommencer l'histoire
+        </button>
+    `;
+}
+
 function showStory(step){
 
     const text = document.getElementById("story-text");
@@ -1107,6 +1116,62 @@ function showStory(step){
                 <button onclick="showStory(15)">Retourner au camp</button>
             `;
         break;
+
+        case 8:
+    text.innerText =
+    "La prophétie annonce l'arrivée d'un grand danger pour les clans.";
+
+    endStory();
+break;
+
+case 9:
+    text.innerText =
+    "Tu poursuis ton chemin et découvres un nouveau territoire.";
+
+    endStory();
+break;
+
+case 10:
+    text.innerText =
+    "Le chaton te remercie et rejoint ton clan.";
+
+    endStory();
+break;
+
+case 11:
+    text.innerText =
+    "Le chaton disparaît dans la forêt.";
+
+    endStory();
+break;
+
+case 12:
+    text.innerText =
+    "Dans le camp abandonné, tu trouves un ancien trésor.";
+
+    endStory();
+break;
+
+case 13:
+    text.innerText =
+    "Tu observes de loin et découvres un mystérieux secret.";
+
+    endStory();
+break;
+
+case 14:
+    text.innerText =
+    "Le tunnel mène à une grotte sacrée du Clan des Étoiles.";
+
+    endStory();
+break;
+
+case 15:
+    text.innerText =
+    "Tu retournes au camp avec de nombreuses questions.";
+
+    endStory();
+break;
     }
 }
         
