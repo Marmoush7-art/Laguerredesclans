@@ -552,8 +552,8 @@
             </p>
 
             <div id="choices">
-                <button onclick="choice1()">Aller vers le bruit</button>
-                <button onclick="choice2()">Rester caché</button>
+                <button onclick="showStory(2)">Aller vers le bruit</button>
+                <button onclick="showStory(3)">Rester caché</button>
             </div>
         </div>
 
@@ -744,12 +744,17 @@
         }
 
         function showPage(pageId){
-            hideAllSections();
-            document.getElementById(pageId).classList.add("active");
-            
-            // Fermer le menu
-            document.getElementById("sidebar").classList.remove("active");
-        }
+
+    hideAllSections();
+
+    document.getElementById(pageId).classList.add("active");
+
+    if(pageId === "histoirePage"){
+        showStory(1);
+    }
+
+    document.getElementById("sidebar").classList.remove("active");
+}
 
 function changeAvatar(event){
 
@@ -766,25 +771,6 @@ function changeAvatar(event){
     reader.readAsDataURL(file);
 }
         
-        function choice1(){
-    document.getElementById("story-text").innerText =
-        "Tu avances doucement... et tu découvres un loup solitaire blessé.";
-
-    document.getElementById("choices").innerHTML = `
-        <button onclick="helpWolf()">Aider le loup</button>
-        <button onclick="runAway()">Fuir</button>
-    `;
-}
-
-function choice2(){
-    document.getElementById("story-text").innerText =
-        "Tu restes caché... mais quelque chose s'approche lentement.";
-
-    document.getElementById("choices").innerHTML = `
-        <button onclick="wait()">Attendre</button>
-        <button onclick="runAway()">Fuir</button>
-    `;
-}
 
 function forestMission(){
 
@@ -840,38 +826,6 @@ function startGame(){
         <button onclick="huntMission()">
             🐭 Chasser
         </button>
-    `;
-}
-
-function helpWolf(){
-    document.getElementById("story-text").innerText =
-        "Le loup te remercie. En échange, il te révèle plusieurs événements importants qui se déroulent dans la forêt.";
-
-    document.getElementById("choices").innerHTML = `
-        <button onclick="lostKit()">🐾 Chaton perdu</button>
-        <button onclick="battle()">⚔ Bataille</button>
-        <button onclick="prophecy()">🌙 Prophétie</button>
-        <button onclick="joinWolf()">🐺 Suivre le loup</button>
-        <button onclick="exploreCamp()">🏕 Explorer un camp abandonné</button>
-    `;
-}
-
-function runAway(){
-    document.getElementById("story-text").innerText =
-        "Tu t'enfuis dans la forêt... mais tu es perdu.";
-
-    document.getElementById("choices").innerHTML = `
-        <button onclick="restartStory()">Recommencer</button>
-    `;
-}
-
-function wait(){
-    document.getElementById("story-text").innerText =
-        "Tu restes caché sous un buisson. Un patrouilleur du Clan de l’Ombre apparaît, mais il ne t’a pas encore vu.";
-
-    document.getElementById("choices").innerHTML = `
-        <button onclick="followPatrol()">🐾 Suivre la patrouille</button>
-        <button onclick="stayHidden()">🌿 Rester immobile</button>
     `;
 }
 
@@ -939,6 +893,8 @@ function takeMap(){
     endStory();
 }
 
+
+
 function leaveMap(){
     document.getElementById("story-text").innerText =
         "Tu préfères ne rien toucher et quittes le camp discrètement.";
@@ -972,94 +928,6 @@ function leaveCave(){
         "Tu quittes la grotte avec plus de questions que de réponses.";
 
     endStory();
-}
-
-function restartStory(){
-    document.getElementById("story-text").innerText =
-        "Tu te réveilles dans la forêt obscure. Le vent souffle entre les arbres...";
-
-    document.getElementById("choices").innerHTML = `
-        <button onclick="choice1()">Aller vers le bruit</button>
-        <button onclick="choice2()">Rester caché</button>
-    `;
-}
-
-function exploreCamp(){
-    document.getElementById("story-text").innerText =
-        "Dans le camp abandonné, tu découvres une mystérieuse plume de geai.";
-
-    document.getElementById("choices").innerHTML = `
-        <button onclick="takeFeather()">Prendre la plume</button>
-        <button onclick="leaveFeather()">La laisser</button>
-    `;
-}
-
-        function lostKit(){
-    document.getElementById("story-text").innerText =
-        "Tu trouves un chaton perdu près de la frontière du Clan de la Rivière.";
-
-    document.getElementById("choices").innerHTML = `
-        <button onclick="returnKit()">Le ramener à son clan</button>
-        <button onclick="adoptKit()">Le garder avec toi</button>
-    `;
-}
-
-function returnKit(){
-    document.getElementById("story-text").innerText =
-        "Sa mère te remercie. Le Clan de la Rivière devient ton allié.";
-
-    endStory();
-}
-
-function adoptKit(){
-    document.getElementById("story-text").innerText =
-        "Le chaton devient ton fidèle compagnon.";
-
-    endStory();
-}
-
-function battle(){
-    document.getElementById("story-text").innerText =
-        "Une bataille éclate entre le Clan du Tonnerre et le Clan de l'Ombre.";
-
-    document.getElementById("choices").innerHTML = `
-        <button onclick="thunderSide()">Aider le Tonnerre</button>
-        <button onclick="shadowSide()">Aider l'Ombre</button>
-    `;
-}
-
-function thunderSide(){
-    document.getElementById("story-text").innerText =
-        "Grâce à toi, le Clan du Tonnerre remporte la victoire.";
-
-    endStory();
-}
-
-function shadowSide(){
-    document.getElementById("story-text").innerText =
-        "Le Clan de l'Ombre gagne du terrain grâce à ton aide.";
-
-    endStory();
-}
-
-function prophecy(){
-    document.getElementById("story-text").innerText =
-        "Le Clan des Étoiles t'envoie un signe mystérieux dans tes rêves.";
-
-    document.getElementById("choices").innerHTML = `
-        <button onclick="riverRescue()">🌊 Sauver un guerrier</button>
-        <button onclick="moonQuest()">⭐ Aller à la Pierre de Lune</button>
-    `;
-}
-
-function riverRescue(){
-    document.getElementById("story-text").innerText =
-        "Une crue emporte un guerrier du Clan de la Rivière.";
-
-    document.getElementById("choices").innerHTML = `
-        <button onclick="saveWarrior()">Le sauver</button>
-        <button onclick="staySafe()">Rester sur la berge</button>
-    `;
 }
 
 function showClan(clan){
@@ -1163,157 +1031,85 @@ function showClan(clan){
     }
 }
 
-function saveWarrior(){
-    document.getElementById("story-text").innerText =
-        "Tu plonges dans les eaux et sauves le guerrier.";
+function showStory(step){
 
-    endStory();
+    const text = document.getElementById("story-text");
+    const choices = document.getElementById("choices");
+
+    switch(step){
+
+        case 1:
+            text.innerText =
+            "Tu te réveilles dans la forêt obscure.";
+
+            choices.innerHTML = `
+                <button onclick="showStory(2)">Aller vers le bruit</button>
+                <button onclick="showStory(3)">Rester caché</button>
+            `;
+        break;
+
+        case 2:
+            text.innerText =
+            "Tu avances et découvres un loup blessé.";
+
+            choices.innerHTML = `
+                <button onclick="showStory(4)">L'aider</button>
+                <button onclick="showStory(5)">L'ignorer</button>
+            `;
+        break;
+
+        case 3:
+            text.innerText =
+            "Tu restes caché. Une patrouille du Clan de l'Ombre passe devant toi.";
+
+            choices.innerHTML = `
+                <button onclick="showStory(6)">Les suivre</button>
+                <button onclick="showStory(7)">Attendre leur départ</button>
+            `;
+        break;
+
+        case 4:
+            text.innerText =
+            "Tu aides le loup. Après avoir repris des forces, il te parle d'une ancienne prophétie.";
+
+            choices.innerHTML = `
+                <button onclick="showStory(8)">Écouter la prophétie</button>
+                <button onclick="showStory(9)">Continuer ton chemin</button>
+            `;
+        break;
+
+        case 5:
+            text.innerText =
+            "Tu ignores le loup et poursuis ta route. Plus loin, tu aperçois un chaton perdu.";
+
+            choices.innerHTML = `
+                <button onclick="showStory(10)">L'aider</button>
+                <button onclick="showStory(11)">L'ignorer</button>
+            `;
+        break;
+
+        case 6:
+            text.innerText =
+            "Tu suis discrètement la patrouille jusqu'à un ancien camp abandonné.";
+
+            choices.innerHTML = `
+                <button onclick="showStory(12)">Entrer dans le camp</button>
+                <button onclick="showStory(13)">Observer de loin</button>
+            `;
+        break;
+
+        case 7:
+            text.innerText =
+            "Tu attends leur départ. Une étrange odeur te conduit vers un tunnel caché.";
+
+            choices.innerHTML = `
+                <button onclick="showStory(14)">Explorer le tunnel</button>
+                <button onclick="showStory(15)">Retourner au camp</button>
+            `;
+        break;
+    }
 }
-
-function staySafe(){
-    document.getElementById("story-text").innerText =
-        "Le courant est trop fort. Tu ne peux rien faire.";
-
-    endStory();
-}
-
-function moonQuest(){
-    document.getElementById("story-text").innerText =
-        "Tu pars vers la Pierre de Lune pour accomplir une quête sacrée.";
-
-    document.getElementById("choices").innerHTML = `
-        <button onclick="healerPath()">🌿 Devenir guérisseur</button>
-        <button onclick="leaderChoice()">👑 Choisir ton destin</button>
-    `;
-}
-
-function healerPath(){
-    document.getElementById("story-text").innerText =
-        "Tu deviens apprenti guérisseur et cherches des herbes rares.";
-
-    document.getElementById("choices").innerHTML = `
-        <button onclick="foxAttack()">🐍 Explorer la forêt</button>
-    `;
-}
-
-function foxAttack(){
-    document.getElementById("story-text").innerText =
-        "Un blaireau surgit des fougères et bloque ton chemin.";
-
-    endStory();
-}
-
-function leaderChoice(){
-    document.getElementById("story-text").innerText =
-        "Tu dois choisir ton avenir.";
-
-    document.getElementById("choices").innerHTML = `
-        <button onclick="beLeader()">Chef</button>
-        <button onclick="beHealer()">Guérisseur</button>
-        <button onclick="beWarrior()">Guerrier</button>
-    `;
-}
-
-function beLeader(){
-    document.getElementById("story-text").innerText =
-        "Tu deviens chef d'un grand clan.";
-
-    endStory();
-}
-
-function beHealer(){
-    document.getElementById("story-text").innerText =
-        "Tu consacres ta vie aux soins et aux prophéties.";
-
-    endStory();
-}
-
-function beWarrior(){
-    document.getElementById("story-text").innerText =
-        "Tu deviens un guerrier respecté dans toute la forêt.";
-
-    document.getElementById("choices").innerHTML = `
-        <button onclick="spyStory()">🕵️ Enquête</button>
-        <button onclick="forbiddenFriend()">💘 Amitié interdite</button>
-    `;
-}
-
-function spyStory(){
-    document.getElementById("story-text").innerText =
-        "Tu découvres un espion infiltré dans ton clan.";
-
-    endStory();
-}
-
-function forbiddenFriend(){
-    document.getElementById("story-text").innerText =
-        "Tu te lies d'amitié avec un chat d'un clan rival malgré les interdictions.";
-
-    endStory();
-}
-
-function endStory(){
-    document.getElementById("choices").innerHTML = `
-        <button onclick="restartStory()">🔄 Recommencer</button>
-    `;
-}
-
-function joinWolf(){
-    document.getElementById("story-text").innerText =
-        "Le loup te conduit jusqu'à la frontière du Clan du Tonnerre.";
-
-    document.getElementById("choices").innerHTML = `
-        <button onclick="meetThunderClan()">Approcher le clan</button>
-        <button onclick="hideAndWatch()">Observer de loin</button>
-    `;
-}
-
-function takeFeather(){
-    document.getElementById("story-text").innerText =
-        "La plume appartenait à un guérisseur. Tu gagnes un signe du Clan des Étoiles.";
-
-    document.getElementById("choices").innerHTML = `
-        <button onclick="restartStory()">Recommencer</button>
-    `;
-}
-
-function leaveFeather(){
-    document.getElementById("story-text").innerText =
-        "Tu respectes les anciens lieux. Une patrouille t'offre sa confiance.";
-
-    document.getElementById("choices").innerHTML = `
-        <button onclick="restartStory()">Recommencer</button>
-    `;
-}
-
-function meetThunderClan(){
-    document.getElementById("story-text").innerText =
-        "Les guerriers du Clan du Tonnerre t'accueillent dans leur camp.";
-
-    document.getElementById("choices").innerHTML = `
-        <button onclick="restartStory()">Recommencer</button>
-    `;
-}
-
-function hideAndWatch(){
-    document.getElementById("story-text").innerText =
-        "Tu observes une réunion secrète entre deux clans rivaux.";
-
-    document.getElementById("choices").innerHTML = `
-        <button onclick="spyMeeting()">Écouter davantage</button>
-        <button onclick="restartStory()">Partir discrètement</button>
-    `;
-}
-
-function spyMeeting(){
-    document.getElementById("story-text").innerText =
-        "Tu découvres un complot contre le Clan de la Rivière. Ton aventure ne fait que commencer...";
-
-    document.getElementById("choices").innerHTML = `
-        <button onclick="restartStory()">Nouvelle partie</button>
-    `;
-}
-
+        
         function createCharacter(){
 
     const name = document.getElementById("catName").value;
