@@ -867,11 +867,111 @@ function runAway(){
 
 function wait(){
     document.getElementById("story-text").innerText =
-        "Un patrouilleur du Clan de l’Ombre te trouve... tu es capturé.";
+        "Tu restes caché sous un buisson. Un patrouilleur du Clan de l’Ombre apparaît, mais il ne t’a pas encore vu.";
 
     document.getElementById("choices").innerHTML = `
-        <button onclick="restartStory()">Recommencer</button>
+        <button onclick="followPatrol()">🐾 Suivre la patrouille</button>
+        <button onclick="stayHidden()">🌿 Rester immobile</button>
     `;
+}
+
+function followPatrol(){
+    document.getElementById("story-text").innerText =
+        "Tu suis discrètement les guerriers. Ils semblent transporter quelque chose vers un ancien camp abandonné.";
+
+    document.getElementById("choices").innerHTML = `
+        <button onclick="enterCamp()">🏕 Entrer dans le camp</button>
+        <button onclick="listenOutside()">👂 Écouter de l'extérieur</button>
+    `;
+}
+
+function stayHidden(){
+    document.getElementById("story-text").innerText =
+        "La patrouille finit par partir. Tu découvres une odeur étrange qui mène vers un tunnel caché.";
+
+    document.getElementById("choices").innerHTML = `
+        <button onclick="exploreTunnel()">🕳 Explorer le tunnel</button>
+        <button onclick="returnForest()">🌲 Retourner dans la forêt</button>
+    `;
+}
+
+function enterCamp(){
+    document.getElementById("story-text").innerText =
+        "Dans le camp abandonné, tu découvres une carte montrant les territoires des clans.";
+
+    document.getElementById("choices").innerHTML = `
+        <button onclick="takeMap()">🗺 Prendre la carte</button>
+        <button onclick="leaveMap()">❌ La laisser</button>
+    `;
+}
+
+function listenOutside(){
+    document.getElementById("story-text").innerText =
+        "Tu entends parler d'un complot visant le Clan de la Rivière.";
+
+    document.getElementById("choices").innerHTML = `
+        <button onclick="warnRiverClan()">🌊 Prévenir le Clan de la Rivière</button>
+        <button onclick="keepSecret()">🤫 Garder le secret</button>
+    `;
+}
+
+function exploreTunnel(){
+    document.getElementById("story-text").innerText =
+        "Le tunnel mène à une grotte où brille une étrange pierre.";
+
+    document.getElementById("choices").innerHTML = `
+        <button onclick="touchStone()">✨ Toucher la pierre</button>
+        <button onclick="leaveCave()">🚶 Quitter la grotte</button>
+    `;
+}
+
+function returnForest(){
+    document.getElementById("story-text").innerText =
+        "Tu retrouves ton chemin et rejoins ton clan sain et sauf.";
+
+    endStory();
+}
+
+function takeMap(){
+    document.getElementById("story-text").innerText =
+        "La carte révèle l'emplacement d'un trésor oublié des anciens clans.";
+
+    endStory();
+}
+
+function leaveMap(){
+    document.getElementById("story-text").innerText =
+        "Tu préfères ne rien toucher et quittes le camp discrètement.";
+
+    endStory();
+}
+
+function warnRiverClan(){
+    document.getElementById("story-text").innerText =
+        "Grâce à toi, le Clan de la Rivière évite une attaque surprise.";
+
+    endStory();
+}
+
+function keepSecret(){
+    document.getElementById("story-text").innerText =
+        "Le complot se réalise et la forêt change pour toujours.";
+
+    endStory();
+}
+
+function touchStone(){
+    document.getElementById("story-text").innerText =
+        "Une vision du Clan des Étoiles t'apparaît et te révèle ton destin.";
+
+    endStory();
+}
+
+function leaveCave(){
+    document.getElementById("story-text").innerText =
+        "Tu quittes la grotte avec plus de questions que de réponses.";
+
+    endStory();
 }
 
 function restartStory(){
