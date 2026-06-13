@@ -558,6 +558,21 @@
     white-space: nowrap;
 }
 
+/* STYLE DU RESUME LGDC */
+.summary-box {
+    margin-top: 20px;
+    line-height: 1.8;
+    font-size: 18px;
+    color: #e5e7eb;
+}
+.summary-box p {
+    margin-bottom: 15px;
+}
+.summary-highlight {
+    color: #6ee7b7;
+    font-weight: bold;
+}
+
     </style>
 </head>
 
@@ -569,6 +584,7 @@
         <div class="logo">🐾 CLANS</div>
         <nav>
             <a onclick="goHome()">🏕 Accueil</a>
+            <a onclick="showPage('aboutPage')">❓ C'est quoi LGDC ?</a>
             <a onclick="showPage('clansPage')">⚔ Clans</a>
             <a onclick="showPage('guerriersPage')">🐱 Guerriers</a>
             <a onclick="showPage('territoiresPage')">🌲 Territoires</a>
@@ -599,6 +615,27 @@
 
     </div>
 </section>
+
+    <section class="page" id="aboutPage">
+        <div class="page-content">
+            <h1>❓ C'est quoi La Guerre des Clans ?</h1>
+            
+            <div id="story-box" class="summary-box">
+                <p>
+                    <span class="summary-highlight">La Guerre des Clans</span> (ou LGDC) est une célèbre saga littéraire fantastique qui raconte les aventures de <span class="summary-highlight">quatre clans de chats sauvages</span> (le Tonnerre, le Vent, la Rivière et l'Ombre) qui se partagent la forêt et ses ressources depuis des décennies.
+                </p>
+                <p>
+                    Ces chats vivent selon les lois ancestrales dictées par le <span class="summary-highlight">Code du Guerrier</span>, un ensemble de règles d'honneur assurant leur survie et la paix entre les frontières. Ils possèdent une organisation sociale très stricte composée de chefs, de lieutenants, de guérisseurs, de guerriers et d'apprentis.
+                </p>
+                <p>
+                    Au-delà des rivalités et des batailles pour le territoire, les clans partagent une connexion spirituelle intense avec le <span class="summary-highlight">Clan des Étoiles</span>, le territoire de leurs ancêtres défunts qui leur envoient parfois des rêves, des signes et de mystérieuses prophéties pour guider leur destin.
+                </p>
+                <p>
+                    L'histoire commence véritablement lorsqu'un jeune chat domestique roux nommé <span class="summary-highlight">Rusty</span> décide d'abandonner sa vie confortable chez les humains (les Bipèdes) pour s'enfoncer dans les bois et rejoindre le Clan du Tonnerre, bouleversant ainsi l'équilibre de toute la forêt.
+                </p>
+            </div>
+        </div>
+    </section>
 
     <section class="page" id="dictionnairePage">
         <div class="page-content">
@@ -1141,7 +1178,7 @@ function showStory(step){
 
         case 2:
             text.innerText =
-            "Tu avances et découvres un loup blessé.";
+            "Tu avance et découvres un loup blessé.";
 
             choices.innerHTML = `
                 <button onclick="showStory(4)">L'aider</button>
