@@ -53,9 +53,80 @@
 
         .menu-btn:hover{ transform:scale(1.05); }
 
+        /* NOUVEAUX BOUTONS BURGER (À DROITE) */
+        .right-menu-btn {
+            position: fixed;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background: #facc15; /* Jaune pour se différencier */
+            color: #0f1115;
+            border: none;
+            border-radius: 10px;
+            font-size: 22px;
+            cursor: pointer;
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.3s;
+            box-shadow: 0 0 10px rgba(250, 204, 21, 0.3);
+        }
+        .right-menu-btn:hover { transform: scale(1.05); }
+        
+        #btn-guide { top: 20px; }
+        #btn-techniques { top: 75px; background: #4ade80; box-shadow: 0 0 10px rgba(74, 222, 128, 0.3); }
+
         /* SIDEBAR */
 
         .sidebar{position:fixed; left:-260px; top:0; width:260px; height:100vh; background:#161b22; padding:30px 20px; transition:0.4s; z-index:1000; border-right:1px solid rgba(255,255,255,0.05); }
+        
+        /* NOUVELLES SIDEBARS (À DROITE) */
+        .sidebar-right {
+            position: fixed;
+            right: -320px;
+            top: 0;
+            width: 320px;
+            height: 100vh;
+            background: #111827;
+            padding: 30px 20px;
+            transition: 0.4s;
+            z-index: 1000;
+            border-left: 1px solid rgba(255,255,255,0.05);
+            overflow-y: auto;
+        }
+        .sidebar-right.active { right: 0; }
+        
+        .sidebar-right h2 {
+            color: #facc15;
+            font-size: 22px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid rgba(250, 204, 21, 0.3);
+            padding-bottom: 10px;
+            margin-top: 20px;
+        }
+        .sidebar-right h2:first-of-type { margin-top: 30px; }
+        
+        .sidebar-right h3 {
+            color: #6ee7b7;
+            font-size: 16px;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+        .sidebar-right p {
+            font-size: 14px;
+            color: #cbd5e1;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+        .sidebar-right ul {
+            margin-left: 15px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: #cbd5e1;
+        }
+        .sidebar-right li { margin-bottom: 8px; }
+
         #story-box{
     background:#0f172a;
 
@@ -843,6 +914,10 @@ var h2,
 
     <button class="menu-btn" onclick="toggleMenu()">☰</button>
 
+    <!-- BOUTONS POUR LES NOUVEAUX MENUS BURGER À DROITE -->
+    <button class="right-menu-btn" id="btn-guide" onclick="toggleRightMenu('sidebarGuide')">📜</button>
+    <button class="right-menu-btn" id="btn-techniques" onclick="toggleRightMenu('sidebarTechniques')">⚔️</button>
+
     <aside class="sidebar" id="sidebar">
         <div class="logo">🐾 CLANS</div>
         <nav>
@@ -858,6 +933,73 @@ var h2,
             <a onclick="showPage('personnagePage')">🐱 Mon personnage</a>
             <a onclick="showPage('gamePage')">🎮 Aventure</a>
         </nav>
+    </aside>
+
+    <!-- BURGER DROITE 1 : LE GUIDE DU GUERRIER (LOIS ET RÔLES) -->
+    <aside class="sidebar-right" id="sidebarGuide">
+        <h2>📜 Code du Guerrier</h2>
+        <p>Voici les lois ancestrales les plus importantes que chaque chat doit respecter :</p>
+        <ul>
+            <li><b>Loi 1 :</b> Défendre son clan, même au péril de sa vie. Les amitiés inter-clans sont interdites.</li>
+            <li><b>Loi 2 :</b> Il est interdit de chasser ou de s'aventurer sur le territoire d'un autre clan.</li>
+            <li><b>Loi 3 :</b> Les anciens, les reines et les chatons doivent être nourris avant les apprentis et les guerriers.</li>
+            <li><b>Loi 4 :</b> Un chaton doit avoir au moins 6 lunes pour commencer son entraînement d'apprenti.</li>
+            <li><b>Loi 5 :</b> La parole du chef du clan fait force de loi absolue.</li>
+        </ul>
+
+        <h2>🐾 Rôles du Clan</h2>
+        
+        <h3>🌟 Chef</h3>
+        <p>Dirige le clan, prend les décisions stratégiques et reçoit ses 9 vies du Clan des Étoiles.</p>
+        
+        <h3>🦅 Lieutenant</h3>
+        <p>Le bras droit du chef. Il organise les patrouilles, gère l'entraînement et succède au chef.</p>
+        
+        <h3>🌿 Guérisseur</h3>
+        <p>Soigne le clan grâce aux plantes et communique avec les ancêtres à travers les rêves.</p>
+        
+        <h3>⚔️ Guerrier</h3>
+        <p>Nourrit et protège le clan. Il chasse et combat pour défendre les frontières.</p>
+        
+        <h3>🐾 Apprenti</h3>
+        <p>Chat d'au moins 6 lunes qui s'entraîne dur pour devenir un jour un guerrier accompli.</p>
+        
+        <h3>🍼 Reine</h3>
+        <p>Chatte qui attend ou élève des chatons dans la chaleur sécurisée de la pouponnière.</p>
+        
+        <h3>🌼 Ancien</h3>
+        <p>Guerrier ou guérisseur à la retraite, respecté pour sa sagesse et ses histoires.</p>
+    </aside>
+
+    <!-- BURGER DROITE 2 : TECHNIQUES & REMÈDES -->
+    <aside class="sidebar-right" id="sidebarTechniques">
+        <h2>⚔️ Tactiques de Combat</h2>
+        
+        <h3>⚡ Saut du Tonnerre</h3>
+        <p>Sauter depuis une hauteur ou un rocher pour tomber par surprise sur le dos de son adversaire.</p>
+        
+        <h3>🌪️ Attaque en Bourrasque</h3>
+        <p>Profiter de la vitesse des plaines pour feinter et encercler l'ennemi en un éclair.</p>
+        
+        <h3>🌊 Feinte de la Rivière</h3>
+        <p>Glisser sous l'adversaire sur une surface mouillée ou instable pour lui faucher les pattes.</p>
+        
+        <h3>🌑 Griffe Obscure</h3>
+        <p>S'embusquer dans l'ombre et attaquer directement les yeux de l'ennemi pour l'aveugler temporairement.</p>
+
+        <h2>🌱 Remèdes des Guérisseurs</h2>
+        
+        <h3>🌿 Herbe-à-chat</h3>
+        <p>Le remède le plus précieux. Indispensable pour soigner le terrible Mal Vert (pneumonie).</p>
+        
+        <h3>🕸️ Toile d'araignée</h3>
+        <p>Appliquée directement sur une plaie ouverte pour stopper l'hémorragie et maintenir le pansement.</p>
+        
+        <h3>🌼 Souci</h3>
+        <p>Les feuilles écrasées en cataplasme calment instantanément l'infection des blessures et des morsures.</p>
+        
+        <h3>🌱 Racine de Cerfeuil</h3>
+        <p>Le jus extrait des racines aide à apaiser les maux de ventre et prévient les infections internes.</p>
     </aside>
 
     <section class="page" id="histoirePage">
@@ -886,13 +1028,13 @@ var h2,
             
             <div id="story-box" class="summary-box">
                 <p>
-                    <span class="summary-highlight">La Guerre des Clans</span> (ou LGDC) est une célèbre saga littéraire fantastique qui raconte les aventures de <span class="summary-highlight">quatre clans de chats sauvages</span> (le Tonnerre, le Vent, la Rivière et l'Ombre) qui se partagent la forêt et ses ressources depuis des décennies.
+                    <span class="summary-highlight">La Guerre des Clans</span> (ou LGDC) est une célèbre saga littéraire fantastique qui raconte les adventures de <span class="summary-highlight">quatre clans de chats sauvages</span> (le Tonnerre, le Vent, la Rivière et l'Ombre) qui se partagent la forêt et ses ressources depuis des décennies.
                 </p>
                 <p>
-                    Ces chats vivent selon les lois ancestrales dictées par le <span class="summary-highlight">Code du Guerrier</span>, un ensemble de règles d'honneur assurant leur survival et la paix entre les frontières. Ils possèdent une organisation sociale très stricte composée de chefs, de lieutenants, de guérisseurs, de guerriers et d'apprentis.
+                    Ces chats vivent selon les lois ancestrales dictées par le <span class="summary-highlight">Code du Guerrier</span>, un ensemble de règles d'honneur assurant leur survie et la paix entre les frontières. Ils possèdent une organisation sociale très stricte composée de chefs, de lieutenants, de guérisseurs, de guerriers et d'apprentis.
                 </p>
                 <p>
-                    Au-delà des rivalités et des batailles pour le territoire, les clans partagent une connexion spirituale intense avec le <span class="summary-highlight">Clan des Étoiles</span>, le territoire de leurs ancêtres défunts qui leur envoient parfois des rêves, des signes et de mystérieuses prophéties pour guider leur destin.
+                    Au-delà des rivalités et des batailles pour le territoire, les clans partagent une connexion spirituelle intense avec le <span class="summary-highlight">Clan des Étoiles</span>, le territoire de leurs ancêtres défunts qui leur envoient parfois des rêves, des signes et de mystérieuses prophéties pour guider leur destin.
                 </p>
                 <p>
                     L'histoire commence véritablement lorsqu'un jeune chat domestique roux nommé <span class="summary-highlight">Rusty</span> décide d'abandonner sa vie confortable chez les humains (les Bipèdes) pour s'enfoncer dans les bois et rejoindre le Clan du Tonnerre, bouleversant ainsi l'équilibre de toute la forêt.
@@ -1180,6 +1322,27 @@ var h2,
         
         function toggleMenu(){
             document.getElementById("sidebar").classList.toggle("active");
+            // Fermer les menus de droite si on ouvre celui de gauche
+            document.getElementById("sidebarGuide").classList.remove("active");
+            document.getElementById("sidebarTechniques").classList.remove("active");
+        }
+
+        // Fonction pour gérer les deux nouveaux menus burgers à droite
+        function toggleRightMenu(menuId) {
+            const guideMenu = document.getElementById("sidebarGuide");
+            const techMenu = document.getElementById("sidebarTechniques");
+            const leftMenu = document.getElementById("sidebar");
+
+            // Fermer le menu de gauche
+            leftMenu.classList.remove("active");
+
+            if (menuId === "sidebarGuide") {
+                techMenu.classList.remove("active");
+                guideMenu.classList.toggle("active");
+            } else if (menuId === "sidebarTechniques") {
+                guideMenu.classList.remove("active");
+                techMenu.classList.toggle("active");
+            }
         }
 
         function hideAllSections(){
@@ -1536,7 +1699,7 @@ function showStory(step){
 
         case 4:
             text.innerText =
-            "Tu aides le loup. After avoir repris des forces, il te parle d'une ancienne prophétie.";
+            "Tu aides le loup. Après avoir repris des forces, il te parle d'une ancienne prophétie.";
 
             choices.innerHTML = `
                 <button onclick="showStory(8)">Écouter la prophétie</button>
@@ -2038,6 +2201,8 @@ showPage = function(pageId) {
 
             // Fermer le menu
             document.getElementById("sidebar").classList.remove("active");
+            document.getElementById("sidebarGuide").classList.remove("active");
+            document.getElementById("sidebarTechniques").classList.remove("active");
         }
     </script>
 
