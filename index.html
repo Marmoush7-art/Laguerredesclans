@@ -443,7 +443,7 @@
         .page-content{ max-width:1000px; margin:auto; }
 
         .page h1,
-.page h2,
+var h2,
 .page h3,
 .page p,
 .page label,
@@ -1536,7 +1536,7 @@ function showStory(step){
 
         case 4:
             text.innerText =
-            "Tu aides le loup. Après avoir repris des forces, il te parle d'une ancienne prophétie.";
+            "Tu aides le loup. After avoir repris des forces, il te parle d'une ancienne prophétie.";
 
             choices.innerHTML = `
                 <button onclick="showStory(8)">Écouter la prophétie</button>
@@ -1852,7 +1852,7 @@ function renderChatHub() {
 function openNewChatForm() {
     document.getElementById("chatHub").classList.remove("active");
     document.getElementById("chatRoomView").classList.remove("active");
-    document.getElementById("chatFormView").add("active");
+    document.getElementById("chatFormView").classList.add("active");
     
     // Si l'utilisateur n'a aucune discussion, on cache le bouton annuler pour forcer la configuration initiale
     const cancelBtn = document.getElementById("cancelChatBtn");
@@ -1920,7 +1920,7 @@ function openChatRoom(index) {
     
     document.getElementById("chatHub").classList.remove("active");
     document.getElementById("chatFormView").classList.remove("active");
-    document.getElementById("chatRoomView").classList.add("add", "active");
+    document.getElementById("chatRoomView").classList.add("active");
     
     const clanMeta = clanChatData[room.clanKey];
     document.getElementById("roomTitle").innerText = clanMeta.name;
