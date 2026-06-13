@@ -1724,7 +1724,7 @@ const clanChatData = {
         members: [
             { nom: "Plume Grise", status: "Disponible pour une patrouille ⚔️", phrases: ["Salut ! Quelqu'un a vu l'état des réserves de gibier ce matin ? J'ai une faim de loup 🐭", "Je viens de croiser un écureuil géant près du grand sycomore !", "Le chef cherche des volontaires, allez le voir !", "Qui veut aller chasser avec moi près des rochers ?"] },
             { nom: "Cœur de Lion", status: "Mentor loyal 🐾", phrases: ["Restez calmes, ne vous approchez plus de la route des Bipèdes aujourd'hui !", "Un bon guerrier surveille toujours ses arrières.", "L'entraînement des apprentis commence bientôt au vallon."] },
-            { nom: "Étoile de Feu", status: "Chef suprême 🌟", phrases: ["Que le Clan des Étoiles veille sur nos frontières aujourd'hui.", "Rassemblement général au pied du Grand Rocher à la mi-journée.", "Le Clan de l'Ombre semble s'agiter près de notre frontière Nord."] },
+            { nom: "Étoile de Feu", status: "Chef suprême 🌟", phrases: ["Que le Clan des Étoiles veille sur nos frontières aujourd'hui.", "Rassemblement général au pied du Grand Rocher à la mi-journée.", "Le Clan de l'Ombre seems s'agiter près de notre frontière Nord."] },
             { nom: "Nuage de Jais", status: "Apprenti craintif 🌿", phrases: ["Les gars, j'ai croisé un Monstre sur le Chemin du Tonnerre !! J'ai eu si peur 🙀", "J'ai entendu des bruits suspects près des buissons de houx..."] },
             { nom: "Tempête de Sable", status: "Chasseuse d'élite 🏹", phrases: ["Les réserves sont presque vides, il faut une patrouille de chasse immédiate !", "Arrête de te plaindre Plume Grise et viens m'aider.", "Mes griffes sont bien aiguisées pour la patrouille de ce soir."] },
             { nom: "Flocon de Neige", status: "Apprenti effronté ❄️", phrases: ["Le Code du Guerrier par-ci, le Code par-là... Moi je veux juste explorer !", "Les croquettes des Bipèdes ont quand même l'air super bonnes."] },
@@ -1784,6 +1784,7 @@ const clanChatData = {
 
 let conversations = []; 
 let activeRoomId = null;
+let simulationTimeoutId = null; // Gère le délai dynamique aléatoire
 
 function renderChatHub() {
     const container = document.getElementById("chatListContainer");
@@ -1873,7 +1874,7 @@ function createChatInstance(userName, userRank, clanKey) {
         messages: initialMessages,
         unread: 0,
         lastSender: clanMeta.intro[clanMeta.intro.length - 1].sender,
-        usedPhrases: new Set(clanMeta.intro.map(m => m.text)) // Évite les répétitions au départ
+        usedPhrases: new Set(clanMeta.intro.map(m => m.text))
     };
     
     conversations.push(newRoom);
@@ -1946,25 +1947,36 @@ function currentRoomSendMessage() {
     renderRoomMessages();
 }
 
-/* --- CLAN BACKGROUND SIMULATION ENGINE (AUTO MESSAGES & NOTIFICATIONS) --- */
-function runGlobalChatSimulation() {
-    if (conversations.length === 0) return;
+/* --- CLAN BACKGROUND SIMULATION ENGINE (REALISTIC RANDOM TIME PATTERN) --- */
+function scheduleNextAutoMessage() {
+    // Choisir un temps d'attente irrégulier entre 15 et 35 secondes (comme un vrai groupe)
+    const randomDelay = Math.floor(Math.random() * (35000 - 15000 + 1)) + 15000;
     
-    // Choisir un salon aléatoire à faire parler
+    simulationTimeoutId = setTimeout(() => {
+        runGlobalChatSimulation();
+    }, randomDelay);
+}
+
+function runGlobalChatSimulation() {
+    if (conversations.length === 0) {
+        scheduleNextAutoMessage();
+        return;
+    }
+    
+    // Sélectionne un salon au hasard pour envoyer le message
     const randomRoomId = Math.floor(Math.random() * conversations.length);
     const room = conversations[randomRoomId];
     const clanMeta = clanChatData[room.clanKey];
     
-    // Filtrer les membres pour changer d'interlocuteur
+    // Alterne l'interlocuteur pour éviter les répétitions instantanées du même chat
     let availableMembers = clanMeta.members.filter(m => m.nom !== room.lastSender);
     if (availableMembers.length === 0) availableMembers = clanMeta.members;
     
     const chosenMember = availableMembers[Math.floor(Math.random() * availableMembers.length)];
     
-    // Trouver une phrase pas encore répétée en boucle
     let availablePhrases = chosenMember.phrases.filter(p => !room.usedPhrases.has(p));
     if (availablePhrases.length === 0) {
-        room.usedPhrases.clear(); // Reset si tout a été dit
+        room.usedPhrases.clear();
         availablePhrases = chosenMember.phrases;
     }
     
@@ -1975,10 +1987,11 @@ function runGlobalChatSimulation() {
     // Si l'utilisateur regarde actuellement ce salon précis
     if (activeRoomId === randomRoomId) {
         const indicator = document.getElementById("typingIndicator");
-        indicator.innerText = `💬 ${chosenMember.nom} est en train d'écrire...`;
+        indicator.innerText = `💬 ${chosenMember.nom} est en tant qu'écrire...`;
         indicator.style.display = "block";
         document.getElementById("roomMessages").scrollTop = document.getElementById("roomMessages").scrollHeight;
         
+        // Simule une vitesse d'écriture réaliste (4 secondes pour taper sa phrase)
         setTimeout(() => {
             indicator.style.display = "none";
             room.messages.push({
@@ -1988,9 +2001,10 @@ function runGlobalChatSimulation() {
                 isUser: false
             });
             renderRoomMessages();
-        }, 1800);
+            scheduleNextAutoMessage(); // Planifie le message suivant après celui-ci
+        }, 4000);
     } else {
-        // L'utilisateur est ailleurs : on ajoute discrètement et on incrémente la notification !
+        // Reçu en tâche de fond dans un autre salon
         room.messages.push({
             sender: chosenMember.nom,
             status: chosenMember.status,
@@ -1999,17 +2013,17 @@ function runGlobalChatSimulation() {
         });
         room.unread++;
         
-        // Si le hub principal des discussions est ouvert à l'écran, on le met à jour visuellement en temps réel
         if (document.getElementById("chatPage").classList.contains("active") && document.getElementById("chatHub").classList.contains("active")) {
             renderChatHub();
         }
+        scheduleNextAutoMessage(); // Planifie la suite
     }
 }
 
-// Lancement automatique du moteur de simulation toutes les 5 secondes
-setInterval(runGlobalChatSimulation, 5000);
+// Premier lancement de la boucle de simulation
+scheduleNextAutoMessage();
 
-// Intercept tab change clicks to force creation form if no channels are available yet
+// Gestionnaire du changement d'onglets pour le Hub
 const originalShowPage = showPage;
 showPage = function(pageId) {
     originalShowPage(pageId);
