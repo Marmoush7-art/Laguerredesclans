@@ -573,16 +573,163 @@
     font-weight: bold;
 }
 
-/* CHAT ROOM STYLES */
+/* NEW WHATSAPP STYLE CHAT ARCHITECTURE */
+.chat-hub, .chat-form-view, .chat-room-view {
+    display: none;
+}
+.chat-hub.active, .chat-form-view.active, .chat-room-view.active {
+    display: block;
+}
+
+/* HUB DISCUSSIONS LIST */
+.chat-list {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.chat-item {
+    background: #161b22;
+    border: 1px solid rgba(110,231,183,0.2);
+    padding: 15px 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.3s;
+}
+.chat-item:hover {
+    border-color: #6ee7b7;
+    transform: translateX(5px);
+}
+.chat-item-info h3 {
+    color: #6ee7b7;
+    margin-bottom: 4px;
+}
+.chat-item-info p {
+    font-size: 14px;
+    color: #9ca3af;
+}
+.chat-badge {
+    background: #4ade80;
+    color: #04111d;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+/* FLOATING PLUS BUTTON */
+.add-chat-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(90deg, #6ee7b7, #4ade80);
+    color: #0f1115;
+    font-size: 28px;
+    font-weight: bold;
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 30px auto 0 auto;
+    box-shadow: 0 0 15px rgba(110,231,183,0.4);
+    transition: 0.3s;
+}
+.add-chat-btn:hover {
+    transform: scale(1.1) rotate(90deg);
+}
+
+/* SYSTEM FORM VIEW */
+.chat-warning {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid #ef4444;
+    color: #fca5a5;
+    padding: 15px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 14px;
+    background: #111827;
+    border: 1px solid rgba(110,231,183,0.4);
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
+}
+.form-group input:focus, .form-group select:focus {
+    border-color: #6ee7b7;
+    outline: none;
+}
+.form-actions {
+    display: flex;
+    gap: 15px;
+}
+.form-actions button {
+    flex: 1;
+    padding: 14px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+}
+.btn-submit {
+    background: #6ee7b7;
+    color: #0f1115;
+}
+.btn-cancel {
+    background: #374151;
+    color: white;
+}
+
+/* CHAT ROOM WINDOW */
+.chat-room-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #161b22;
+    padding: 15px 20px;
+    border-radius: 20px 20px 0 0;
+    border: 1px solid rgba(110,231,183,0.3);
+    border-bottom: none;
+}
+.btn-back-hub {
+    background: #374151;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.btn-back-hub:hover { background: #4b5563; }
+
 .chat-container {
     display: flex;
     flex-direction: column;
-    height: 60vh;
+    height: 55vh;
     background: #111827;
     border: 1px solid rgba(110,231,183,0.3);
-    border-radius: 20px;
+    border-radius: 0 0 20px 20px;
     overflow: hidden;
-    margin-top: 25px;
 }
 
 .chat-messages {
@@ -609,11 +756,28 @@
     border: 1px solid rgba(110,231,183,0.4);
 }
 
+.chat-bubble.system-msg {
+    background: rgba(24acc15, 0.1);
+    border: 1px dashed #facc15;
+    color: #fef08a;
+    align-self: center;
+    max-width: 90%;
+    font-size: 14px;
+    text-align: center;
+}
+
 .chat-sender {
     font-size: 14px;
     font-weight: bold;
     color: #6ee7b7;
+    margin-bottom: 2px;
+}
+.chat-sender-status {
+    font-size: 11px;
+    font-weight: normal;
+    color: #9ca3af;
     margin-bottom: 4px;
+    font-style: italic;
 }
 
 .chat-bubble.user-msg .chat-sender {
@@ -624,6 +788,14 @@
     font-size: 16px;
     line-height: 1.4;
     word-break: break-word;
+}
+
+.typing-indicator {
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #a7f3d0;
+    font-style: italic;
+    display: none;
 }
 
 .chat-input-area {
@@ -719,7 +891,7 @@
                     <span class="summary-highlight">La Guerre des Clans</span> (ou LGDC) est une célèbre saga littéraire fantastique qui raconte les aventures de <span class="summary-highlight">quatre clans de chats sauvages</span> (le Tonnerre, le Vent, la Rivière et l'Ombre) qui se partagent la forêt et ses ressources depuis des décennies.
                 </p>
                 <p>
-                    Ces chats vivent selon les lois ancestrales dictées par le <span class="summary-highlight">Code du Guerrier</span>, un ensemble de règles d'honneur assurant leur survie et la paix entre les frontières. Ils possèdent une organisation sociale très stricte composée de chefs, de lieutenants, de guérisseurs, de guerriers et d'apprentis.
+                    Ces chats vivent selon les lois ancestrales dictées par le <span class="summary-highlight">Code du Guerrier</span>, un ensemble de règles d'honneur assurant leur survival et la paix entre les frontières. Ils possèdent une organisation sociale très stricte composée de chefs, de lieutenants, de guérisseurs, de guerriers et d'apprentis.
                 </p>
                 <p>
                     Au-delà des rivalités et des batailles pour le territoire, les clans partagent une connexion spirituelle intense avec le <span class="summary-highlight">Clan des Étoiles</span>, le territoire de leurs ancêtres défunts qui leur envoient parfois des rêves, des signes et de mystérieuses prophéties pour guider leur destin.
@@ -734,25 +906,74 @@
     <section class="page" id="chatPage">
         <div class="page-content">
             <h1>💬 Chat de la Tribu</h1>
-            <p style="color: #9ca3af; margin-bottom: 10px;">Partage tes pensées ou discute avec les autres guerriers de la forêt.</p>
+            <p style="color: #9ca3af; margin-bottom: 20px;">Partage tes pensées ou discute avec les autres guerriers de la forêt.</p>
             
-            <div class="chat-container">
-                <div class="chat-messages" id="chatMessages">
-                    <div class="chat-bubble">
-                        <div class="chat-sender">Étoile de Feu</div>
-                        <div class="chat-text">Que tous ceux qui sont assez âgés pour chasser leurs propres proies s'assemblent sous la Corniche du Rocher ! 🐾</div>
-                    </div>
-                    <div class="chat-bubble">
-                        <div class="chat-sender">Plume Grise</div>
-                        <div class="chat-text">Quelqu'un sait si la patrouille de l'aube a trouvé des traces du Clan de l'Ombre près de la frontière ? 🌲</div>
-                    </div>
+            <!-- VIEW 1: HUB DISCUSSION LIST -->
+            <div id="chatHub" class="chat-hub active">
+                <div class="chat-list" id="chatListContainer">
+                    <!-- Conversations generated dynamically -->
+                </div>
+                <button class="add-chat-btn" onclick="openNewChatForm()">+</button>
+            </div>
+
+            <!-- VIEW 2: FORM CREATION -->
+            <div id="chatFormView" class="chat-form-view">
+                <div class="chat-warning">
+                    ⚠️ NE PRENEZ PAS UN NOM DE CHAT DÉJÀ EXISTANT DANS LES LIVRES (car il pourrait apparaitre dans le chat sans que ce soit vous)
                 </div>
                 
-                <div class="chat-input-area">
-                    <input type="text" id="chatInput" placeholder="Écris ton message ici..." onkeydown="if(event.key === 'Enter') sendChatMessage()">
-                    <button onclick="sendChatMessage()">Envoyer</button>
+                <div class="form-group">
+                    <label>Ton nom de chat pour cette discussion :</label>
+                    <input type="text" id="newChatUser" placeholder="Ex: Nuage Flamboyant">
+                </div>
+
+                <div class="form-group">
+                    <label>Ton rang :</label>
+                    <select id="newChatRank">
+                        <option>Apprenti</option>
+                        <option>Guerrier</option>
+                        <option>Guérisseur</option>
+                        <option>Chef</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Clan avec lequel discuter :</label>
+                    <select id="newChatClan">
+                        <option value="tonnerre">⚡ Clan du Tonnerre</option>
+                        <option value="vent">🌪 Clan du Vent</option>
+                        <option value="riviere">🌊 Clan de la Rivière</option>
+                        <option value="ombre">🌑 Clan de l'Ombre</option>
+                    </select>
+                </div>
+
+                <div class="form-actions">
+                    <button class="btn-submit" onclick="submitCreateChat()">Créer la conversation</button>
+                    <button class="btn-cancel" onclick="cancelChatForm()">Annuler</button>
                 </div>
             </div>
+
+            <!-- VIEW 3: CHAT WINDOW AREA -->
+            <div id="chatRoomView" class="chat-room-view">
+                <div class="chat-room-header">
+                    <div>
+                        <h3 id="roomTitle" style="color:#6ee7b7;">Discussion</h3>
+                        <p id="roomIdentity" style="font-size:12px; color:#9ca3af;"></p>
+                    </div>
+                    <button class="btn-back-hub" onclick="backToHub()">⬅ Retour aux salons</button>
+                </div>
+                <div class="chat-container">
+                    <div class="chat-messages" id="roomMessages">
+                        <!-- Messages render here -->
+                    </div>
+                    <div class="typing-indicator" id="typingIndicator"></div>
+                    <div class="chat-input-area">
+                        <input type="text" id="roomInput" placeholder="Écris ton message ici..." onkeydown="if(event.key === 'Enter') currentRoomSendMessage()">
+                        <button onclick="currentRoomSendMessage()">Envoyer</button>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -1297,7 +1518,7 @@ function showStory(step){
 
         case 2:
             text.innerText =
-            "Tu avance et découvres un loup blessé.";
+            "Tu avance et découvres un loup violent.";
 
             choices.innerHTML = `
                 <button onclick="showStory(4)">L'aider</button>
@@ -1497,33 +1718,372 @@ function gainRep(amount){
     `;
 }
 
-function sendChatMessage() {
-    const input = document.getElementById("chatInput");
-    const messageText = input.value.trim();
-    
-    if (messageText === "") return;
-    
-    const chatMessages = document.getElementById("chatMessages");
-    
-    // Déterminer le nom de l'expéditeur (prend le nom du personnage créé, sinon "Solitaire")
-    const senderName = player ? player.nom : "Solitaire 🐾";
-    
-    // Création de la bulle de message
-    const messageBubble = document.createElement("div");
-    messageBubble.className = "chat-bubble user-msg";
-    
-    messageBubble.innerHTML = `
-        <div class="chat-sender">${senderName}</div>
-        <div class="chat-text">${messageText}</div>
-    `;
-    
-    chatMessages.appendChild(messageBubble);
-    
-    // Nettoyer l'input et faire défiler vers le bas
-    input.value = "";
-    chatMessages.scrollTop = chatMessages.scrollHeight;
+/* --- COMPLETELY INDEPENDENT WHATSAPP MULTI-ROOM CHAT CODE --- */
+
+// Clan Database for Chats (NPCs & Statuses & Dialogues Contexts)
+const clanChatData = {
+    tonnerre: {
+        name: "⚡ Groupe du Tonnerre",
+        members: [
+            { nom: "Plume Grise", status: "Disponible pour une patrouille ⚔️" },
+            { nom: "Cœur de Lion", status: "Disponible pour une patrouille ⚔️" },
+            { nom: "Étoile de Feu", status: "En réunion avec le Clan des Étoiles 🌟" },
+            { nom: "Nuage de Jais", status: "Parti chasser, ne pas déranger 🐭" },
+            { nom: "Tempête de Sable", status: "S'entraîne dur 🐾" }
+        ],
+        intro: [
+            { sender: "Plume Grise", text: "Salut ! Quelqu'un a vu l'état des réserves de gibier ce matin ? J'ai une faim de loup 🐭" },
+            { sender: "Tempête de Sable", text: "Plume Grise, tu ne penses qu'à manger... Elles sont presque vides, il faut une patrouille de chasse !" }
+        ],
+        responses: [
+            "Je suis d'accord, je viens de croiser un écureuil près du grand sycomore !",
+            "Attention, j'ai senti l'odeur du Clan de l'Ombre près du Rocher du Soleil...",
+            "Qui est disponible pour m'accompagner à la patrouille de l'après-midi ?",
+            "Par le Clan des Étoiles, j'espère qu'il ne va pas pleuvoir aujourd'hui.",
+            "Le chef cherche des volontaires, allez le voir !"
+        ],
+        dramas: [
+            { sender: "Nuage de Jais", text: "Les gars, j'ai croisé un Monstre sur le Chemin du Tonnerre !! J'ai eu si peur 🙀" },
+            { sender: "Cœur de Lion", text: "Restez calmes, ne vous approchez plus de cette route aujourd'hui !" }
+        ]
+    },
+    vent: {
+        name: "🌪 Groupe du Vent",
+        members: [
+            { nom: "Étoile Solitaire", status: "En surveillance sur les landes 🌾" },
+            { nom: "Plume de Courlis", status: "À la chasse aux lapins 🐇" },
+            { nom: "Patte Folle", status: "Repose sa patte 🐾" },
+            { nom: "Belle-de-Nuit", status: "Garde la pouponnière 🐱" }
+        ],
+        intro: [
+            { sender: "Plume de Courlis", text: "Le vent souffle fort sur la lande aujourd'hui, les lapins courent vite ! 🐇" },
+            { sender: "Patte Folle", text: "Idéal pour s'entraîner à courir sans faire de bruit !" }
+        ],
+        responses: [
+            "J'ai vu des ombres rôder près des frontières du Tonnerre.",
+            "Nos territoires sont dégagés, aucun Bipède en vue.",
+            "Quelqu'un a vu le guérisseur ? J'ai besoin de remèdes.",
+            "Rien ne vaut la vitesse de notre Clan !",
+            "Attention aux trous de blaireaux vers le bas de la colline."
+        ],
+        dramas: [
+            { sender: "Étoile Solitaire", text: "Alerte ! Des chiens de Bipèdes courent sans laisse près du camp ! Redoublez de vigilance ! 🐾" }
+        ]
+    },
+    riviere: {
+        name: "🌊 Groupe de la Rivière",
+        members: [
+            { nom: "Étoile de Léopard", status: "Se prépare pour l'Assemblée 🌕" },
+            { nom: "Patte de Brume", status: "Pêche au bord du torrent 🐟" },
+            { nom: "Pelage de Silex", status: "Supervise les apprentis ⚔️" },
+            { nom: "Plume de Faucon", status: "Rôde dans les roseaux 👀" }
+        ],
+        intro: [
+            { sender: "Patte de Brume", text: "L'eau est magnifiquement claire aujourd'hui, les poissons s'attrapent facilement ! 🐟" },
+            { sender: "Pelage de Silex", text: "Ne te déconcentre pas, la patrouille doit rester vigilante." }
+        ],
+        responses: [
+            "Le courant est un peu fort aujourd'hui, faites attention les apprentis.",
+            "Quelqu'un veut partager une belle truite avec moi ?",
+            "Les pierres glissantes portent bien leur nom ce matin !",
+            "Le Clan du Tonnerre nous regarde encore bizarrement depuis l'autre rive.",
+            "Je retourne nager un coup, à plus !"
+        ],
+        dramas: [
+            { sender: "Plume de Faucon", text: "Des débris de Bipèdes flottent dans la rivière sacrée... C'est une honte ! 🙀" }
+        ]
+    },
+    ombre: {
+        name: "🌑 Groupe de l'Ombre",
+        members: [
+            { nom: "Étoile du Tigre", status: "Planifie l'avenir du Clan 🐾" },
+            { nom: "Pelage d'Ombre", status: "Dans les marécages sombres 🌲" },
+            { nom: "Cœur de Lézard", status: "Chasse discrète 🐸" },
+            { nom: "Plume de Grenouille", status: "Se repose à l'ombre 💤" }
+        ],
+        intro: [
+            { sender: "Pelage d'Ombre", text: "La brume recouvre parfaitement les marécages. C'est l'heure idéale pour s'exercer à la discrétion. 🌑" },
+            { sender: "Cœur de Lézard", text: "Exact, personne ne nous entendra arriver." }
+        ],
+        responses: [
+            "Notre force réside dans les secrets de la nuit.",
+            "Les autres clans sont trop faibles pour comprendre notre ambition.",
+            "J'ai attrapé deux gros crapauds près de la souche pourrie.",
+            "Restez discrets, pas besoin que les autres sachent ce qu'on fait.",
+            "Qui veut s'entraîner aux techniques d'attaque surprise ?"
+        ],
+        dramas: [
+            { sender: "Étoile du Tigre", text: "Le grand plan est en marche... Ne faites confiance à personne en dehors de ce groupe ! 🐾" }
+        ]
+    }
+};
+
+let conversations = []; // Stores all active room states
+let activeRoomId = null;
+
+// Initial setup on load to build some default chat instances
+if(conversations.length === 0) {
+    // Adding 2 default rooms so the user doesn't face an empty dashboard
+    createChatInstance("Nuage de Feu", "Apprenti", "tonnerre");
+    createChatInstance("Patte de Pluie", "Guerrier", "riviere");
+    // Add 1 fake unread notification to make it look active right away!
+    conversations[1].unread = 1;
 }
+
+function renderChatHub() {
+    const container = document.getElementById("chatListContainer");
+    container.innerHTML = "";
+    
+    conversations.forEach((room, index) => {
+        const clanMeta = clanChatData[room.clanKey];
+        const lastMsg = room.messages.length > 0 ? room.messages[room.messages.length - 1].text : "Aucun message";
         
+        const item = document.createElement("div");
+        item.className = "chat-item";
+        item.onclick = () => openChatRoom(index);
+        
+        let badgeHTML = room.unread > 0 ? `<div class="chat-badge">${room.unread}</div>` : "";
+        
+        item.innerHTML = `
+            <div class="chat-item-info">
+                <h3>${clanMeta.name}</h3>
+                <p style="color:#6ee7b7; font-size:12px; margin-bottom:2px;">Moi : ${room.userName} (${room.userRank})</p>
+                <p style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; max-width: 400px;">${lastMsg}</p>
+            </div>
+            ${badgeHTML}
+        `;
+        container.appendChild(item);
+    });
+}
+
+function openNewChatForm() {
+    document.getElementById("chatHub").classList.remove("active");
+    document.getElementById("chatRoomView").classList.remove("active");
+    document.getElementById("chatFormView").classList.add("active");
+}
+
+function cancelChatForm() {
+    document.getElementById("chatFormView").classList.remove("active");
+    document.getElementById("chatHub").classList.add("active");
+    renderChatHub();
+}
+
+function submitCreateChat() {
+    const nameInput = document.getElementById("newChatUser").value.trim();
+    const rank = document.getElementById("newChatRank").value;
+    const clanKey = document.getElementById("newChatClan").value;
+    
+    if(nameInput === "") {
+        alert("S'il te plaît, tape un nom de chat valide !");
+        return;
+    }
+    
+    const newIndex = createChatInstance(nameInput, rank, clanKey);
+    
+    // Clear inputs
+    document.getElementById("newChatUser").value = "";
+    
+    // Switch directly to the newly created room
+    document.getElementById("chatFormView").classList.remove("active");
+    openChatRoom(newIndex);
+}
+
+function createChatInstance(userName, userRank, clanKey) {
+    const clanMeta = clanChatData[clanKey];
+    
+    let initialMessages = [];
+    // Inject custom natural introductory messages from chosen clan
+    clanMeta.intro.forEach(msg => {
+        const memberData = clanMeta.members.find(m => m.nom === msg.sender);
+        initialMessages.push({
+            sender: msg.sender,
+            status: memberData ? memberData.status : "Guerrier",
+            text: msg.text,
+            isUser: false
+        });
+    });
+    
+    const newRoom = {
+        userName: userName,
+        userRank: userRank,
+        clanKey: clanKey,
+        messages: initialMessages,
+        unread: 0,
+        lastSender: clanMeta.intro[clanMeta.intro.length - 1].sender
+    };
+    
+    conversations.push(newRoom);
+    return conversations.length - 1;
+}
+
+function openChatRoom(index) {
+    activeRoomId = index;
+    const room = conversations[index];
+    room.unread = 0; // Clear unread counter when looking at it
+    
+    document.getElementById("chatHub").classList.remove("active");
+    document.getElementById("chatFormView").classList.remove("active");
+    document.getElementById("chatRoomView").classList.add("add", "active");
+    
+    const clanMeta = clanChatData[room.clanKey];
+    document.getElementById("roomTitle").innerText = clanMeta.name;
+    document.getElementById("roomIdentity").innerText = `Connecté en tant que : ${room.userName} (${room.userRank})`;
+    
+    renderRoomMessages();
+    
+    // Trigger an automatic random drama chance when entering a room to liven up things!
+    if(Math.random() > 0.65) {
+        setTimeout(() => {
+            triggerRandomDrama(index);
+        }, 3000);
+    }
+}
+
+function renderRoomMessages() {
+    if(activeRoomId === null) return;
+    const room = conversations[activeRoomId];
+    const container = document.getElementById("roomMessages");
+    container.innerHTML = "";
+    
+    room.messages.forEach(msg => {
+        const bubble = document.createElement("div");
+        if(msg.isSystem) {
+            bubble.className = "chat-bubble system-msg";
+            bubble.innerHTML = `<div class="chat-text">${msg.text}</div>`;
+        } else {
+            bubble.className = msg.isUser ? "chat-bubble user-msg" : "chat-bubble";
+            bubble.innerHTML = `
+                <div class="chat-sender">${msg.sender}</div>
+                <div class="chat-sender-status">${msg.status}</div>
+                <div class="chat-text">${msg.text}</div>
+            `;
+        }
+        container.appendChild(bubble);
+    });
+    
+    container.scrollTop = container.scrollHeight;
+}
+
+function backToHub() {
+    activeRoomId = null;
+    document.getElementById("chatRoomView").classList.remove("active");
+    document.getElementById("chatHub").classList.add("active");
+    renderChatHub();
+}
+
+function currentRoomSendMessage() {
+    const input = document.getElementById("roomInput");
+    const text = input.value.trim();
+    if(text === "" || activeRoomId === null) return;
+    
+    const room = conversations[activeRoomId];
+    
+    // Push user message
+    room.messages.push({
+        sender: room.userName,
+        status: room.userRank,
+        text: text,
+        isUser: true
+    });
+    
+    input.value = "";
+    renderRoomMessages();
+    
+    // Trigger dynamic typing indicator and response from another clan cat
+    simulateNpcReply(activeRoomId);
+}
+
+function simulateNpcReply(roomId) {
+    const room = conversations[roomId];
+    const clanMeta = clanChatData[room.clanKey];
+    
+    // Pick a member that is NOT the user and preferably NOT the absolute last sender to simulate turn rotation
+    let dynamicPool = clanMeta.members.filter(m => m.nom !== room.lastSender);
+    if(dynamicPool.length === 0) dynamicPool = clanMeta.members;
+    
+    const randomMember = dynamicPool[Math.floor(Math.random() * dynamicPool.length)];
+    room.lastSender = randomMember.nom;
+    
+    // Pick a contextual natural phrase
+    const randomPhrase = clanMeta.responses[Math.floor(Math.random() * clanMeta.responses.length)];
+    
+    // If user is currently looking at this active room, show typing animation
+    if(activeRoomId === roomId) {
+        const indicator = document.getElementById("typingIndicator");
+        indicator.innerText = `💬 ${randomMember.nom} est en train d'écrire...`;
+        indicator.style.display = "block";
+        document.getElementById("roomMessages").scrollTop = document.getElementById("roomMessages").scrollHeight;
+    }
+    
+    // Response delays between 1.5 to 2.5 seconds
+    const delay = 1500 + Math.random() * 1000;
+    
+    setTimeout(() => {
+        room.messages.push({
+            sender: randomMember.nom,
+            status: randomMember.status,
+            text: randomPhrase,
+            isUser: false
+        });
+        
+        if(activeRoomId === roomId) {
+            document.getElementById("typingIndicator").style.display = "none";
+            renderRoomMessages();
+        } else {
+            // If user left to another tab/room, increment unread badge counter!
+            room.unread++;
+            renderChatHub();
+        }
+    }, delay);
+}
+
+function triggerRandomDrama(roomId) {
+    const room = conversations[roomId];
+    if(!room) return;
+    const clanMeta = clanChatData[room.clanKey];
+    if(!clanMeta.dramas || clanMeta.dramas.length === 0) return;
+    
+    const sampleDrama = clanMeta.dramas[Math.floor(Math.random() * clanMeta.dramas.length)];
+    const memberData = clanMeta.members.find(m => m.nom === sampleDrama.sender);
+    
+    // Push system alert event bubble first
+    room.messages.push({
+        text: `📢 Événement de clan soudain au sein de la messagerie !`,
+        isSystem: true
+    });
+    
+    // Push the explosive text drama message
+    room.messages.push({
+        sender: sampleDrama.sender,
+        status: memberData ? memberData.status : "Guerrier du Clan",
+        text: sampleDrama.text,
+        isUser: false
+    });
+    
+    room.lastSender = sampleDrama.sender;
+    
+    if(activeRoomId === roomId) {
+        renderRoomMessages();
+    } else {
+        room.unread += 2;
+        renderChatHub();
+    }
+}
+
+// Global initialization override for the custom chat hub view
+document.addEventListener("DOMContentLoaded", () => {
+    renderChatHub();
+});
+
+// Re-hook render triggers on chat link tab selection clicks
+const originalShowPage = showPage;
+showPage = function(pageId) {
+    originalShowPage(pageId);
+    if(pageId === "chatPage") {
+        renderChatHub();
+    }
+};
+
         function goHome(){
             hideAllSections();
             
