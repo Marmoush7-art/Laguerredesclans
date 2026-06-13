@@ -222,8 +222,6 @@
 
     border:none;
     border-radius:15px;
-
-    cursor:pointer;
 }
 
 #personnagePage h1{
@@ -573,7 +571,7 @@
     font-weight: bold;
 }
 
-/* NEW WHATSAPP STYLE CHAT ARCHITECTURE */
+/* WHATSAPP STYLE CHAT ARCHITECTURE */
 .chat-hub, .chat-form-view, .chat-room-view {
     display: none;
 }
@@ -919,7 +917,7 @@
             <!-- VIEW 2: FORM CREATION -->
             <div id="chatFormView" class="chat-form-view">
                 <div class="chat-warning">
-                    ⚠️ NE PRENEZ PAS UN NOM DE CHAT DÉJÀ EXISTANT DANS LES LIVRES (car il pourrait apparaitre dans le chat sans que ce soit vous)
+                    ⚠️ NE PRENEZ PAS UN NOM DE CHAT DÉJÀ EXISTANT ( car il pourrait apparaitre dans le chat sans que ce soit vous )
                 </div>
                 
                 <div class="form-group">
@@ -949,7 +947,7 @@
 
                 <div class="form-actions">
                     <button class="btn-submit" onclick="submitCreateChat()">Créer la conversation</button>
-                    <button class="btn-cancel" onclick="cancelChatForm()">Annuler</button>
+                    <button class="btn-cancel" id="cancelChatBtn" onclick="cancelChatForm()">Annuler</button>
                 </div>
             </div>
 
@@ -1720,7 +1718,6 @@ function gainRep(amount){
 
 /* --- COMPLETELY INDEPENDENT WHATSAPP MULTI-ROOM CHAT CODE --- */
 
-// Clan Database for Chats (NPCs & Statuses & Dialogues Contexts)
 const clanChatData = {
     tonnerre: {
         name: "⚡ Groupe du Tonnerre",
@@ -1818,21 +1815,17 @@ const clanChatData = {
     }
 };
 
-let conversations = []; // Stores all active room states
+let conversations = []; 
 let activeRoomId = null;
-
-// Initial setup on load to build some default chat instances
-if(conversations.length === 0) {
-    // Adding 2 default rooms so the user doesn't face an empty dashboard
-    createChatInstance("Nuage de Feu", "Apprenti", "tonnerre");
-    createChatInstance("Patte de Pluie", "Guerrier", "riviere");
-    // Add 1 fake unread notification to make it look active right away!
-    conversations[1].unread = 1;
-}
 
 function renderChatHub() {
     const container = document.getElementById("chatListContainer");
     container.innerHTML = "";
+    
+    if (conversations.length === 0) {
+        container.innerHTML = `<p style="text-align:center; color:#9ca3af; margin-top:20px;">Aucune discussion en cours. Clique sur le bouton "+" en bas pour configurer ta première conversation !</p>`;
+        return;
+    }
     
     conversations.forEach((room, index) => {
         const clanMeta = clanChatData[room.clanKey];
@@ -1859,7 +1852,15 @@ function renderChatHub() {
 function openNewChatForm() {
     document.getElementById("chatHub").classList.remove("active");
     document.getElementById("chatRoomView").classList.remove("active");
-    document.getElementById("chatFormView").classList.add("active");
+    document.getElementById("chatFormView").add("active");
+    
+    // Si l'utilisateur n'a aucune discussion, on cache le bouton annuler pour forcer la configuration initiale
+    const cancelBtn = document.getElementById("cancelChatBtn");
+    if (conversations.length === 0) {
+        cancelBtn.style.display = "none";
+    } else {
+        cancelBtn.style.display = "block";
+    }
 }
 
 function cancelChatForm() {
@@ -1879,20 +1880,16 @@ function submitCreateChat() {
     }
     
     const newIndex = createChatInstance(nameInput, rank, clanKey);
-    
-    // Clear inputs
     document.getElementById("newChatUser").value = "";
     
-    // Switch directly to the newly created room
     document.getElementById("chatFormView").classList.remove("active");
     openChatRoom(newIndex);
 }
 
 function createChatInstance(userName, userRank, clanKey) {
     const clanMeta = clanChatData[clanKey];
-    
     let initialMessages = [];
-    // Inject custom natural introductory messages from chosen clan
+    
     clanMeta.intro.forEach(msg => {
         const memberData = clanMeta.members.find(m => m.nom === msg.sender);
         initialMessages.push({
@@ -1919,7 +1916,7 @@ function createChatInstance(userName, userRank, clanKey) {
 function openChatRoom(index) {
     activeRoomId = index;
     const room = conversations[index];
-    room.unread = 0; // Clear unread counter when looking at it
+    room.unread = 0; 
     
     document.getElementById("chatHub").classList.remove("active");
     document.getElementById("chatFormView").classList.remove("active");
@@ -1931,7 +1928,6 @@ function openChatRoom(index) {
     
     renderRoomMessages();
     
-    // Trigger an automatic random drama chance when entering a room to liven up things!
     if(Math.random() > 0.65) {
         setTimeout(() => {
             triggerRandomDrama(index);
@@ -1978,7 +1974,6 @@ function currentRoomSendMessage() {
     
     const room = conversations[activeRoomId];
     
-    // Push user message
     room.messages.push({
         sender: room.userName,
         status: room.userRank,
@@ -1989,7 +1984,6 @@ function currentRoomSendMessage() {
     input.value = "";
     renderRoomMessages();
     
-    // Trigger dynamic typing indicator and response from another clan cat
     simulateNpcReply(activeRoomId);
 }
 
@@ -1997,17 +1991,14 @@ function simulateNpcReply(roomId) {
     const room = conversations[roomId];
     const clanMeta = clanChatData[room.clanKey];
     
-    // Pick a member that is NOT the user and preferably NOT the absolute last sender to simulate turn rotation
     let dynamicPool = clanMeta.members.filter(m => m.nom !== room.lastSender);
     if(dynamicPool.length === 0) dynamicPool = clanMeta.members;
     
     const randomMember = dynamicPool[Math.floor(Math.random() * dynamicPool.length)];
     room.lastSender = randomMember.nom;
     
-    // Pick a contextual natural phrase
     const randomPhrase = clanMeta.responses[Math.floor(Math.random() * clanMeta.responses.length)];
     
-    // If user is currently looking at this active room, show typing animation
     if(activeRoomId === roomId) {
         const indicator = document.getElementById("typingIndicator");
         indicator.innerText = `💬 ${randomMember.nom} est en train d'écrire...`;
@@ -2015,7 +2006,6 @@ function simulateNpcReply(roomId) {
         document.getElementById("roomMessages").scrollTop = document.getElementById("roomMessages").scrollHeight;
     }
     
-    // Response delays between 1.5 to 2.5 seconds
     const delay = 1500 + Math.random() * 1000;
     
     setTimeout(() => {
@@ -2030,7 +2020,6 @@ function simulateNpcReply(roomId) {
             document.getElementById("typingIndicator").style.display = "none";
             renderRoomMessages();
         } else {
-            // If user left to another tab/room, increment unread badge counter!
             room.unread++;
             renderChatHub();
         }
@@ -2046,13 +2035,11 @@ function triggerRandomDrama(roomId) {
     const sampleDrama = clanMeta.dramas[Math.floor(Math.random() * clanMeta.dramas.length)];
     const memberData = clanMeta.members.find(m => m.nom === sampleDrama.sender);
     
-    // Push system alert event bubble first
     room.messages.push({
         text: `📢 Événement de clan soudain au sein de la messagerie !`,
         isSystem: true
     });
     
-    // Push the explosive text drama message
     room.messages.push({
         sender: sampleDrama.sender,
         status: memberData ? memberData.status : "Guerrier du Clan",
@@ -2070,17 +2057,19 @@ function triggerRandomDrama(roomId) {
     }
 }
 
-// Global initialization override for the custom chat hub view
-document.addEventListener("DOMContentLoaded", () => {
-    renderChatHub();
-});
-
-// Re-hook render triggers on chat link tab selection clicks
+// Intercept tab change clicks to force creation form if no channels are available yet
 const originalShowPage = showPage;
 showPage = function(pageId) {
     originalShowPage(pageId);
     if(pageId === "chatPage") {
-        renderChatHub();
+        if (conversations.length === 0) {
+            openNewChatForm();
+        } else {
+            document.getElementById("chatFormView").classList.remove("active");
+            document.getElementById("chatRoomView").classList.remove("active");
+            document.getElementById("chatHub").classList.add("active");
+            renderChatHub();
+        }
     }
 };
 
