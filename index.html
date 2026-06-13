@@ -892,7 +892,7 @@ var h2,
                     Ces chats vivent selon les lois ancestrales dictées par le <span class="summary-highlight">Code du Guerrier</span>, un ensemble de règles d'honneur assurant leur survival et la paix entre les frontières. Ils possèdent une organisation sociale très stricte composée de chefs, de lieutenants, de guérisseurs, de guerriers et d'apprentis.
                 </p>
                 <p>
-                    Au-delà des rivalités et des batailles pour le territoire, les clans partagent une connexion spirituelle intense avec le <span class="summary-highlight">Clan des Étoiles</span>, le territoire de leurs ancêtres défunts qui leur envoient parfois des rêves, des signes et de mystérieuses prophéties pour guider leur destin.
+                    Au-delà des rivalités et des batailles pour le territoire, les clans partagent une connexion spirituale intense avec le <span class="summary-highlight">Clan des Étoiles</span>, le territoire de leurs ancêtres défunts qui leur envoient parfois des rêves, des signes et de mystérieuses prophéties pour guider leur destin.
                 </p>
                 <p>
                     L'histoire commence véritablement lorsqu'un jeune chat domestique roux nommé <span class="summary-highlight">Rusty</span> décide d'abandonner sa vie confortable chez les humains (les Bipèdes) pour s'enfoncer dans les bois et rejoindre le Clan du Tonnerre, bouleversant ainsi l'équilibre de toute la forêt.
@@ -1722,95 +1722,62 @@ const clanChatData = {
     tonnerre: {
         name: "⚡ Groupe du Tonnerre",
         members: [
-            { nom: "Plume Grise", status: "Disponible pour une patrouille ⚔️" },
-            { nom: "Cœur de Lion", status: "Disponible pour une patrouille ⚔️" },
-            { nom: "Étoile de Feu", status: "En réunion avec le Clan des Étoiles 🌟" },
-            { nom: "Nuage de Jais", status: "Parti chasser, ne pas déranger 🐭" },
-            { nom: "Tempête de Sable", status: "S'entraîne dur 🐾" }
+            { nom: "Plume Grise", status: "Disponible pour une patrouille ⚔️", phrases: ["Salut ! Quelqu'un a vu l'état des réserves de gibier ce matin ? J'ai une faim de loup 🐭", "Je viens de croiser un écureuil géant près du grand sycomore !", "Le chef cherche des volontaires, allez le voir !", "Qui veut aller chasser avec moi près des rochers ?"] },
+            { nom: "Cœur de Lion", status: "Mentor loyal 🐾", phrases: ["Restez calmes, ne vous approchez plus de la route des Bipèdes aujourd'hui !", "Un bon guerrier surveille toujours ses arrières.", "L'entraînement des apprentis commence bientôt au vallon."] },
+            { nom: "Étoile de Feu", status: "Chef suprême 🌟", phrases: ["Que le Clan des Étoiles veille sur nos frontières aujourd'hui.", "Rassemblement général au pied du Grand Rocher à la mi-journée.", "Le Clan de l'Ombre semble s'agiter près de notre frontière Nord."] },
+            { nom: "Nuage de Jais", status: "Apprenti craintif 🌿", phrases: ["Les gars, j'ai croisé un Monstre sur le Chemin du Tonnerre !! J'ai eu si peur 🙀", "J'ai entendu des bruits suspects près des buissons de houx..."] },
+            { nom: "Tempête de Sable", status: "Chasseuse d'élite 🏹", phrases: ["Les réserves sont presque vides, il faut une patrouille de chasse immédiate !", "Arrête de te plaindre Plume Grise et viens m'aider.", "Mes griffes sont bien aiguisées pour la patrouille de ce soir."] },
+            { nom: "Flocon de Neige", status: "Apprenti effronté ❄️", phrases: ["Le Code du Guerrier par-ci, le Code par-là... Moi je veux juste explorer !", "Les croquettes des Bipèdes ont quand même l'air super bonnes."] },
+            { nom: "Poil de Châtaigne", status: "Reine à la pouponnière 🍼", phrases: ["Les chatons dorment enfin... Pas de bruit sur le chat svp !", "Ils grandissent si vite, bientôt de vrais guerriers."] }
         ],
         intro: [
             { sender: "Plume Grise", text: "Salut ! Quelqu'un a vu l'état des réserves de gibier ce matin ? J'ai une faim de loup 🐭" },
             { sender: "Tempête de Sable", text: "Plume Grise, tu ne penses qu'à manger... Elles sont presque vides, il faut une patrouille de chasse !" }
-        ],
-        responses: [
-            "Je suis d'accord, je viens de croiser un écureuil près du grand sycomore !",
-            "Attention, j'ai senti l'odeur du Clan de l'Ombre près du Rocher du Soleil...",
-            "Qui est disponible pour m'accompagner à la patrouille de l'après-midi ?",
-            "Par le Clan des Étoiles, j'espère qu'il ne va pas pleuvoir aujourd'hui.",
-            "Le chef cherche des volontaires, allez le voir !"
-        ],
-        dramas: [
-            { sender: "Nuage de Jais", text: "Les gars, j'ai croisé un Monstre sur le Chemin du Tonnerre !! J'ai eu si peur 🙀" },
-            { sender: "Cœur de Lion", text: "Restez calmes, ne vous approchez plus de cette route aujourd'hui !" }
         ]
     },
     vent: {
         name: "🌪 Groupe du Vent",
         members: [
-            { nom: "Étoile Solitaire", status: "En surveillance sur les landes 🌾" },
-            { nom: "Plume de Courlis", status: "À la chasse aux lapins 🐇" },
-            { nom: "Patte Folle", status: "Repose sa patte 🐾" },
-            { nom: "Belle-de-Nuit", status: "Garde la pouponnière 🐱" }
+            { nom: "Étoile Solitaire", status: "En surveillance sur les landes 🌾", phrases: ["Alerte ! Des chiens de Bipèdes courent sans laisse près du camp ! Redoublez de vigilance ! 🐾", "Notre force réside dans notre unité.", "Le grand vent d'Est nettoie la lande aujourd'hui."] },
+            { nom: "Plume de Courlis", status: "À la chasse aux lapins 🐇", phrases: ["Le vent souffle fort sur la lande aujourd'hui, les lapins courent vite ! 🐇", "J'ai raté un lièvre de peu à cause d'un trou de blaireau."] },
+            { nom: "Patte Folle", status: "Guerrier infatigable 🏃", phrases: ["Idéal pour s'entraîner à courir sans faire de bruit !", "Rien ne vaut la vitesse et l'horizon dégagé de notre Clan !"] },
+            { nom: "Belle-de-Nuit", status: "Garde la pouponnière ✨", phrases: ["Les landes sont calmes ce midi, les petits profitent du soleil.", "Attention aux aigles qui survolent la colline."] },
+            { nom: "Nuage de Maïs", status: "Jeune apprenti 🌽", phrases: ["J'ai couru si vite que j'ai l'impression que mes pattes vont s'envoler !", "Le guérisseur m'a donné des herbes bizarres pour ma toux."] },
+            { nom: "Oreille Tendue", status: "Ancien sage 👂", phrases: ["De mon temps, on ne passait pas nos journées à miauler sur des pierres magiques.", "Mes vieilles articulations me disent qu'un orage arrive."] }
         ],
         intro: [
             { sender: "Plume de Courlis", text: "Le vent souffle fort sur la lande aujourd'hui, les lapins courent vite ! 🐇" },
             { sender: "Patte Folle", text: "Idéal pour s'entraîner à courir sans faire de bruit !" }
-        ],
-        responses: [
-            "J'ai vu des ombres rôder près des frontières du Tonnerre.",
-            "Nos territoires sont dégagés, aucun Bipède en vue.",
-            "Quelqu'un a vu le guérisseur ? J'ai besoin de remèdes.",
-            "Rien ne vaut la vitesse de notre Clan !",
-            "Attention aux trous de blaireaux vers le bas de la colline."
-        ],
-        dramas: [
-            { sender: "Étoile Solitaire", text: "Alerte ! Des chiens de Bipèdes courent sans laisse près du camp ! Redoublez de vigilance ! 🐾" }
         ]
     },
     riviere: {
         name: "🌊 Groupe de la Rivière",
         members: [
-            { nom: "Étoile de Léopard", status: "Se prépare pour l'Assemblée 🌕" },
-            { nom: "Patte de Brume", status: "Pêche au bord du torrent 🐟" },
-            { nom: "Pelage de Silex", status: "Supervise les apprentis ⚔️" },
-            { nom: "Plume de Faucon", status: "Rôde dans les roseaux 👀" }
+            { nom: "Étoile de Léopard", status: "Se prépare pour l'Assemblée 🌕", phrases: ["Le Clan du Tonnerre nous regarde encore bizarrement depuis l'autre rive.", "Préparez vos arguments pour l'Assemblée des clans de ce soir.", "Notre fleuve est notre plus grande richesse."] },
+            { nom: "Patte de Brume", status: "Pêche au bord du torrent 🐟", phrases: ["L'eau est magnifiquement claire aujourd'hui, les poissons s'attrapent facilement ! 🐟", "Le niveau de l'eau monte à cause de la fonte des neiges.", "J'ai attrapé une truite énorme près des rochers glissants !"] },
+            { nom: "Pelage de Silex", status: "Supervise les apprentis ⚔️", phrases: ["Ne te déconcentre pas, la patrouille doit rester vigilante.", "L'entraînement à la nage de combat est reporté à cet après-midi."] },
+            { nom: "Plume de Faucon", status: "Rôde dans les roseaux 👀", phrases: ["Des débris de Bipèdes flottent dans la rivière sacrée... C'est une honte ! 🙀", "Je surveille la frontière près des ponts de bois, RAS pour l'instant."] },
+            { nom: "Papillon", status: "Guérisseuse sereine 🌸", phrases: ["Mes stocks de souci et de racine de cerfeuil sont bas.", "N'oubliez pas de laver vos blessures à l'eau claire avant de venir me voir."] },
+            { nom: "Nuage de Plouf", status: "Apprenti maladroit 💧", phrases: ["J'ai glissé et j'ai lâché mon poisson... Il est reparti dans le courant 😭", "Est-ce qu'on peut manger de la mousse ? J'ai faim."] }
         ],
         intro: [
             { sender: "Patte de Brume", text: "L'eau est magnifiquement claire aujourd'hui, les poissons s'attrapent facilement ! 🐟" },
             { sender: "Pelage de Silex", text: "Ne te déconcentre pas, la patrouille doit rester vigilante." }
-        ],
-        responses: [
-            "Le courant est un peu fort aujourd'hui, faites attention les apprentis.",
-            "Quelqu'un veut partager une belle truite avec moi ?",
-            "Les pierres glissantes portent bien leur nom ce matin !",
-            "Le Clan du Tonnerre nous regarde encore bizarrement depuis l'autre rive.",
-            "Je retourne nager un coup, à plus !"
-        ],
-        dramas: [
-            { sender: "Plume de Faucon", text: "Des débris de Bipèdes flottent dans la rivière sacrée... C'est une honte ! 🙀" }
         ]
     },
     ombre: {
         name: "🌑 Groupe de l'Ombre",
         members: [
-            { nom: "Étoile du Tigre", status: "Planifie l'avenir du Clan 🐾" },
-            { nom: "Pelage d'Ombre", status: "Dans les marécages sombres 🌲" },
-            { nom: "Cœur de Lézard", status: "Chasse discrète 🐸" },
-            { nom: "Plume de Grenouille", status: "Se repose à l'ombre 💤" }
+            { nom: "Étoile du Tigre", status: "Planifie l'avenir du Clan 🐾", phrases: ["Le grand plan est en marche... Ne faites confiance à personne en dehors de ce groupe ! 🐾", "Les autres clans sont trop faibles pour comprendre notre ambition.", "La forêt nous appartiendra tôt ou tard."] },
+            { nom: "Pelage d'Ombre", status: "Dans les marécages sombres 🌲", phrases: ["La brume recouvre parfaitement les marécages. C'est l'heure idéale pour s'exercer à la discrétion. 🌑", "J'ai repéré des traces fraîches du Clan du Tonnerre près du grand pin trépané."] },
+            { nom: "Cœur de Lézard", status: "Chasse discrète 🐸", phrases: ["Exact, personne ne nous entendra arriver.", "J'ai attrapé deux gros crapauds et un lézard bien gras près de la souche pourrie."] },
+            { nom: "Plume de Grenouille", status: "Guerrier rusé 👁️", phrases: ["Restez discrets, pas besoin que les autres sachent ce qu'on fait.", "Qui veut s'entraîner aux techniques d'attaque surprise ce soir ?"] },
+            { nom: "Patte Noire", status: "Lieutenant rigide 🦡", phrases: ["Vérifiez vos bordures ! Si un rat passe la frontière, c'est de votre faute.", "Pas de paresse autorisée aujourd'hui."] },
+            { nom: "Nuage de Brume", status: "Apprentie silencieuse 🌫️", phrases: ["Je me suis cachée si bien dans l'ombre que mon mentor m'a cherchée pendant deux heures 😏"] }
         ],
         intro: [
             { sender: "Pelage d'Ombre", text: "La brume recouvre parfaitement les marécages. C'est l'heure idéale pour s'exercer à la discrétion. 🌑" },
             { sender: "Cœur de Lézard", text: "Exact, personne ne nous entendra arriver." }
-        ],
-        responses: [
-            "Notre force réside dans les secrets de la nuit.",
-            "Les autres clans sont trop faibles pour comprendre notre ambition.",
-            "J'ai attrapé deux gros crapauds près de la souche pourrie.",
-            "Restez discrets, pas besoin que les autres sachent ce qu'on fait.",
-            "Qui veut s'entraîner aux techniques d'attaque surprise ?"
-        ],
-        dramas: [
-            { sender: "Étoile du Tigre", text: "Le grand plan est en marche... Ne faites confiance à personne en dehors de ce groupe ! 🐾" }
         ]
     }
 };
@@ -1841,7 +1808,7 @@ function renderChatHub() {
             <div class="chat-item-info">
                 <h3>${clanMeta.name}</h3>
                 <p style="color:#6ee7b7; font-size:12px; margin-bottom:2px;">Moi : ${room.userName} (${room.userRank})</p>
-                <p style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; max-width: 400px;">${lastMsg}</p>
+                <p style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; max-width: 400px; color:#9ca3af;">${lastMsg}</p>
             </div>
             ${badgeHTML}
         `;
@@ -1854,7 +1821,6 @@ function openNewChatForm() {
     document.getElementById("chatRoomView").classList.remove("active");
     document.getElementById("chatFormView").classList.add("active");
     
-    // Si l'utilisateur n'a aucune discussion, on cache le bouton annuler pour forcer la configuration initiale
     const cancelBtn = document.getElementById("cancelChatBtn");
     if (conversations.length === 0) {
         cancelBtn.style.display = "none";
@@ -1906,7 +1872,8 @@ function createChatInstance(userName, userRank, clanKey) {
         clanKey: clanKey,
         messages: initialMessages,
         unread: 0,
-        lastSender: clanMeta.intro[clanMeta.intro.length - 1].sender
+        lastSender: clanMeta.intro[clanMeta.intro.length - 1].sender,
+        usedPhrases: new Set(clanMeta.intro.map(m => m.text)) // Évite les répétitions au départ
     };
     
     conversations.push(newRoom);
@@ -1927,12 +1894,6 @@ function openChatRoom(index) {
     document.getElementById("roomIdentity").innerText = `Connecté en tant que : ${room.userName} (${room.userRank})`;
     
     renderRoomMessages();
-    
-    if(Math.random() > 0.65) {
-        setTimeout(() => {
-            triggerRandomDrama(index);
-        }, 3000);
-    }
 }
 
 function renderRoomMessages() {
@@ -1983,79 +1944,70 @@ function currentRoomSendMessage() {
     
     input.value = "";
     renderRoomMessages();
-    
-    simulateNpcReply(activeRoomId);
 }
 
-function simulateNpcReply(roomId) {
-    const room = conversations[roomId];
+/* --- CLAN BACKGROUND SIMULATION ENGINE (AUTO MESSAGES & NOTIFICATIONS) --- */
+function runGlobalChatSimulation() {
+    if (conversations.length === 0) return;
+    
+    // Choisir un salon aléatoire à faire parler
+    const randomRoomId = Math.floor(Math.random() * conversations.length);
+    const room = conversations[randomRoomId];
     const clanMeta = clanChatData[room.clanKey];
     
-    let dynamicPool = clanMeta.members.filter(m => m.nom !== room.lastSender);
-    if(dynamicPool.length === 0) dynamicPool = clanMeta.members;
+    // Filtrer les membres pour changer d'interlocuteur
+    let availableMembers = clanMeta.members.filter(m => m.nom !== room.lastSender);
+    if (availableMembers.length === 0) availableMembers = clanMeta.members;
     
-    const randomMember = dynamicPool[Math.floor(Math.random() * dynamicPool.length)];
-    room.lastSender = randomMember.nom;
+    const chosenMember = availableMembers[Math.floor(Math.random() * availableMembers.length)];
     
-    const randomPhrase = clanMeta.responses[Math.floor(Math.random() * clanMeta.responses.length)];
+    // Trouver une phrase pas encore répétée en boucle
+    let availablePhrases = chosenMember.phrases.filter(p => !room.usedPhrases.has(p));
+    if (availablePhrases.length === 0) {
+        room.usedPhrases.clear(); // Reset si tout a été dit
+        availablePhrases = chosenMember.phrases;
+    }
     
-    if(activeRoomId === roomId) {
+    const chosenText = availablePhrases[Math.floor(Math.random() * availablePhrases.length)];
+    room.usedPhrases.add(chosenText);
+    room.lastSender = chosenMember.nom;
+    
+    // Si l'utilisateur regarde actuellement ce salon précis
+    if (activeRoomId === randomRoomId) {
         const indicator = document.getElementById("typingIndicator");
-        indicator.innerText = `💬 ${randomMember.nom} est en train d'écrire...`;
+        indicator.innerText = `💬 ${chosenMember.nom} est en train d'écrire...`;
         indicator.style.display = "block";
         document.getElementById("roomMessages").scrollTop = document.getElementById("roomMessages").scrollHeight;
-    }
-    
-    const delay = 1500 + Math.random() * 1000;
-    
-    setTimeout(() => {
+        
+        setTimeout(() => {
+            indicator.style.display = "none";
+            room.messages.push({
+                sender: chosenMember.nom,
+                status: chosenMember.status,
+                text: chosenText,
+                isUser: false
+            });
+            renderRoomMessages();
+        }, 1800);
+    } else {
+        // L'utilisateur est ailleurs : on ajoute discrètement et on incrémente la notification !
         room.messages.push({
-            sender: randomMember.nom,
-            status: randomMember.status,
-            text: randomPhrase,
+            sender: chosenMember.nom,
+            status: chosenMember.status,
+            text: chosenText,
             isUser: false
         });
+        room.unread++;
         
-        if(activeRoomId === roomId) {
-            document.getElementById("typingIndicator").style.display = "none";
-            renderRoomMessages();
-        } else {
-            room.unread++;
+        // Si le hub principal des discussions est ouvert à l'écran, on le met à jour visuellement en temps réel
+        if (document.getElementById("chatPage").classList.contains("active") && document.getElementById("chatHub").classList.contains("active")) {
             renderChatHub();
         }
-    }, delay);
-}
-
-function triggerRandomDrama(roomId) {
-    const room = conversations[roomId];
-    if(!room) return;
-    const clanMeta = clanChatData[room.clanKey];
-    if(!clanMeta.dramas || clanMeta.dramas.length === 0) return;
-    
-    const sampleDrama = clanMeta.dramas[Math.floor(Math.random() * clanMeta.dramas.length)];
-    const memberData = clanMeta.members.find(m => m.nom === sampleDrama.sender);
-    
-    room.messages.push({
-        text: `📢 Événement de clan soudain au sein de la messagerie !`,
-        isSystem: true
-    });
-    
-    room.messages.push({
-        sender: sampleDrama.sender,
-        status: memberData ? memberData.status : "Guerrier du Clan",
-        text: sampleDrama.text,
-        isUser: false
-    });
-    
-    room.lastSender = sampleDrama.sender;
-    
-    if(activeRoomId === roomId) {
-        renderRoomMessages();
-    } else {
-        room.unread += 2;
-        renderChatHub();
     }
 }
+
+// Lancement automatique du moteur de simulation toutes les 5 secondes
+setInterval(runGlobalChatSimulation, 5000);
 
 // Intercept tab change clicks to force creation form if no channels are available yet
 const originalShowPage = showPage;
