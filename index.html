@@ -573,6 +573,99 @@
     font-weight: bold;
 }
 
+/* CHAT ROOM STYLES */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 60vh;
+    background: #111827;
+    border: 1px solid rgba(110,231,183,0.3);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 25px;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.chat-bubble {
+    background: #161b22;
+    padding: 12px 18px;
+    border-radius: 15px;
+    max-width: 80%;
+    align-self: flex-start;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.chat-bubble.user-msg {
+    background: linear-gradient(135deg, rgba(110,231,183,0.2), rgba(74,222,128,0.1));
+    align-self: flex-end;
+    border: 1px solid rgba(110,231,183,0.4);
+}
+
+.chat-sender {
+    font-size: 14px;
+    font-weight: bold;
+    color: #6ee7b7;
+    margin-bottom: 4px;
+}
+
+.chat-bubble.user-msg .chat-sender {
+    color: #facc15;
+}
+
+.chat-text {
+    font-size: 16px;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+.chat-input-area {
+    display: flex;
+    padding: 15px;
+    background: #161b22;
+    border-top: 1px solid rgba(110,231,183,0.2);
+    gap: 10px;
+}
+
+.chat-input-area input {
+    flex: 1;
+    background: #0f1115;
+    border: 1px solid rgba(110,231,183,0.4);
+    padding: 14px;
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
+    outline: none;
+}
+
+.chat-input-area input:focus {
+    border-color: #6ee7b7;
+}
+
+.chat-input-area button {
+    background: #6ee7b7;
+    color: #0f1115;
+    border: none;
+    padding: 0 25px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.chat-input-area button:hover {
+    background: white;
+    transform: scale(1.03);
+}
+
     </style>
 </head>
 
@@ -585,6 +678,7 @@
         <nav>
             <a onclick="goHome()">🏕 Accueil</a>
             <a onclick="showPage('aboutPage')">❓ C'est quoi LGDC ?</a>
+            <a onclick="showPage('chatPage')">💬 Chat</a>
             <a onclick="showPage('clansPage')">⚔ Clans</a>
             <a onclick="showPage('guerriersPage')">🐱 Guerriers</a>
             <a onclick="showPage('territoiresPage')">🌲 Territoires</a>
@@ -633,6 +727,31 @@
                 <p>
                     L'histoire commence véritablement lorsqu'un jeune chat domestique roux nommé <span class="summary-highlight">Rusty</span> décide d'abandonner sa vie confortable chez les humains (les Bipèdes) pour s'enfoncer dans les bois et rejoindre le Clan du Tonnerre, bouleversant ainsi l'équilibre de toute la forêt.
                 </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="page" id="chatPage">
+        <div class="page-content">
+            <h1>💬 Chat de la Tribu</h1>
+            <p style="color: #9ca3af; margin-bottom: 10px;">Partage tes pensées ou discute avec les autres guerriers de la forêt.</p>
+            
+            <div class="chat-container">
+                <div class="chat-messages" id="chatMessages">
+                    <div class="chat-bubble">
+                        <div class="chat-sender">Étoile de Feu</div>
+                        <div class="chat-text">Que tous ceux qui sont assez âgés pour chasser leurs propres proies s'assemblent sous la Corniche du Rocher ! 🐾</div>
+                    </div>
+                    <div class="chat-bubble">
+                        <div class="chat-sender">Plume Grise</div>
+                        <div class="chat-text">Quelqu'un sait si la patrouille de l'aube a trouvé des traces du Clan de l'Ombre près de la frontière ? 🌲</div>
+                    </div>
+                </div>
+                
+                <div class="chat-input-area">
+                    <input type="text" id="chatInput" placeholder="Écris ton message ici..." onkeydown="if(event.key === 'Enter') sendChatMessage()">
+                    <button onclick="sendChatMessage()">Envoyer</button>
+                </div>
             </div>
         </div>
     </section>
@@ -1376,6 +1495,33 @@ function gainRep(amount){
 
     </div>
     `;
+}
+
+function sendChatMessage() {
+    const input = document.getElementById("chatInput");
+    const messageText = input.value.trim();
+    
+    if (messageText === "") return;
+    
+    const chatMessages = document.getElementById("chatMessages");
+    
+    // Déterminer le nom de l'expéditeur (prend le nom du personnage créé, sinon "Solitaire")
+    const senderName = player ? player.nom : "Solitaire 🐾";
+    
+    // Création de la bulle de message
+    const messageBubble = document.createElement("div");
+    messageBubble.className = "chat-bubble user-msg";
+    
+    messageBubble.innerHTML = `
+        <div class="chat-sender">${senderName}</div>
+        <div class="chat-text">${messageText}</div>
+    `;
+    
+    chatMessages.appendChild(messageBubble);
+    
+    // Nettoyer l'input et faire défiler vers le bas
+    input.value = "";
+    chatMessages.scrollTop = chatMessages.scrollHeight;
 }
         
         function goHome(){
