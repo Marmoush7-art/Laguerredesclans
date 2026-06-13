@@ -519,6 +519,45 @@
     margin-bottom:15px;
 }
 
+/* DICTIONNAIRE STYLES */
+.dict-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: #111827;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid rgba(110,231,183,0.3);
+}
+
+.dict-table th, .dict-table td {
+    padding: 15px 20px;
+    text-align: left;
+}
+
+.dict-table th {
+    background: #161b22;
+    color: #6ee7b7;
+    font-size: 18px;
+    border-bottom: 2px solid rgba(110,231,183,0.3);
+}
+
+.dict-table td {
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.dict-table tr:last-child td {
+    border-bottom: none;
+}
+
+.dict-term {
+    font-weight: bold;
+    color: #facc15;
+    white-space: nowrap;
+}
+
     </style>
 </head>
 
@@ -534,6 +573,7 @@
             <a onclick="showPage('guerriersPage')">🐱 Guerriers</a>
             <a onclick="showPage('territoiresPage')">🌲 Territoires</a>
             <a onclick="showPage('histoirePage')">📖 Histoire</a>
+            <a onclick="showPage('dictionnairePage')">📖 Dictionnaire</a>
             <a onclick="showPage('galeriePage')">🖼 Galerie</a>
             <a onclick="showPage('personnagePage')">🐱 Mon personnage</a>
             <a onclick="showPage('gamePage')">🎮 Aventure</a>
@@ -559,6 +599,48 @@
 
     </div>
 </section>
+
+    <section class="page" id="dictionnairePage">
+        <div class="page-content">
+            <h1>📖 Dictionnaire de la forêt</h1>
+            <p style="color: #9ca3af; margin-bottom: 20px;">Découvre le vocabulaire et les expressions utilisés par les chats des Clans.</p>
+            
+            <table class="dict-table">
+                <thead>
+                    <tr>
+                        <th>Terme</th>
+                        <th>Signification</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="dict-term">Bipède</td>
+                        <td>Un être humain.</td>
+                    </tr>
+                    <tr>
+                        <td class="dict-term">Monstre</td>
+                        <td>Une voiture, un camion ou tout autre véhicule motorisé des Bipèdes.</td>
+                    </tr>
+                    <tr>
+                        <td class="dict-term">Chemin du Tonnerre</td>
+                        <td>Une route goudronnée où circulent les monstres.</td>
+                    </tr>
+                    <tr>
+                        <td class="dict-term">Monstre de feu</td>
+                        <td>Un train.</td>
+                    </tr>
+                    <tr>
+                        <td class="dict-term">Eau-de-feu</td>
+                        <td>L'alcool des Bipèdes.</td>
+                    </tr>
+                    <tr>
+                        <td class="dict-term">Herbe-à-chat</td>
+                        <td>Une plante médicinale précieuse pour soigner le mal vert (pneumonie).</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
 
     <section class="page" id="gamePage">
 
@@ -1175,7 +1257,7 @@ break;
     }
 }
         
-        function createCharacter(){
+function createCharacter(){
 
     const name = document.getElementById("catName").value;
     const clan = document.getElementById("clan").value;
