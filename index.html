@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Guerre des Clans (v1.00.03)</title>
+    <title>La Guerre des Clans (v1.00.04)</title>
     <style>
         :root {
             --bg-dark: #0f172a;
@@ -89,6 +89,44 @@
             padding-left: 40px;
         }
 
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.8)), url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .hero.hidden {
+            display: none;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: #cbd5e1;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
         .hero-content button, .start-btn, .btn-submit, .btn-cancel, .chat-input-area button, .btn-back-hub {
             background-color: var(--accent-green);
             color: white;
@@ -99,6 +137,12 @@
             cursor: pointer;
             transition: 0.3s ease;
             font-weight: bold;
+        }
+
+        .hero-content button:hover, .start-btn:hover, .btn-submit:hover, .chat-input-area button:hover {
+            background-color: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
         }
 
         /* MAP SECTION */
@@ -544,6 +588,14 @@
         <a href="#" onclick="showPage('aboutPage')">❓ À Propos</a>
     </div>
 
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1>La Guerre des Clans</h1>
+            <p>Entre dans la forêt et découvre les clans légendaires.</p>
+            <button onclick="showPage('clansPageInfo')">Explorer</button>
+        </div>
+    </section>
+
     <section class="page" id="clansPage">
         <div class="page-content">
             <h1>⚔ Les Clans Roles Speciaux</h1>
@@ -853,6 +905,7 @@
         }
 
         function hideAllSections(){
+            document.getElementById("hero").classList.add("hidden");
             document.getElementById("map").classList.remove("active");
             document.querySelectorAll(".page").forEach(page => {
                 page.classList.remove("active");
@@ -1191,7 +1244,7 @@
         function openNewChatForm() {
             document.getElementById("chatHub").classList.remove("active");
             document.getElementById("chatRoomView").classList.remove("active");
-            document.getElementById("chatFormView").add("active");
+            document.getElementById("chatFormView").classList.add("active");
             document.getElementById("cancelChatBtn").style.display = conversations.length === 0 ? "none" : "block";
         }
 
@@ -1386,7 +1439,9 @@
         };
 
         function goHome(){
-            hideAllSections();
+            document.querySelectorAll(".page").forEach(page => page.classList.remove("active"));
+            document.getElementById("map").classList.remove("active");
+            document.getElementById("hero").classList.remove("hidden");
             document.getElementById("sidebar").classList.remove("active");
         }
     </script>
