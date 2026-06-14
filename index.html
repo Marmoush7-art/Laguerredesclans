@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Guerre des Clans - Fan Site (v1.00.02)</title>
+    <title>La Guerre des Clans (v1.00.03)</title>
     <style>
         :root {
             --bg-dark: #0f172a;
@@ -89,30 +89,6 @@
             padding-left: 40px;
         }
 
-        /* HERO SECTION */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.6), var(--bg-dark)), url('foret.jpg') center/cover;
-            padding: 20px;
-        }
-
-        .hero-content h1 {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            letter-spacing: 3px;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.7);
-        }
-
-        .hero-content p {
-            font-size: 1.5rem;
-            color: var(--text-muted);
-            margin-bottom: 30px;
-        }
-
         .hero-content button, .start-btn, .btn-submit, .btn-cancel, .chat-input-area button, .btn-back-hub {
             background-color: var(--accent-green);
             color: white;
@@ -123,11 +99,6 @@
             cursor: pointer;
             transition: 0.3s ease;
             font-weight: bold;
-        }
-
-        .hero-content button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px var(--accent-green);
         }
 
         /* MAP SECTION */
@@ -350,7 +321,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 25px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             cursor: pointer;
             transition: background 0.2s;
         }
@@ -664,7 +635,7 @@
                     <span class="summary-highlight">La Guerre des Clans</span> (ou LGDC) est une célèbre saga littéraire fantastique qui raconte les aventures de <span class="summary-highlight">quatre clans de chats sauvages</span> (le Tonnerre, le Vent, la Rivière et l'Ombre) qui se partagent la forêt et ses ressources depuis des décennies.
                 </p>
                 <p>
-                    Ces chats vivent selon les lois ancestrales dictées par le <span class="summary-highlight">Code du Guerrier</span>, un ensemble de règles d'honneur assurant leur survie et la paix entre les frontières. Ils possèdent une organisation sociale très stricte composée de chefs, de lieutenants, de guérisseurs, de guerriers et d'apprentis.
+                    Ces chats vivent selon les lois ancestrales dictées par le <span class="summary-highlight">Code du Guerrier</span>, un ensemble de règles d'honneur assurant leur survival et la paix entre les frontières. Ils possèdent une organisation sociale très stricte composée de chefs, de lieutenants, de guérisseurs, de guerriers et d'apprentis.
                 </p>
                 <p>
                     Au-delà des rivalités et des batailles pour le territoire, les clans partagent une connexion spirituelle intense avec le <span class="summary-highlight">Clan des Étoiles</span>, le territoire de leurs ancêtres défunts qui leur envoient parfois des rêves, des signes et de mystérieuses prophéties pour guider leur destin.
@@ -789,14 +760,6 @@
         </div>
     </section>
 
-    <section class="hero" id="hero">
-        <div class="hero-content">
-            <h1>LA GUERRE DES CLANS</h1>
-            <p>Entre dans la forêt et découvre les clans légendaires.</p>
-            <button onclick="showMap()">Explorer</button>
-        </div>
-    </section>
-
     <section class="page" id="clansPageInfo">
         <div class="page-content">
             <h1>⚔ Les Clans</h1>
@@ -890,7 +853,6 @@
         }
 
         function hideAllSections(){
-            document.getElementById("hero").style.display = "none";
             document.getElementById("map").classList.remove("active");
             document.querySelectorAll(".page").forEach(page => {
                 page.classList.remove("active");
@@ -1051,7 +1013,7 @@
                 case 10: text.innerText = "Le chaton te remercie et rejoint ton clan."; endStory(); break;
                 case 11: text.innerText = "Le chaton disparaît dans la forêt."; endStory(); break;
                 case 12: text.innerText = "Dans le camp abandonné, tu trouves un ancien trésor."; endStory(); break;
-                case 13: text.innerText = "Tu observes de loin et découvres un mystérieux secret."; endStory(); break;
+                case 13: text.innerText = "Tu observez de loin et découvrez un mystérieux secret."; endStory(); break;
                 case 14: text.innerText = "Le tunnel mène à une grotte sacrée du Clan des Étoiles."; endStory(); break;
                 case 15: text.innerText = "Tu retournes au camp avec de nombreuses questions."; endStory(); break;
             }
@@ -1229,7 +1191,7 @@
         function openNewChatForm() {
             document.getElementById("chatHub").classList.remove("active");
             document.getElementById("chatRoomView").classList.remove("active");
-            document.getElementById("chatFormView").classList.add("active");
+            document.getElementById("chatFormView").add("active");
             document.getElementById("cancelChatBtn").style.display = conversations.length === 0 ? "none" : "block";
         }
 
@@ -1425,7 +1387,6 @@
 
         function goHome(){
             hideAllSections();
-            document.getElementById("hero").style.display = "flex";
             document.getElementById("sidebar").classList.remove("active");
         }
     </script>
