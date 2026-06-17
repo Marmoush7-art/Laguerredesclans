@@ -1680,6 +1680,67 @@
         </div>
 
     </section>
+    <section class="page" id="personnagePage" style="display: none;">
+    <div class="page-content">
+        <h1>🐱 Outils de Jeux de Rôle</h1>
+        <p style="color: #9ca3af; margin-bottom: 20px;">Crée ton propre chat et génère un nom unique pour partir à l'aventure.</p>
+        <div class="lgdc-container">
+            <div class="lgdc-card">
+                <h2>🔮 Générateur de Noms</h2>
+                <p>Trouve une idée de nom unique pour ton guerrier !</p>
+                <div id="nomGenere" class="lgdc-generated-name">Clique pour générer...</div>
+                <button class="lgdc-btn lgdc-btn-secondary" onclick="genererNom()">🎲 Générer un nom</button>
+                <button class="lgdc-btn" onclick="copierNomDansFormulaire()">📥 Utiliser ce nom pour la fiche</button>
+            </div>
+            <div class="lgdc-card">
+                <h2>📜 Fiche de Personnage</h2>
+                <form id="rpForm" onsubmit="creerFiche(event)">
+                    <div class="lgdc-form-group">
+                        <label for="nomChat">🐱 Nom du Chat :</label>
+                        <input type="text" id="nomChat" required placeholder="Ex: Poil de Coton">
+                    </div>
+                    <div class="lgdc-form-group">
+                        <label for="clanChat">🛡️ Clan :</label>
+                        <select id="clanChat">
+                            <option value="Clan du Tonnerre">⚡ Clan du Tonnerre</option>
+                            <option value="Clan de la Rivière">💧 Clan de la Rivière</option>
+                            <option value="Clan du Vent">💨 Clan du Vent</option>
+                            <option value="Clan de l'Ombre">🌲 Clan de l'Ombre</option>
+                            <option value="Clan du Ciel">☁️ Clan du Ciel</option>
+                            <option value="Clan des Étoiles">✨ Clan des Étoiles</option>
+                            <option value="Solitaire / Chat domestique">🏠 Solitaire / Chat domestique</option>
+                        </select>
+                    </div>
+                    <div class="lgdc-form-group">
+                        <label for="gradeChat">🏅 Grade :</label>
+                        <select id="gradeChat">
+                            <option value="Chaton">🐾 Chaton</option>
+                            <option value="Apprenti">🌿 Apprenti</option>
+                            <option value="Guerrier">⚔️ Guerrier</option>
+                            <option value="Lieutenant">⭐ Lieutenant</option>
+                            <option value="Chef">👑 Chef</option>
+                            <option value="Guérisseur">🍃 Guérisseur</option>
+                            <option value="Ancien">🪨 Ancien</option>
+                        </select>
+                    </div>
+                    <div class="lgdc-form-group">
+                        <label for="physiqueChat">🎨 Description Physique :</label>
+                        <textarea id="physiqueChat" rows="3" required placeholder="Ex: grande femelle aux yeux bleu et au pelage blanc"></textarea>
+                    </div>
+                    <div class="lgdc-form-group">
+                        <label for="caractereChat">❤️ Caractère :</label>
+                        <textarea id="caractereChat" rows="3" required placeholder="Ex: courageux et tetue"></textarea>
+                    </div>
+                    <button type="submit" class="lgdc-btn">📝 Générer la Fiche RP</button>
+                </form>
+                <div id="ficheResultat" class="lgdc-result-box" style="display: none;">
+                    <h3>✨ Fiche de RP validée ! ✨</h3>
+                    <div id="contenuFiche"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 
     <section class="page" id="chatPage">
@@ -2836,7 +2897,49 @@
             document.getElementById("sidebar").classList.remove("active");
 
         }
+// LOGIQUE DU GÉNÉRATEUR ET DE LA FICHE (v1.01.05)
+const prefixes = ["Poil", "Cœur", "Pelage", "Plume", "Nuage", "Étoile", "Feuille", "Patte", "Griffe", "Museau", "Œil", "Aile", "Feu", "Tempête", "Givre", "Ombre", "Fleur"];
+const suffixes = ["de Coton", "de Pâquerette", "de Jais", "de Lion", "de Feu", "de Glace", "de Rose", "de Nuit", "de Brume", "de Cerise", "de Miel", "d'Argent", "de Cendres", "de Silex", "de Lys"];
 
+let nomActuel = "";
+
+function genererNom() {
+    const prefi = prefixes[Math.floor(Math.random() * prefixes.length)];
+    const suffi = suffixes[Math.floor(Math.random() * suffixes.length)];
+    nomActuel = `${prefi} ${suffi}`;
+    document.getElementById('nomGenere').innerText = nomActuel;
+}
+
+function copierNomDansFormulaire() {
+    if (nomActuel === "") {
+        alert("🔮 Génère d'abord un nom !");
+        return;
+    }
+    document.getElementById('nomChat').value = nomActuel;
+}
+
+function creerFiche(event) {
+    event.preventDefault();
+
+    const nom = document.getElementById('nomChat').value;
+    const clan = document.getElementById('clanChat').value;
+    const grade = document.getElementById('gradeChat').value;
+    const physique = document.getElementById('physiqueChat').value;
+    const caractere = document.getElementById('caractereChat').value;
+
+    const boxResultat = document.getElementById('ficheResultat');
+    const contenu = document.getElementById('contenuFiche');
+
+    contenu.innerHTML = `
+        <p><strong>🐱 Nom :</strong> ${nom}</p>
+        <p><strong>🛡️ Clan :</strong> ${clan}</p>
+        <p><strong>🏅 Grade :</strong> ${grade}</p>
+        <p><strong>🎨 Physique :</strong> ${physique}</p>
+        <p><strong>❤️ Caractère :</strong> ${caractere}</p>
+    `;
+
+    boxResultat.style.display = "block";
+}
     </script>
 
 </body>
