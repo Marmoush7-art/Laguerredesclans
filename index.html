@@ -1847,13 +1847,37 @@
 
                     <div class="typing-indicator" id="typingIndicator"></div>
 
-                    <div class="chat-input-area">
-
-                        <input type="text" id="roomInput" placeholder="Écris ton message ici..." onkeydown="if(event.key === 'Enter') currentRoomSendMessage()">
-
-                        <button onclick="currentRoomSendMessage()">Envoyer</button>
-
-                    </div>
+                   <div class="chat-input-container" style="display: flex; flex-direction: column; gap: 5px; width: 100%;">
+    <div class="emoji-bar" style="display: flex; gap: 8px; padding: 0 5px; font-size: 18px;">
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🐱'">🐱</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '⚡'">⚡</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🌪️'">🌪️</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🌊'">🌊</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🌑'">🌑</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🐾'">🐾</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '⚔️'">⚔️</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🐭'">🐭</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🔒'">🔒</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🌲'">🌲</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '😁'">😁</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🐱'">🐱</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '✨'">✨</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🐈'">🐈</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🐾'">🐾</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '❤️'">❤️</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🌿'">🌿</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '💨'">💨</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '😻'">😻</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '👑'">👑</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🗺️'">🗺️</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🍁'">🍁</span>
+    </div>
+    
+    <div class="chat-input-area">
+        <input type="text" id="roomInput" placeholder="Écris ton message ici..." onkeydown="if(event.key === 'Enter') currentRoomSendMessage()">
+        <button onclick="currentRoomSendMessage()">Envoyer</button>
+    </div>
+</div>
 
                 </div>
 
