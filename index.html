@@ -1288,7 +1288,7 @@
 
         }
 
-        .chat-sender-status {
+        .chat-sender-statut {
 
             font-size: 11px;
 
@@ -1436,7 +1436,7 @@
 
             <a onclick="showPage('guidePage')">📜 Le Guide du Guerrier</a>
 
-            <a onclick="showPage('techniquesPage')">⚔️ Codex Médical & Combat</a>
+            <a onclick="showPage('techniquesPage')">⚔️ Combat & Codex Médical</a>
 
             <a onclick="showPage('chatPage')">💬 Chat</a>
 
@@ -2058,7 +2058,7 @@
 
             <h1>🐱 Les Guerriers</h1>
 
-            <p>Ajoute ici les personnages du clan.</p>
+            <p>En cours.</p>
 
         </div>
 
@@ -2071,7 +2071,7 @@
 
             <h1>🌲 Les Territoires</h1>
 
-            <p>Ajoute ici les territoires du clan.</p>
+            <p>En cours.</p>
 
         </div>
 
@@ -2084,7 +2084,7 @@
 
             <h1>🖼️ Galerie</h1>
 
-            <p>Ajoute ici des images.</p>
+            <p>En cours.</p>
 
         </div>
 
@@ -2595,7 +2595,7 @@
         members: [
             {
                 nom: "Plume Grise",
-                status: "Guerrier expérimenté ⚔️",
+                statut: "Guerrier expérimenté ⚔️",
                 phrases: [
                     "La frontière est calme aujourd’hui.",
                     "J’ai vu des traces près du ruisseau.",
@@ -2610,8 +2610,8 @@
                 ]
             },
             {
-                nom: "Cœur de Lion",
-                status: "Mentor 🐾",
+                nom: "Pelage de Lion",
+                statut: "Mentor 🐾",
                 phrases: [
                     "L’entraînement commence maintenant.",
                     "Restez concentrés.",
@@ -2626,13 +2626,31 @@
                 ]
             },
             {
-                nom: "Feuille Agile",
-                status: "Guerrière 🌪",
+               nom: "Nuage agile",
+                statut: "Apprenti 😁",
+                phrases: [
+                    "Je suis fatigué...",
+                    "Personne ne peut me suivre.",
+                    "Je vais aider Museau cendré à récolter ses remèdes.",
+                    "Qui veut venir avec moi !",
+                    "Je vais explorer le territoire des bipèdes.",
+                    "Je n’ai pas peur du danger.",
+                    "Je suis le plus fort.",
+                    "Je connais chaque chemin.",
+                    "Quelqu’un vient jouer avec moi ?",
+                    "Je fais caca."
+                    "J'ai FAIM !!!"
+                    "Quelqu'un a a mangé"
+                ]
+            },
+            {
+                nom: "Museau cendré",
+                statut: "Guerriseuse 🌪",
                 phrases: [
                     "J’ai couru toute la forêt aujourd’hui !",
                     "Personne ne peut me suivre.",
-                    "Le vent est parfait pour chasser.",
-                    "J’ai attrapé trois proies !",
+                    "Le vent est parfait pour aller recolter des remedes.",
+                    "Qui veut venir avec moi !",
                     "Je vais explorer la frontière.",
                     "Je n’ai pas peur du danger.",
                     "La vitesse est ma force.",
@@ -2642,8 +2660,8 @@
                 ]
             },
             {
-                nom: "Griffe Sombre",
-                status: "Guerrier discret 🌑",
+                nom: "Griffe de ronce",
+                statut: "Guerrier discret 😺",
                 phrases: [
                     "Quelqu’un nous observe.",
                     "Je n’aime pas ces odeurs.",
@@ -2665,13 +2683,13 @@
         members: [
             {
                 nom: "Étoile Solitaire",
-                status: "Chef 🌾",
+                statut: "Chef 🌾",
                 phrases: [
                     "La plaine est calme.",
                     "Nous devons rester rapides.",
                     "Les chiens sont proches.",
                     "Le vent nous protège.",
-                    "Je veux un rapport.",
+                    "Je veux un rapport tout de suite.",
                     "Surveillez l’horizon.",
                     "Nous devons chasser.",
                     "Restez en mouvement.",
@@ -2680,8 +2698,8 @@
                 ]
             },
             {
-                nom: "Queue Vive",
-                status: "Guerrier rapide 💨",
+                nom: "Plume de jais🐈‍⬛",
+                statut: "Guerrier rapide 💨",
                 phrases: [
                     "Je cours plus vite que le vent !",
                     "Personne ne m’attrape.",
@@ -2703,7 +2721,7 @@
         members: [
             {
                 nom: "Patte de Brume",
-                status: "Pêcheur 🐟",
+                statut: "Pêcheur 🐟",
                 phrases: [
                     "L’eau est parfaite aujourd’hui.",
                     "J’ai attrapé un gros poisson.",
@@ -2725,7 +2743,7 @@
         members: [
             {
                 nom: "Étoile du Tigre",
-                status: "Chef 👑",
+                statut: "Chef 👑",
                 phrases: [
                     "Le gibier se fait rare.",
                     "Nous devons être prudents.",
@@ -2741,7 +2759,7 @@
             },
             {
                 nom: "Crocs Noirs",
-                status: "Guerrier 🌑",
+                statut: "Guerrier 🌑",
                 phrases: [
                     "Je marche dans l’ombre.",
                     "Personne ne me voit.",
@@ -2878,7 +2896,7 @@
 
             usedPhrases.add(randomText);
 
-            initialMessages.push({ sender: randomMember.nom, status: randomMember.status, text: randomText, isUser: false });
+            initialMessages.push({ sender: randomMember.nom, statut: randomMember.statut, text: randomText, isUser: false });
 
             
 
@@ -2924,7 +2942,7 @@
 
                 bubble.className = msg.isUser ? "chat-bubble user-msg" : "chat-bubble";
 
-                bubble.innerHTML = `<div class="chat-sender">${msg.sender}</div><div class="chat-sender-status">${msg.status}</div><div class="chat-text">${msg.text}</div>`;
+                bubble.innerHTML = `<div class="chat-sender">${msg.sender}</div><div class="chat-sender-statut">${msg.statut}</div><div class="chat-text">${msg.text}</div>`;
 
                 container.appendChild(bubble);
 
@@ -2954,7 +2972,7 @@
 
             if(input.value.trim() === "" || activeRoomId === null) return;
 
-            conversations[activeRoomId].messages.push({ sender: conversations[activeRoomId].userName, status: conversations[activeRoomId].userRank, text: input.value.trim(), isUser: true });
+            conversations[activeRoomId].messages.push({ sender: conversations[activeRoomId].userName, statut: conversations[activeRoomId].userRank, text: input.value.trim(), isUser: true });
 
             input.value = "";
 
@@ -2981,7 +2999,7 @@
 
                     
 
-                    room.messages.push({ sender: member.nom, status: member.status, text: text, isUser: false });
+                    room.messages.push({ sender: member.nom, statut: member.statut, text: text, isUser: false });
 
                     if (activeRoomId === rId) renderRoomMessages();
 
