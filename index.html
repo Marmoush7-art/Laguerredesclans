@@ -2590,60 +2590,174 @@
 
         const clanChatData = {
 
-            tonnerre: {
-
-                name: "⚡ Groupe du Tonnerre",
-
-                members: [
-
-                    { nom: "Plume Grise", status: "Disponible ⚔️", phrases: ["Salut ! Quelqu'un a vu l'état des réserves ? 🐭", "Je viens de croiser un écureuil géant !"] },
-
-                    { nom: "Cœur de Lion", status: "Mentor loyal 🐾", phrases: ["Restez calmes, évitez la route des Bipèdes.", "L'entraînement commence bientôt.", "J'ai hate d'aller a l'assemblée."] },
-
-                    { nom: "Étoile de Feu", status: "Chef suprême 🌟", phrases: ["Que le Clan des Étoiles veille sur nous.", "Rassemblement au Grand Rocher ce midi."] }
-
+    tonnerre: {
+        name: "⚡ Groupe du Tonnerre",
+        members: [
+            {
+                nom: "Plume Grise",
+                status: "Guerrier expérimenté ⚔️",
+                phrases: [
+                    "La frontière est calme aujourd’hui.",
+                    "J’ai vu des traces près du ruisseau.",
+                    "Quelqu’un a dormi hors du camp cette nuit ?",
+                    "Je pars en patrouille seul.",
+                    "Les apprentis sont trop bruyants.",
+                    "Le gibier est rare aujourd’hui.",
+                    "Restez sur vos gardes.",
+                    "Je sens une odeur étrange.",
+                    "Le Clan des Étoiles nous observe.",
+                    "On devrait renforcer la frontière."
                 ]
-
             },
-
-            vent: {
-
-                name: "🌪 Groupe du Vent",
-
-                members: [
-
-                    { nom: "Étoile Solitaire", status: "Sur les landes 🌾", phrases: ["Alerte aux chiens sans laisse ! 🐾", "Notre force réside dans la vitesse."] }
-
+            {
+                nom: "Cœur de Lion",
+                status: "Mentor 🐾",
+                phrases: [
+                    "L’entraînement commence maintenant.",
+                    "Restez concentrés.",
+                    "Un guerrier ne baisse jamais sa garde.",
+                    "Les apprentis, suivez-moi.",
+                    "Le respect du code est essentiel.",
+                    "Je surveille vos progrès.",
+                    "La discipline fait la force du clan.",
+                    "Encore un effort.",
+                    "Ne perdez pas votre temps.",
+                    "Bonne chasse aujourd’hui."
                 ]
-
             },
-
-            riviere: {
-
-                name: "🌊 Groupe de la Rivière",
-
-                members: [
-
-                    { nom: "Patte de Brume", status: "Pêche 🐟", phrases: ["L'eau est magnifiquement claire aujourd'hui ! 🐟"] }
-
+            {
+                nom: "Feuille Agile",
+                status: "Guerrière 🌪",
+                phrases: [
+                    "J’ai couru toute la forêt aujourd’hui !",
+                    "Personne ne peut me suivre.",
+                    "Le vent est parfait pour chasser.",
+                    "J’ai attrapé trois proies !",
+                    "Je vais explorer la frontière.",
+                    "Je n’ai pas peur du danger.",
+                    "La vitesse est ma force.",
+                    "Je connais chaque chemin.",
+                    "Quelqu’un vient avec moi ?",
+                    "Je repars immédiatement."
                 ]
-
             },
-
-            ombre: {
-
-                name: "🌑 Groupe de l'Ombre",
-
-                members: [
-
-                    { nom: "Étoile du Tigre", status: "Planification 🐾", phrases: ["La patrouille de l'aube a reperée un renard sur la frontiere du clan du vent... 👀","L'entraînement commence bientôt.","Le gibier ce fait rare..."] }
-
+            {
+                nom: "Griffe Sombre",
+                status: "Guerrier discret 🌑",
+                phrases: [
+                    "Quelqu’un nous observe.",
+                    "Je n’aime pas ces odeurs.",
+                    "Restez silencieux.",
+                    "Je surveille la frontière nord.",
+                    "Le danger approche.",
+                    "Je préfère travailler seul.",
+                    "Ne faites pas de bruit.",
+                    "J’ai entendu des pas.",
+                    "Ce territoire n’est pas sûr.",
+                    "Je vais vérifier."
                 ]
-
             }
+        ]
+    },
 
-        };
+    vent: {
+        name: "🌪 Groupe du Vent",
+        members: [
+            {
+                nom: "Étoile Solitaire",
+                status: "Chef 🌾",
+                phrases: [
+                    "La plaine est calme.",
+                    "Nous devons rester rapides.",
+                    "Les chiens sont proches.",
+                    "Le vent nous protège.",
+                    "Je veux un rapport.",
+                    "Surveillez l’horizon.",
+                    "Nous devons chasser.",
+                    "Restez en mouvement.",
+                    "Ne vous arrêtez jamais.",
+                    "Le clan doit survivre."
+                ]
+            },
+            {
+                nom: "Queue Vive",
+                status: "Guerrier rapide 💨",
+                phrases: [
+                    "Je cours plus vite que le vent !",
+                    "Personne ne m’attrape.",
+                    "J’ai vu un lapin énorme.",
+                    "La course était incroyable.",
+                    "Je repars chasser.",
+                    "Le terrain est parfait.",
+                    "Je suis déjà loin.",
+                    "Encore plus vite !",
+                    "Je reviens bientôt.",
+                    "J’adore courir."
+                ]
+            }
+        ]
+    },
 
+    riviere: {
+        name: "🌊 Groupe de la Rivière",
+        members: [
+            {
+                nom: "Patte de Brume",
+                status: "Pêcheur 🐟",
+                phrases: [
+                    "L’eau est parfaite aujourd’hui.",
+                    "J’ai attrapé un gros poisson.",
+                    "Le courant est fort.",
+                    "La rivière est calme.",
+                    "Je surveille les berges.",
+                    "Attention aux rapides.",
+                    "Je plonge à nouveau.",
+                    "Le poisson est abondant.",
+                    "Je rentre au camp.",
+                    "Bonne pêche à tous."
+                ]
+            }
+        ]
+    },
+
+    ombre: {
+        name: "🌑 Groupe de l’Ombre",
+        members: [
+            {
+                nom: "Étoile du Tigre",
+                status: "Chef 👑",
+                phrases: [
+                    "Le gibier se fait rare.",
+                    "Nous devons être prudents.",
+                    "La patrouille a vu un renard.",
+                    "Le silence est notre arme.",
+                    "Préparez les frontières.",
+                    "Je veux des rapports.",
+                    "Le clan doit rester invisible.",
+                    "Nous contrôlons la nuit.",
+                    "Personne ne nous verra venir.",
+                    "Agissez dans l’ombre."
+                ]
+            },
+            {
+                nom: "Crocs Noirs",
+                status: "Guerrier 🌑",
+                phrases: [
+                    "Je marche dans l’ombre.",
+                    "Personne ne me voit.",
+                    "J’ai suivi une piste.",
+                    "Le danger est proche.",
+                    "Je surveille les intrus.",
+                    "Ne faites pas confiance.",
+                    "J’écoute la forêt.",
+                    "Je reste caché.",
+                    "Je vais patrouiller.",
+                    "Tout est silencieux."
+                ]
+            }
+        ]
+    }
+};
 
         let conversations = []; 
 
