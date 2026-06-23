@@ -1288,7 +1288,7 @@
 
         }
 
-        .chat-sender-status {
+        .chat-sender-statut {
 
             font-size: 11px;
 
@@ -1436,7 +1436,7 @@
 
             <a onclick="showPage('guidePage')">📜 Le Guide du Guerrier</a>
 
-            <a onclick="showPage('techniquesPage')">⚔️ Codex Médical & Combat</a>
+            <a onclick="showPage('techniquesPage')">⚔️ Combat & Codex Médical</a>
 
             <a onclick="showPage('chatPage')">💬 Chat</a>
 
@@ -1680,6 +1680,67 @@
         </div>
 
     </section>
+    <section class="page" id="personnagePage" style="display: none;">
+    <div class="page-content">
+        <h1>🐱 Outils de Jeux de Rôle</h1>
+        <p style="color: #9ca3af; margin-bottom: 20px;">Crée ton propre chat et génère un nom unique pour partir à l'aventure.</p>
+        <div class="lgdc-container">
+            <div class="lgdc-card">
+                <h2>🔮 Générateur de Noms</h2>
+                <p>Trouve une idée de nom unique pour ton guerrier !</p>
+                <div id="nomGenere" class="lgdc-generated-name">Clique pour générer...</div>
+                <button class="lgdc-btn lgdc-btn-secondary" onclick="genererNom()">🎲 Générer un nom</button>
+                <button class="lgdc-btn" onclick="copierNomDansFormulaire()">📥 Utiliser ce nom pour la fiche</button>
+            </div>
+            <div class="lgdc-card">
+                <h2>📜 Fiche de Personnage</h2>
+                <form id="rpForm" onsubmit="creerFiche(event)">
+                    <div class="lgdc-form-group">
+                        <label for="nomChat">🐱 Nom du Chat :</label>
+                        <input type="text" id="nomChat" required placeholder="Ex: Poil de Coton">
+                    </div>
+                    <div class="lgdc-form-group">
+                        <label for="clanChat">🛡️ Clan :</label>
+                        <select id="clanChat">
+                            <option value="Clan du Tonnerre">⚡ Clan du Tonnerre</option>
+                            <option value="Clan de la Rivière">💧 Clan de la Rivière</option>
+                            <option value="Clan du Vent">💨 Clan du Vent</option>
+                            <option value="Clan de l'Ombre">🌲 Clan de l'Ombre</option>
+                            <option value="Clan du Ciel">☁️ Clan du Ciel</option>
+                            <option value="Clan des Étoiles">✨ Clan des Étoiles</option>
+                            <option value="Solitaire / Chat domestique">🏠 Solitaire / Chat domestique</option>
+                        </select>
+                    </div>
+                    <div class="lgdc-form-group">
+                        <label for="gradeChat">🏅 Grade :</label>
+                        <select id="gradeChat">
+                            <option value="Chaton">🐾 Chaton</option>
+                            <option value="Apprenti">🌿 Apprenti</option>
+                            <option value="Guerrier">⚔️ Guerrier</option>
+                            <option value="Lieutenant">⭐ Lieutenant</option>
+                            <option value="Chef">👑 Chef</option>
+                            <option value="Guérisseur">🍃 Guérisseur</option>
+                            <option value="Ancien">🪨 Ancien</option>
+                        </select>
+                    </div>
+                    <div class="lgdc-form-group">
+                        <label for="physiqueChat">🎨 Description Physique :</label>
+                        <textarea id="physiqueChat" rows="3" required placeholder="Ex: grande femelle aux yeux bleu et au pelage blanc"></textarea>
+                    </div>
+                    <div class="lgdc-form-group">
+                        <label for="caractereChat">❤️ Caractère :</label>
+                        <textarea id="caractereChat" rows="3" required placeholder="Ex: courageux et tetue"></textarea>
+                    </div>
+                    <button type="submit" class="lgdc-btn">📝 Générer la Fiche RP</button>
+                </form>
+                <div id="ficheResultat" class="lgdc-result-box" style="display: none;">
+                    <h3>✨ Fiche de RP validée ! ✨</h3>
+                    <div id="contenuFiche"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 
     <section class="page" id="chatPage">
@@ -1786,13 +1847,37 @@
 
                     <div class="typing-indicator" id="typingIndicator"></div>
 
-                    <div class="chat-input-area">
-
-                        <input type="text" id="roomInput" placeholder="Écris ton message ici..." onkeydown="if(event.key === 'Enter') currentRoomSendMessage()">
-
-                        <button onclick="currentRoomSendMessage()">Envoyer</button>
-
-                    </div>
+                   <div class="chat-input-container" style="display: flex; flex-direction: column; gap: 5px; width: 100%;">
+    <div class="emoji-bar" style="display: flex; gap: 8px; padding: 0 5px; font-size: 18px;">
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🐱'">🐱</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '⚡'">⚡</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🌪️'">🌪️</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🌊'">🌊</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🌑'">🌑</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🐾'">🐾</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '⚔️'">⚔️</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🐭'">🐭</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🔒'">🔒</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🌲'">🌲</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '😁'">😁</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🐱'">🐱</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '✨'">✨</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🐈'">🐈</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🐾'">🐾</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '❤️'">❤️</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🌿'">🌿</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '💨'">💨</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '😻'">😻</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '👑'">👑</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🗺️'">🗺️</span>
+        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🍁'">🍁</span>
+    </div>
+    
+    <div class="chat-input-area">
+        <input type="text" id="roomInput" placeholder="Écris ton message ici..." onkeydown="if(event.key === 'Enter') currentRoomSendMessage()">
+        <button onclick="currentRoomSendMessage()">Envoyer</button>
+    </div>
+</div>
 
                 </div>
 
@@ -1973,7 +2058,7 @@
 
             <h1>🐱 Les Guerriers</h1>
 
-            <p>Ajoute ici les personnages du clan.</p>
+            <p>En cours.</p>
 
         </div>
 
@@ -1986,7 +2071,7 @@
 
             <h1>🌲 Les Territoires</h1>
 
-            <p>Ajoute ici les territoires du clan.</p>
+            <p>En cours.</p>
 
         </div>
 
@@ -1999,7 +2084,7 @@
 
             <h1>🖼️ Galerie</h1>
 
-            <p>Ajoute ici des images.</p>
+            <p>En cours.</p>
 
         </div>
 
@@ -2505,60 +2590,192 @@
 
         const clanChatData = {
 
-            tonnerre: {
-
-                name: "⚡ Groupe du Tonnerre",
-
-                members: [
-
-                    { nom: "Plume Grise", status: "Disponible ⚔️", phrases: ["Salut ! Quelqu'un a vu l'état des réserves ? 🐭", "Je viens de croiser un écureuil géant !"] },
-
-                    { nom: "Cœur de Lion", status: "Mentor loyal 🐾", phrases: ["Restez calmes, évitez la route des Bipèdes.", "L'entraînement commence bientôt.", "J'ai hate d'aller a l'assemblée."] },
-
-                    { nom: "Étoile de Feu", status: "Chef suprême 🌟", phrases: ["Que le Clan des Étoiles veille sur nous.", "Rassemblement au Grand Rocher ce midi."] }
-
+    tonnerre: {
+        name: "⚡ Groupe du Tonnerre",
+        members: [
+            {
+                nom: "Plume Grise",
+                statut: "Guerrier expérimenté ⚔️",
+                phrases: [
+                    "La frontière est calme aujourd’hui.",
+                    "J’ai vu des traces près du ruisseau.",
+                    "Quelqu’un a dormi hors du camp cette nuit ?",
+                    "Je pars en patrouille seul.",
+                    "Les apprentis sont trop bruyants.",
+                    "Le gibier est rare aujourd’hui.",
+                    "Restez sur vos gardes.",
+                    "Je sens une odeur étrange.",
+                    "Le Clan des Étoiles nous observe.",
+                    "On devrait renforcer la frontière."
                 ]
-
             },
-
-            vent: {
-
-                name: "🌪 Groupe du Vent",
-
-                members: [
-
-                    { nom: "Étoile Solitaire", status: "Sur les landes 🌾", phrases: ["Alerte aux chiens sans laisse ! 🐾", "Notre force réside dans la vitesse."] }
-
+            {
+                nom: "Pelage de Lion",
+                statut: "Mentor 🐾",
+                phrases: [
+                    "L’entraînement commence maintenant.",
+                    "Restez concentrés.",
+                    "Un guerrier ne baisse jamais sa garde.",
+                    "Les apprentis, suivez-moi.",
+                    "Le respect du code est essentiel.",
+                    "Je surveille vos progrès.",
+                    "La discipline fait la force du clan.",
+                    "Encore un effort.",
+                    "Ne perdez pas votre temps.",
+                    "Bonne chasse aujourd’hui."
                 ]
-
             },
-
-            riviere: {
-
-                name: "🌊 Groupe de la Rivière",
-
-                members: [
-
-                    { nom: "Patte de Brume", status: "Pêche 🐟", phrases: ["L'eau est magnifiquement claire aujourd'hui ! 🐟"] }
-
+            {
+               nom: "Nuage agile",
+                statut: "Apprenti 😁",
+                phrases: [
+                    "Je suis fatigué...",
+                    "Personne ne peut me suivre.",
+                    "Je vais aider Museau cendré à récolter ses remèdes.",
+                    "Qui veut venir avec moi !",
+                    "Je vais explorer le territoire des bipèdes.",
+                    "Je n’ai pas peur du danger.",
+                    "Je suis le plus fort.",
+                    "Je connais chaque chemin.",
+                    "Quelqu’un vient jouer avec moi ?",
+                    "Je fais caca."
+                    "J'ai FAIM !!!"
+                    "Quelqu'un a a mangé"
                 ]
-
             },
-
-            ombre: {
-
-                name: "🌑 Groupe de l'Ombre",
-
-                members: [
-
-                    { nom: "Étoile du Tigre", status: "Planification 🐾", phrases: ["La patrouille de l'aube a reperée un renard sur la frontiere du clan du vent... 👀","L'entraînement commence bientôt.","Le gibier ce fait rare..."] }
-
+            {
+                nom: "Museau cendré",
+                statut: "Guerriseuse 🌪",
+                phrases: [
+                    "J’ai couru toute la forêt aujourd’hui !",
+                    "Personne ne peut me suivre.",
+                    "Le vent est parfait pour aller recolter des remedes.",
+                    "Qui veut venir avec moi !",
+                    "Je vais explorer la frontière.",
+                    "Je n’ai pas peur du danger.",
+                    "La vitesse est ma force.",
+                    "Je connais chaque chemin.",
+                    "Quelqu’un vient avec moi ?",
+                    "Je repars immédiatement."
                 ]
-
+            },
+            {
+                nom: "Griffe de ronce",
+                statut: "Guerrier discret 😺",
+                phrases: [
+                    "Quelqu’un nous observe.",
+                    "Je n’aime pas ces odeurs.",
+                    "Restez silencieux.",
+                    "Je surveille la frontière nord.",
+                    "Le danger approche.",
+                    "Je préfère travailler seul.",
+                    "Ne faites pas de bruit.",
+                    "J’ai entendu des pas.",
+                    "Ce territoire n’est pas sûr.",
+                    "Je vais vérifier."
+                ]
             }
+        ]
+    },
 
-        };
+    vent: {
+        name: "🌪 Groupe du Vent",
+        members: [
+            {
+                nom: "Étoile Solitaire",
+                statut: "Chef 🌾",
+                phrases: [
+                    "La plaine est calme.",
+                    "Nous devons rester rapides.",
+                    "Les chiens sont proches.",
+                    "Le vent nous protège.",
+                    "Je veux un rapport tout de suite.",
+                    "Surveillez l’horizon.",
+                    "Nous devons chasser.",
+                    "Restez en mouvement.",
+                    "Ne vous arrêtez jamais.",
+                    "Le clan doit survivre."
+                ]
+            },
+            {
+                nom: "Plume de jais🐈‍⬛",
+                statut: "Guerrier rapide 💨",
+                phrases: [
+                    "Je cours plus vite que le vent !",
+                    "Personne ne m’attrape.",
+                    "J’ai vu un lapin énorme.",
+                    "La course était incroyable.",
+                    "Je repars chasser.",
+                    "Le terrain est parfait.",
+                    "Je suis déjà loin.",
+                    "Encore plus vite !",
+                    "Je reviens bientôt.",
+                    "J’adore courir."
+                ]
+            }
+        ]
+    },
 
+    riviere: {
+        name: "🌊 Groupe de la Rivière",
+        members: [
+            {
+                nom: "Patte de Brume",
+                statut: "Pêcheur 🐟",
+                phrases: [
+                    "L’eau est parfaite aujourd’hui.",
+                    "J’ai attrapé un gros poisson.",
+                    "Le courant est fort.",
+                    "La rivière est calme.",
+                    "Je surveille les berges.",
+                    "Attention aux rapides.",
+                    "Je plonge à nouveau.",
+                    "Le poisson est abondant.",
+                    "Je rentre au camp.",
+                    "Bonne pêche à tous."
+                ]
+            }
+        ]
+    },
+
+    ombre: {
+        name: "🌑 Groupe de l’Ombre",
+        members: [
+            {
+                nom: "Étoile du Tigre",
+                statut: "Chef 👑",
+                phrases: [
+                    "Le gibier se fait rare.",
+                    "Nous devons être prudents.",
+                    "La patrouille a vu un renard.",
+                    "Le silence est notre arme.",
+                    "Préparez les frontières.",
+                    "Je veux des rapports.",
+                    "Le clan doit rester invisible.",
+                    "Nous contrôlons la nuit.",
+                    "Personne ne nous verra venir.",
+                    "Agissez dans l’ombre."
+                ]
+            },
+            {
+                nom: "Crocs Noirs",
+                statut: "Guerrier 🌑",
+                phrases: [
+                    "Je marche dans l’ombre.",
+                    "Personne ne me voit.",
+                    "J’ai suivi une piste.",
+                    "Le danger est proche.",
+                    "Je surveille les intrus.",
+                    "Ne faites pas confiance.",
+                    "J’écoute la forêt.",
+                    "Je reste caché.",
+                    "Je vais patrouiller.",
+                    "Tout est silencieux."
+                ]
+            }
+        ]
+    }
+};
 
         let conversations = []; 
 
@@ -2679,7 +2896,7 @@
 
             usedPhrases.add(randomText);
 
-            initialMessages.push({ sender: randomMember.nom, status: randomMember.status, text: randomText, isUser: false });
+            initialMessages.push({ sender: randomMember.nom, statut: randomMember.statut, text: randomText, isUser: false });
 
             
 
@@ -2725,7 +2942,7 @@
 
                 bubble.className = msg.isUser ? "chat-bubble user-msg" : "chat-bubble";
 
-                bubble.innerHTML = `<div class="chat-sender">${msg.sender}</div><div class="chat-sender-status">${msg.status}</div><div class="chat-text">${msg.text}</div>`;
+                bubble.innerHTML = `<div class="chat-sender">${msg.sender}</div><div class="chat-sender-statut">${msg.statut}</div><div class="chat-text">${msg.text}</div>`;
 
                 container.appendChild(bubble);
 
@@ -2755,7 +2972,7 @@
 
             if(input.value.trim() === "" || activeRoomId === null) return;
 
-            conversations[activeRoomId].messages.push({ sender: conversations[activeRoomId].userName, status: conversations[activeRoomId].userRank, text: input.value.trim(), isUser: true });
+            conversations[activeRoomId].messages.push({ sender: conversations[activeRoomId].userName, statut: conversations[activeRoomId].userRank, text: input.value.trim(), isUser: true });
 
             input.value = "";
 
@@ -2782,7 +2999,7 @@
 
                     
 
-                    room.messages.push({ sender: member.nom, status: member.status, text: text, isUser: false });
+                    room.messages.push({ sender: member.nom, statut: member.statut, text: text, isUser: false });
 
                     if (activeRoomId === rId) renderRoomMessages();
 
@@ -2836,10 +3053,51 @@
             document.getElementById("sidebar").classList.remove("active");
 
         }
+// LOGIQUE DU GÉNÉRATEUR ET DE LA FICHE (v1.01.05)
+const prefixes = ["Poil", "Cœur", "Pelage", "Plume", "Nuage", "Étoile", "Feuille", "Patte", "Griffe", "Museau", "Œil", "Aile", "Feu", "Tempête", "Givre", "Ombre", "Fleur"];
+const suffixes = ["de Coton", "de Pâquerette", "de Jais", "de Lion", "de Feu", "de Glace", "de Rose", "de Nuit", "de Brume", "de Cerise", "de Miel", "d'Argent", "de Cendres", "de Silex", "de Lys"];
 
+let nomActuel = "";
+
+function genererNom() {
+    const prefi = prefixes[Math.floor(Math.random() * prefixes.length)];
+    const suffi = suffixes[Math.floor(Math.random() * suffixes.length)];
+    nomActuel = `${prefi} ${suffi}`;
+    document.getElementById('nomGenere').innerText = nomActuel;
+}
+
+function copierNomDansFormulaire() {
+    if (nomActuel === "") {
+        alert("🔮 Génère d'abord un nom !");
+        return;
+    }
+    document.getElementById('nomChat').value = nomActuel;
+}
+
+function creerFiche(event) {
+    event.preventDefault();
+
+    const nom = document.getElementById('nomChat').value;
+    const clan = document.getElementById('clanChat').value;
+    const grade = document.getElementById('gradeChat').value;
+    const physique = document.getElementById('physiqueChat').value;
+    const caractere = document.getElementById('caractereChat').value;
+
+    const boxResultat = document.getElementById('ficheResultat');
+    const contenu = document.getElementById('contenuFiche');
+
+    contenu.innerHTML = `
+        <p><strong>🐱 Nom :</strong> ${nom}</p>
+        <p><strong>🛡️ Clan :</strong> ${clan}</p>
+        <p><strong>🏅 Grade :</strong> ${grade}</p>
+        <p><strong>🎨 Physique :</strong> ${physique}</p>
+        <p><strong>❤️ Caractère :</strong> ${caractere}</p>
+    `;
+
+    boxResultat.style.display = "block";
+}
     </script>
 
 </body>
 
 </html>
-
