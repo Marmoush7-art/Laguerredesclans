@@ -1,167 +1,28 @@
 <!DOCTYPE html>
-
 <html lang="fr">
-
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 
     <title>La Guerre des Clans</title>
 
-
     <style>
 
-        *{
+        *{ margin:0; padding:0; box-sizing:border-box; }
 
-            margin:0;
-
-            padding:0;
-
-            box-sizing:border-box;
-
-        }
-
-
-        body{ 
-
-            font-family:Arial, Helvetica, sans-serif; 
-
-            background:#0f1115; 
-
-            color:white; 
-
-            overflow-x:hidden; 
-
-        }
-
+        body{ font-family:Arial, Helvetica, sans-serif; background:#0f1115; color:white; overflow-x:hidden; }
 
         /* MENU BUTTON */
-
-
-        .menu-btn{
-
-            position:fixed;
-
-            top:20px;
-
-            left:20px;
-
-
-            width:38px;
-
-            height:38px;
-
-
-            background:#6ee7b7;
-
-            color:#0f1115;
-
-
-            border:none;
-
-            border-radius:10px;
-
-
-            font-size:20px;
-
-            font-weight:bold;
-
-
-            cursor:pointer;
-
-
-            z-index:2000;
-
-
-            display:flex;
-
-            justify-content:center;
-
-            align-items:center;
-
-
-            transition:0.3s;
-
-        }
-
-
+        .menu-btn{ position:fixed; top:20px; left:20px; width:38px; height:38px; background:#6ee7b7; color:#0f1115; border:none; border-radius:10px; font-size:20px; font-weight:bold; cursor:pointer; z-index:2000; display:flex; justify-content:center; align-items:center; transition:0.3s; }
         .menu-btn:hover{ transform:scale(1.05); }
 
-
         /* SIDEBAR */
-
-
         .sidebar{position:fixed; left:-260px; top:0; width:260px; height:100vh; background:#161b22; padding:30px 20px; transition:0.4s; z-index:1000; border-right:1px solid rgba(255,255,255,0.05); overflow-y:auto;}
-
-        
-
-        .sidebar.active{
-
-            left:0;
-
-        }
-
-
-        .logo{
-
-            font-size:32px;
-
-            font-weight:bold;
-
-            color:#6ee7b7;
-
-            margin-bottom:30px;
-
-            margin-left:45px;
-
-        }
-
-
-        .sidebar nav{
-
-            display:flex;
-
-            flex-direction:column;
-
-            gap:10px;
-
-        }
-
-
-        .sidebar nav a{
-
-            text-decoration:none;
-
-            color:#c9d1d9;
-
-
-            padding:12px 15px;
-
-            border-radius:12px;
-
-
-            transition:0.3s;
-
-            cursor:pointer;
-
-            font-size: 15px;
-
-        }
-
-
-        .sidebar nav a:hover{
-
-            background:#21262d;
-
-            color:#6ee7b7;
-
-            transform:translateX(5px);
-
-        }
+        .sidebar.active{ left:0; }
+        .logo{ font-size:32px; font-weight:bold; color:#6ee7b7; margin-bottom:30px; margin-left:45px; }
+        .sidebar nav{ display:flex; flex-direction:column; gap:10px; }
+        .sidebar nav a{ text-decoration:none; color:#c9d1d9; padding:12px 15px; border-radius:12px; transition:0.3s; cursor:pointer; font-size: 15px; }
+        .sidebar nav a:hover{ background:#21262d; color:#6ee7b7; transform:translateX(5px); }
 
 
         /* CONFIGURATION DES NOUVELLES PAGES INTERNES */
@@ -1452,7 +1313,7 @@
 
             <a onclick="showPage('galeriePage')">🖼 Galerie</a>
 
-            <a onclick="showPage('personnagePage')">🐱 Mon personnage</a>
+           <a onclick="showPage('rpPage')">🐱 Mon personnage</a>
 
             <a onclick="showPage('gamePage')">🎮 Aventure</a>
 
@@ -1680,7 +1541,7 @@
         </div>
 
     </section>
-    <section class="page" id="personnagePage" style="display: none;">
+    <section class="page" id="rpPage">
     <div class="page-content">
         <h1>🐱 Outils de Jeux de Rôle</h1>
         <p style="color: #9ca3af; margin-bottom: 20px;">Crée ton propre chat et génère un nom unique pour partir à l'aventure.</p>
@@ -2053,14 +1914,72 @@
 
 
     <section class="page" id="guerriersPage">
+    <div class="page-content">
 
-        <div class="page-content">
+        <h1>🐱 Guerriers Légendaires</h1>
 
-            <h1>🐱 Les Guerriers</h1>
+        <div class="clans-grid">
 
-            <p>En cours.</p>
+            <div class="identity-card">
+                <img src="images/etoile-de-feu.jpg" alt="Étoile de Feu"style="width:100%;border-radius:12px;margin-bottom:10px;">
+                <h2>🔥 Étoile de Feu</h2>
+                <p><b>Clan :</b> Clan du Tonnerre</p>
+                <p><b>Rang :</b> Chef</p>
+                <p><b>Description :</b> Ancien chat domestique devenu l'un des plus grands chefs de l'histoire des Clans.</p>
+            </div>
+
+            <div class="identity-card">
+                <h2>⚔️ Plume Grise</h2>
+                <p><b>Clan :</b> Clan du Tonnerre</p>
+                <p><b>Rang :</b> Guerrier</p>
+                <p><b>Description :</b> Meilleur ami d'Étoile de Feu, connu pour sa loyauté et son courage.</p>
+            </div>
+
+            <div class="identity-card">
+                <h2>🌑 Étoile du Tigre</h2>
+                <p><b>Clan :</b> Clan de l'Ombre</p>
+                <p><b>Rang :</b> Chef</p>
+                <p><b>Description :</b> Chef ambitieux et redouté ayant marqué l'histoire des Clans.</p>
+            </div>
+
+            <div class="identity-card">
+                <h2>🌊 Étoile de Léopard</h2>
+                <p><b>Clan :</b> Clan de la Rivière</p>
+                <p><b>Rang :</b> Chef</p>
+                <p><b>Description :</b> Grande dirigeante du Clan de la Rivière, fière et déterminée.</p>
+            </div>
+
+            <div class="identity-card">
+                <h2>⭐ Pelage de Lion</h2>
+                <p><b>Clan :</b> Clan du Tonnerre</p>
+                <p><b>Rang :</b> Guerrier</p>
+                <p><b>Description :</b> Guerrier puissant issu de la prophétie des Trois.</p>
+            </div>
+
+            <div class="identity-card">
+                <h2>🌙 Œil de Geai</h2>
+                <p><b>Clan :</b> Clan du Tonnerre</p>
+                <p><b>Rang :</b> Guérisseur</p>
+                <p><b>Description :</b> Guérisseur aveugle doté d'un lien exceptionnel avec le Clan des Étoiles.</p>
+            </div>
+
+            <div class="identity-card">
+                <h2>💨 Feuille de Houx</h2>
+                <p><b>Clan :</b> Clan du Tonnerre</p>
+                <p><b>Rang :</b> Guerrière</p>
+                <p><b>Description :</b> Guerrière courageuse attachée au Code du Guerrier.</p>
+            </div>
+
+            <div class="identity-card">
+                <h2>🍃 Feuille de Lune</h2>
+                <p><b>Clan :</b> Clan du Tonnerre</p>
+                <p><b>Rang :</b> Guérisseuse</p>
+                <p><b>Description :</b> Guérisseuse respectée connue pour sa sagesse.</p>
+            </div>
 
         </div>
+
+    </div>
 
     </section>
 
