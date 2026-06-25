@@ -120,199 +120,100 @@ body{font-family:Arial,Helvetica,sans-serif;background:#0f1115;color:#fff;overfl
 
 
 <body>
-
-
-    <button class="menu-btn" onclick="toggleMenu()">☰</button>
-
-
-    <!-- UNIQUE MENU BURGER PRINCIPAL (À GAUCHE) -->
-
-    <aside class="sidebar" id="sidebar">
-
-        <div class="logo">🐾 CLANS</div>
-
-        <nav>
-
-            <a onclick="goHome()">🏕 Accueil</a>
-
-            <a onclick="showPage('aboutPage')">❓ C'est quoi LGDC ?</a>
-
-            <a onclick="showPage('guidePage')">📜 Le Guide du Guerrier</a>
-
-            <a onclick="showPage('techniquesPage')">⚔️ Combat & Codex Médical</a>
-
-            <a onclick="showPage('chatPage')">💬 Chat</a>
-
-            <a onclick="showPage('clansPage')">⚔ Clans</a>
-
-            <a onclick="showPage('guerriersPage')">🐱 Guerriers</a>
-
-            <a onclick="showPage('territoiresPage')">🌲 Territoires</a>
-
-            <a onclick="showPage('histoirePage')">📖 Histoire</a>
-
-            <a onclick="showPage('dictionnairePage')">📖 Dictionnaire</a>
-
-            <a onclick="showPage('galeriePage')">🖼 Galerie</a>
-
-           <a onclick="showPage('rpPage')">🐱 Mon personnage</a>
-
-            <a onclick="showPage('gamePage')">🎮 Aventure</a>
-
-        </nav>
-
-    </aside>
-
-
-    <!-- NOUVELLE PAGE INTERNE : LE GUIDE DU GUERRIER -->
-
-    <section class="page" id="guidePage">
-
-        <div class="page-content">
-
-            <h1>📖 Le Guide du Guerrier</h1>
-
-            
-
-            <div id="story-box">
-
-                <h2>📜 Code du Guerrier</h2>
-
-                <p>Voici les lois ancestrales les plus importantes que chaque chat doit respecter :</p>
-
-                <ul>
-
-                    <li><b>Loi 1 :</b> Défendre son clan, même au péril de sa vie. Les amitiés inter-clans sont interdites.</li>
-
-                    <li><b>Loi 2 :</b> Il est interdit de chasser ou de s'aventurer sur le territoire d'un autre clan.</li>
-
-                    <li><b>Loi 3 :</b> Les anciens, les reines et les chatons doivent être nourris avant les apprentis et les guerriers.</li>
-
-                    <li><b>Loi 4 :</b> Un chaton doit avoir au moins 6 lumens pour commencer son entraînement d'apprenti.</li>
-
-                    <li><b>Loi 5 :</b> La parole du chef du clan fait force de loi absolue.</li>
-
-                </ul>
-
-
-                <h2>🐾 Rôles du Clan</h2> 
-                <h3>🌟 Chef</h3>
-
-                <p>Dirige le clan, prend les décisions stratégiques et reçoit ses 9 vies du Clan des Étoiles.</p>
-
-                
-
-                <h3>🦅 Lieutenant</h3>
-
-                <p>Le bras droit du chef. Il organise les patrouilles, gère l'entraînement et succède au chef.</p>
-
-                
-
-                <h3>🌿 Guérisseur</h3>
-
-                <p>Soigne le clan grâce aux plantes et communique avec les ancêtres à travers les rêves.</p>
-
-                
-
-                <h3>⚔️ Guerrier</h3>
-
-                <p>Nourrit et protège le clan. Il chasse et combat pour défendre les frontières.</p>
-
-                
-
-                <h3>🐾 Apprenti</h3>
-
-                <p>Chat d'au moins 6 lunes qui s'entraîne dur pour devenir un jour un guerrier accompli.</p>
-
-                
-
-                <h3>🍼 Reine</h3>
-
-                <p>Chatte qui attend ou élève des chatons dans la chaleur sécurisée de la pouponnière.</p>
-
-                
-
-                <h3>🌼 Ancien</h3>
-
-                <p>Guerrier ou guérisseur à la retraite, respecté pour sa sagesse et ses histoires.</p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- NOUVELLE PAGE INTERNE : CODEX MÉDICAL & COMBAT -->
-
-    <section class="page" id="techniquesPage">
-
-        <div class="page-content">
-
-            <h1>⚔️ Codex Médical & Combat</h1>
-
-            
-
-            <div id="story-box">
-
-                <h2>⚔️ Tactiques de Combat</h2>
-
-                
-
-                <h3>⚡ Saut du Tonnerre</h3>
-
-                <p>Sauter depuis une hauteur ou un rocher pour tomber par surprise sur le dos de son adversaire.</p>
-
-                
-
-                <h3>🌪️ Attaque en Bourrasque</h3>
-
-                <p>Profiter de la vitesse des plaines pour feinter et encercler l'ennemi en un éclair.</p>
-
-                
-
-                <h3>🌊 Feinte de la Rivière</h3>
-
-                <p>Glisser sous l'adversaire sur une surface mouillée ou instable pour lui faucher les pattes.</p>
-
-                
-
-                <h3>🌑 Griffe Obscure</h3>
-
-                <p>S'embusquer dans l'ombre et attaquer directement les yeux de l'ennemi pour l'aveugler temporairement.</p>
-
-
-                <h2>🌱 Remèdes des Guérisseurs</h2>
-
-                
-
-                <h3>🌿 Herbe-à-chat</h3>
-
-                <p>Le remède le plus précieux. Indispensable pour soigner le terrible Mal Vert (pneumonie).</p>
-
-                
-
-                <h3>🕸️ Toile d'araignée</h3>
-
-                <p>Appliquée directement sur une plaie ouverte pour stopper l'hémorragie et maintenir le pansement.</p>
-
-                
-
-                <h3>🌼 Souci</h3>
-
-                <p>Les feuilles écrasées en cataplasme calment instantanément l'infection des blessures et des morsures.</p>
-
-                
-
-                <h3>🌱 Racine de Cerfeuil</h3>
-
-                <p>Le jus extrait des racines aide à apaiser les maux de ventre et prévient les infections internes.</p>
-
-            </div>
-
-        </div>
-
-    </section>
+<button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+<aside class="sidebar" id="sidebar">
+<div class="logo">🐾 CLANS</div>
+<nav>
+<a onclick="goHome()">🏕 Accueil</a>
+<a onclick="showPage('aboutPage')">❓ C'est quoi LGDC ?</a>
+<a onclick="showPage('guidePage')">📜 Le Guide du Guerrier</a>
+<a onclick="showPage('techniquesPage')">⚔️ Combat & Codex Médical</a>
+<a onclick="showPage('chatPage')">💬 Chat</a>
+<a onclick="showPage('clansPage')">⚔ Clans</a>
+<a onclick="showPage('guerriersPage')">🐱 Guerriers</a>
+<a onclick="showPage('territoiresPage')">🌲 Territoires</a>
+<a onclick="showPage('histoirePage')">📖 Histoire</a>
+<a onclick="showPage('dictionnairePage')">📖 Dictionnaire</a>
+<a onclick="showPage('galeriePage')">🖼 Galerie</a>
+<a onclick="showPage('rpPage')">🐱 Mon personnage</a>
+<a onclick="showPage('gamePage')">🎮 Aventure</a>
+</nav>
+</aside>
+
+<section class="page" id="guidePage">
+<div class="page-content">
+<h1>📖 Le Guide du Guerrier</h1>
+<div id="story-box">
+<h2>📜 Code du Guerrier</h2>
+<p>Voici les lois ancestrales les plus importantes que chaque chat doit respecter :</p>
+<ul>
+<li><b>Loi 1 :</b> Défendre son clan, même au péril de sa vie. Les amitiés inter-clans sont interdites.</li>
+<li><b>Loi 2 :</b> Il est interdit de chasser ou de s'aventurer sur le territoire d'un autre clan.</li>
+<li><b>Loi 3 :</b> Les anciens, les reines et les chatons doivent être nourris avant les apprentis et les guerriers.</li>
+<li><b>Loi 4 :</b> Un chaton doit avoir au moins 6 lumens pour commencer son entraînement d'apprenti.</li>
+<li><b>Loi 5 :</b> La parole du chef du clan fait force de loi absolue.</li>
+</ul>
+
+<h2>🐾 Rôles du Clan</h2>
+<h3>🌟 Chef</h3>
+<p>Dirige le clan, prend les décisions stratégiques et reçoit ses 9 vies du Clan des Étoiles.</p>
+
+<h3>🦅 Lieutenant</h3>
+<p>Le bras droit du chef. Il organise les patrouilles, gère l'entraînement et succède au chef.</p>
+
+<h3>🌿 Guérisseur</h3>
+<p>Soigne le clan grâce aux plantes et communique avec les ancêtres à travers les rêves.</p>
+
+<h3>⚔️ Guerrier</h3>
+<p>Nourrit et protège le clan. Il chasse et combat pour défendre les frontières.</p>
+
+<h3>🐾 Apprenti</h3>
+<p>Chat d'au moins 6 lunes qui s'entraîne dur pour devenir un jour un guerrier accompli.</p>
+
+<h3>🍼 Reine</h3>
+<p>Chatte qui attend ou élève des chatons dans la chaleur sécurisée de la pouponnière.</p>
+
+<h3>🌼 Ancien</h3>
+<p>Guerrier ou guérisseur à la retraite, respecté pour sa sagesse et ses histoires.</p>
+</div>
+</div>
+</section>
+
+<section class="page" id="techniquesPage">
+<div class="page-content">
+<h1>⚔️ Codex Médical & Combat</h1>
+<div id="story-box">
+<h2>⚔️ Tactiques de Combat</h2>
+
+<h3>⚡ Saut du Tonnerre</h3>
+<p>Sauter depuis une hauteur ou un rocher pour tomber par surprise sur le dos de son adversaire.</p>
+
+<h3>🌪️ Attaque en Bourrasque</h3>
+<p>Profiter de la vitesse des plaines pour feinter et encercler l'ennemi en un éclair.</p>
+
+<h3>🌊 Feinte de la Rivière</h3>
+<p>Glisser sous l'adversaire sur une surface mouillée ou instable pour lui faucher les pattes.</p>
+
+<h3>🌑 Griffe Obscure</h3>
+<p>S'embusquer dans l'ombre et attaquer directement les yeux de l'ennemi pour l'aveugler temporairement.</p>
+
+<h2>🌱 Remèdes des Guérisseurs</h2>
+
+<h3>🌿 Herbe-à-chat</h3>
+<p>Le remède le plus précieux. Indispensable pour soigner le terrible Mal Vert (pneumonie).</p>
+
+<h3>🕸️ Toile d'araignée</h3>
+<p>Appliquée directement sur une plaie ouverte pour stopper l'hémorragie et maintenir le pansement.</p>
+
+<h3>🌼 Souci</h3>
+<p>Les feuilles écrasées en cataplasme calment instantanément l'infection des blessures et des morsures.</p>
+
+<h3>🌱 Racine de Cerfeuil</h3>
+<p>Le jus extrait des racines aide à apaiser les maux de ventre et prévient les infections internes.</p>
+</div>
+</div>
+</section>
 
 
     <section class="page" id="histoirePage">
@@ -445,1420 +346,202 @@ body{font-family:Arial,Helvetica,sans-serif;background:#0f1115;color:#fff;overfl
     </div>
 </section>
 
+<section class="page" id="histoirePage"><div class="page-content"><h1 class="histoire-titre">📖 Histoire interactive</h1><div id="story-box"><p id="story-text">Tu te réveilles dans la forêt obscure. Le vent souffle entre les arbres... Tu entends un bruit.</p><div id="choices"><button onclick="showStory(2)">Aller vers le bruit</button><button onclick="showStory(3)">Rester caché</button></div></div></div></section>
 
-    <section class="page" id="chatPage">
+<section class="page" id="aboutPage"><div class="page-content"><h1>❓ C'est quoi La Guerre des Clans ?</h1><div id="story-box" class="summary-box"><p><span class="summary-highlight">La Guerre des Clans</span> (ou LGDC) est une célèbre saga littéraire fantastique qui raconte les aventures de <span class="summary-highlight">quatre clans de chats sauvages</span> (le Tonnerre, le Vent, la Rivière et l'Ombre) qui se partagent la forêt et ses ressources depuis des décennies.</p><p>Ces chats vivent selon les lois ancestrales dictées par le <span class="summary-highlight">Code du Guerrier</span>, un ensemble de règles d'honneur assurant leur survie et la paix entre les frontières. Ils possèdent une organisation sociale très stricte composée de chefs, de lieutenants, de guérisseurs, de guerriers et d'apprentis.</p><p>Au-delà des rivalités et des batailles pour le territoire, les clans partagent une connexion spirituelle intense avec le <span class="summary-highlight">Clan des Étoiles</span>, le territoire de leurs ancêtres défunts qui leur envoient parfois des rêves, des signes et de mystérieuses prophéties pour guider leur destin.</p><p>L'histoire commence véritablement lorsqu'un jeune chat domestique roux nommé <span class="summary-highlight">Rusty</span> décide d'abandonner sa vie confortable chez les humains (les Bipèdes) pour s'enfoncer dans les bois et rejoindre le Clan du Tonnerre, bouleversant ainsi l'équilibre de toute la forêt.</p></div></div></section>
 
-        <div class="page-content">
+<section class="page" id="rpPage"><div class="page-content"><h1>🐱 Outils de Jeux de Rôle</h1><p style="color:#9ca3af;margin-bottom:20px;">Crée ton propre chat et génère un nom unique pour partir à l'aventure.</p><div class="lgdc-container"><div class="lgdc-card"><h2>🔮 Générateur de Noms</h2><p>Trouve une idée de nom unique pour ton guerrier !</p><div id="nomGenere" class="lgdc-generated-name">Clique pour générer...</div><button class="lgdc-btn lgdc-btn-secondary" onclick="genererNom()">🎲 Générer un nom</button><button class="lgdc-btn" onclick="copierNomDansFormulaire()">📥 Utiliser ce nom pour la fiche</button></div><div class="lgdc-card"><h2>📜 Fiche de Personnage</h2><form id="rpForm" onsubmit="creerFiche(event)"><div class="lgdc-form-group"><label for="nomChat">🐱 Nom du Chat :</label><input type="text" id="nomChat" required placeholder="Ex: Poil de Coton"></div><div class="lgdc-form-group"><label for="clanChat">🛡️ Clan :</label><select id="clanChat"><option value="Clan du Tonnerre">⚡ Clan du Tonnerre</option><option value="Clan de la Rivière">💧 Clan de la Rivière</option><option value="Clan du Vent">💨 Clan du Vent</option><option value="Clan de l'Ombre">🌲 Clan de l'Ombre</option><option value="Clan du Ciel">☁️ Clan du Ciel</option><option value="Clan des Étoiles">✨ Clan des Étoiles</option><option value="Solitaire / Chat domestique">🏠 Solitaire / Chat domestique</option></select></div><div class="lgdc-form-group"><label for="gradeChat">🏅 Grade :</label><select id="gradeChat"><option value="Chaton">🐾 Chaton</option><option value="Apprenti">🌿 Apprenti</option><option value="Guerrier">⚔️ Guerrier</option><option value="Lieutenant">⭐ Lieutenant</option><option value="Chef">👑 Chef</option><option value="Guérisseur">🍃 Guérisseur</option><option value="Ancien">🪨 Ancien</option></select></div><div class="lgdc-form-group"><label for="physiqueChat">🎨 Description Physique :</label><textarea id="physiqueChat" rows="3" required placeholder="Ex: grande femelle aux yeux bleu et au pelage blanc"></textarea></div><div class="lgdc-form-group"><label for="caractereChat">❤️ Caractère :</label><textarea id="caractereChat" rows="3" required placeholder="Ex: courageux et tetue"></textarea></div><button type="submit" class="lgdc-btn">📝 Générer la Fiche RP</button></form><div id="ficheResultat" class="lgdc-result-box" style="display:none;"><h3>✨ Fiche de RP validée ! ✨</h3><div id="contenuFiche"></div></div></div></div></div></section>
 
-            <h1>💬 Chat de la Tribu</h1>
+<section class="page" id="chatPage"><div class="page-content"><h1>💬 Chat de la Tribu</h1><p style="color:#9ca3af;margin-bottom:20px;">Partage tes pensées ou discute avec les autres guerriers de la forêt.</p><div id="chatHub" class="chat-hub active"><div class="chat-list" id="chatListContainer"></div><button class="add-chat-btn" onclick="openNewChatForm()">+</button></div><div id="chatFormView" class="chat-form-view"><div class="chat-warning">⚠️ NE PRENEZ PAS UN NOM DE CHAT DÉJÀ EXISTANT ( car il pourrait apparaitre dans le chat sans que ce soit vous )</div><div class="form-group"><label>Ton nom de chat pour cette discussion :</label><input type="text" id="newChatUser" placeholder="Ex: Nuage Flamboyant"></div><div class="form-group"><label>Ton rang :</label><select id="newChatRank"><option>Apprenti</option><option>Guerrier</option><option>Guérisseur</option><option>Chef</option></select></div><div class="form-group"><label>Clan avec lequel discuter :</label><select id="newChatClan"><option value="tonnerre">⚡ Clan du Tonnerre</option><option value="vent">🌪 Clan du Vent</option><option value="riviere">🌊 Clan de la Rivière</option><option value="ombre">🌑 Clan de l'Ombre</option></select></div><div class="form-actions"><button class="btn-submit" onclick="submitCreateChat()">Créer la conversation</button><button class="btn-cancel" id="cancelChatBtn" onclick="cancelChatForm()">Annuler</button></div></div>
 
-            <p style="color: #9ca3af; margin-bottom: 20px;">Partage tes pensées ou discute avec les autres guerriers de la forêt.</p>
+<div id="chatRoomView" class="chat-room-view"><div class="chat-room-header"><div><h3 id="roomTitle" style="color:#6ee7b7;">Discussion</h3><p id="roomIdentity" style="font-size:12px;color:#9ca3af;"></p></div><button class="btn-back-hub" onclick="backToHub()">⬅ Retour aux salons</button></div><div class="chat-container"><div class="chat-messages" id="roomMessages"></div><div class="typing-indicator" id="typingIndicator"></div><div class="chat-input-container" style="display:flex;flex-direction:column;gap:5px;width:100%;"><div class="emoji-bar" style="display:flex;gap:8px;padding:0 5px;font-size:18px;">[...]</div><div class="chat-input-area"><input type="text" id="roomInput" placeholder="Écris ton message ici..." onkeydown="if(event.key==='Enter') currentRoomSendMessage()"><button onclick="currentRoomSendMessage()">Envoyer</button></div></div></div></div></div></section>
 
-            
+<section class="page" id="dictionnairePage"><div class="page-content"><h1>📖 Dictionnaire de la forêt</h1><p style="color:#9ca3af;margin-bottom:20px;">Découvre le vocabulaire et les expressions utilisés par les chats des Clans.</p><table class="dict-table"><thead><tr><th>Terme</th><th>Signification</th></tr></thead><tbody><tr><td class="dict-term">Bipède</td><td>Un être humain.</td></tr><tr><td class="dict-term">Monstre</td><td>Une voiture, un camion ou tout autre véhicule motorisé des Bipèdes.</td></tr><tr><td class="dict-term">Chemin du Tonnerre</td><td>Une route goudronnée où circulent les monstres.</td></tr><tr><td class="dict-term">Monstre de feu</td><td>Un train.</td></tr><tr><td class="dict-term">Eau-de-feu</td><td>L'alcool des Bipèdes.</td></tr><tr><td class="dict-term">Herbe-à-chat</td><td>Une plante médicinale précieuse pour soigner le mal vert (pneumonie).</td></tr></tbody></table></div></section>
 
-            <div id="chatHub" class="chat-hub active">
+<section class="page" id="gamePage"><div class="page-content"><h1>🎮 Aventure</h1><div id="story-box"><p id="gameText">Crée d'abord ton personnage.</p><div id="gameChoices"></div></div></div></section>
 
-                <div class="chat-list" id="chatListContainer"></div>
+<section class="hero" id="hero"><div class="hero-content"><h1>LA GUERRE DES CLANS</h1><p>Entre dans la forêt et découvre les clans légendaires.</p><button onclick="showMap()">Explorer</button></div></section>
 
-                <button class="add-chat-btn" onclick="openNewChatForm()">+</button>
+<section class="page" id="clansPage"><div class="page-content"><h1>⚔ Les Clans</h1><div class="clans-grid"><div class="clan-card" onclick="showClan('tonnerre')"><h2>⚡ Clan du Tonnerre</h2><p>Clan courageux et loyal.</p></div><div class="clan-card" onclick="showClan('vent')"><h2>🌪 Clan du Vent</h2><p>Les plus rapides de la forêt.</p></div><div class="clan-card" onclick="showClan('riviere')"><h2>🌊 Clan de la Rivière</h2><p>Excellents nageurs.</p></div><div class="clan-card" onclick="showClan('ombre')"><h2>🌑 Clan de l'Ombre</h2><p>Discrets et rusés.</p></div></div><div id="clanIdentity"></div></div></section>
 
-            </div>
+<section class="page" id="guerriersPage"><div class="page-content"><h1>🐱 Guerriers Légendaires</h1><div class="clans-grid">...</div></div></section>
 
+<section class="page" id="territoiresPage"><div class="page-content"><h1>🌲 Les Territoires</h1><p>En cours.</p></div></section>
 
-            <div id="chatFormView" class="chat-form-view">
+<section class="page" id="galeriePage"><div class="page-content"><h1>🖼️ Galerie</h1><p>En cours.</p></div></section>
 
-                <div class="chat-warning">
+<section class="page" id="personnagePage"><div class="page-content"><h1>🐱 Création du personnage</h1><div id="story-box">...</div><button class="start-btn" onclick="startGame()">▶ Commencer l'aventure</button></div></section>
 
-                    ⚠️ NE PRENEZ PAS UN NOM DE CHAT DÉJÀ EXISTANT ( car il pourrait apparaitre dans le chat sans que ce soit vous )
+<section class="map-section" id="map"><img src="carte.jpg" alt="Carte des clans"></section>
 
-                </div>
-
-                <div class="form-group">
-
-                    <label>Ton nom de chat pour cette discussion :</label>
-
-                    <input type="text" id="newChatUser" placeholder="Ex: Nuage Flamboyant">
-
-                </div>
-
-                <div class="form-group">
-
-                    <label>Ton rang :</label>
-
-                    <select id="newChatRank">
-
-                        <option>Apprenti</option>
-
-                        <option>Guerrier</option>
-
-                        <option>Guérisseur</option>
-
-                        <option>Chef</option>
-
-                    </select>
-
-                </div>
-
-                <div class="form-group">
-
-                    <label>Clan avec lequel discuter :</label>
-
-                    <select id="newChatClan">
-
-                        <option value="tonnerre">⚡ Clan du Tonnerre</option>
-
-                        <option value="vent">🌪 Clan du Vent</option>
-
-                        <option value="riviere">🌊 Clan de la Rivière</option>
-
-                        <option value="ombre">🌑 Clan de l'Ombre</option>
-
-                    </select>
-
-                </div>
-
-                <div class="form-actions">
-
-                    <button class="btn-submit" onclick="submitCreateChat()">Créer la conversation</button>
-
-                    <button class="btn-cancel" id="cancelChatBtn" onclick="cancelChatForm()">Annuler</button>
-
-                </div>
-
-            </div>
-
-
-            <div id="chatRoomView" class="chat-room-view">
-
-                <div class="chat-room-header">
-
-                    <div>
-
-                        <h3 id="roomTitle" style="color:#6ee7b7;">Discussion</h3>
-
-                        <p id="roomIdentity" style="font-size:12px; color:#9ca3af;"></p>
-
-                    </div>
-
-                    <button class="btn-back-hub" onclick="backToHub()">⬅ Retour aux salons</button>
-
-                </div>
-
-                <div class="chat-container">
-
-                    <div class="chat-messages" id="roomMessages"></div>
-
-                    <div class="typing-indicator" id="typingIndicator"></div>
-
-                   <div class="chat-input-container" style="display: flex; flex-direction: column; gap: 5px; width: 100%;">
-    <div class="emoji-bar" style="display: flex; gap: 8px; padding: 0 5px; font-size: 18px;">
-        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🐱'">🐱</span>
-        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '⚡'">⚡</span>
-        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🌪️'">🌪️</span>
-        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🌊'">🌊</span>
-        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🌑'">🌑</span>
-        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🐾'">🐾</span>
-        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '⚔️'">⚔️</span>
-        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🐭'">🐭</span>
-        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🔒'">🔒</span>
-        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🌲'">🌲</span>
-        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '😁'">😁</span>
-        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🐱'">🐱</span>
-        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '✨'">✨</span>
-        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🐈'">🐈</span>
-        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🐾'">🐾</span>
-        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '❤️'">❤️</span>
-        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🌿'">🌿</span>
-        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '💨'">💨</span>
-        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '😻'">😻</span>
-        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '👑'">👑</span>
-        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🗺️'">🗺️</span>
-        <span style="cursor: pointer;" onclick="document.getElementById('roomInput').value += '🍁'">🍁</span>
-    </div>
-    
-    <div class="chat-input-area">
-        <input type="text" id="roomInput" placeholder="Écris ton message ici..." onkeydown="if(event.key === 'Enter') currentRoomSendMessage()">
-        <button onclick="currentRoomSendMessage()">Envoyer</button>
-    </div>
-</div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <section class="page" id="dictionnairePage">
-
-        <div class="page-content">
-
-            <h1>📖 Dictionnaire de la forêt</h1>
-
-            <p style="color: #9ca3af; margin-bottom: 20px;">Découvre le vocabulaire et les expressions utilisés par les chats des Clans.</p>
-
-            <table class="dict-table">
-
-                <thead>
-
-                    <tr>
-
-                        <th>Terme</th>
-
-                        <th>Signification</th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr>
-
-                        <td class="dict-term">Bipède</td>
-
-                        <td>Un être humain.</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td class="dict-term">Monstre</td>
-
-                        <td>Une voiture, un camion ou tout autre véhicule motorisé des Bipèdes.</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td class="dict-term">Chemin du Tonnerre</td>
-
-                        <td>Une route goudronnée où circulent les monstres.</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td class="dict-term">Monstre de feu</td>
-
-                        <td>Un train.</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td class="dict-term">Eau-de-feu</td>
-
-                        <td>L'alcool des Bipèdes.</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td class="dict-term">Herbe-à-chat</td>
-
-                        <td>Une plante médicinale précieuse pour soigner le mal vert (pneumonie).</td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-    </section>
-
-
-    <section class="page" id="gamePage">
-
-        <div class="page-content">
-
-            <h1>🎮 Aventure</h1>
-
-            <div id="story-box">
-
-                <p id="gameText">Crée d'abord ton personnage.</p>
-
-                <div id="gameChoices"></div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <section class="hero" id="hero">
-
-        <div class="hero-content">
-
-            <h1>LA GUERRE DES CLANS</h1>
-
-            <p>Entre dans la forêt et découvre les clans légendaires.</p>
-
-            <button onclick="showMap()">Explorer</button>
-
-        </div>
-
-    </section>
-
-
-    <section class="page" id="clansPage">
-
-        <div class="page-content">
-
-            <h1>⚔ Les Clans</h1>
-
-            <div class="clans-grid">
-
-                <div class="clan-card" onclick="showClan('tonnerre')">
-
-                    <h2>⚡ Clan du Tonnerre</h2>
-
-                    <p>Clan courageux et loyal.</p>
-
-                </div>
-
-                <div class="clan-card" onclick="showClan('vent')">
-
-                    <h2>🌪 Clan du Vent</h2>
-
-                    <p>Les plus rapides de la forêt.</p>
-
-                </div>
-
-                <div class="clan-card" onclick="showClan('riviere')">
-
-                    <h2>🌊 Clan de la Rivière</h2>
-
-                    <p>Excellents nageurs.</p>
-
-                </div>
-
-                <div class="clan-card" onclick="showClan('ombre')">
-
-                    <h2>🌑 Clan de l'Ombre</h2>
-
-                    <p>Discrets et rusés.</p>
-
-                </div>
-
-            </div>
-
-            <div id="clanIdentity"></div>
-
-        </div>
-
-    </section>
-
-
-    <section class="page" id="guerriersPage">
-    <div class="page-content">
-
-        <h1>🐱 Guerriers Légendaires</h1>
-
-        <div class="clans-grid">
-
-            <div class="identity-card">
-                <img src="images/etoile-de-feu.jpg" alt="Étoile de Feu"style="width:100%;border-radius:12px;margin-bottom:10px;">
-                <h2>🔥 Étoile de Feu</h2>
-                <p><b>Clan :</b> Clan du Tonnerre</p>
-                <p><b>Rang :</b> Chef</p>
-                <p><b>Description :</b> Ancien chat domestique devenu l'un des plus grands chefs de l'histoire des Clans.</p>
-            </div>
-
-            <div class="identity-card">
-                <h2>⚔️ Plume Grise</h2>
-                <p><b>Clan :</b> Clan du Tonnerre</p>
-                <p><b>Rang :</b> Guerrier</p>
-                <p><b>Description :</b> Meilleur ami d'Étoile de Feu, connu pour sa loyauté et son courage.</p>
-            </div>
-
-            <div class="identity-card">
-                <h2>🌑 Étoile du Tigre</h2>
-                <p><b>Clan :</b> Clan de l'Ombre</p>
-                <p><b>Rang :</b> Chef</p>
-                <p><b>Description :</b> Chef ambitieux et redouté ayant marqué l'histoire des Clans.</p>
-            </div>
-
-            <div class="identity-card">
-                <h2>🌊 Étoile de Léopard</h2>
-                <p><b>Clan :</b> Clan de la Rivière</p>
-                <p><b>Rang :</b> Chef</p>
-                <p><b>Description :</b> Grande dirigeante du Clan de la Rivière, fière et déterminée.</p>
-            </div>
-
-            <div class="identity-card">
-                <h2>⭐ Pelage de Lion</h2>
-                <p><b>Clan :</b> Clan du Tonnerre</p>
-                <p><b>Rang :</b> Guerrier</p>
-                <p><b>Description :</b> Guerrier puissant issu de la prophétie des Trois.</p>
-            </div>
-
-            <div class="identity-card">
-                <h2>🌙 Œil de Geai</h2>
-                <p><b>Clan :</b> Clan du Tonnerre</p>
-                <p><b>Rang :</b> Guérisseur</p>
-                <p><b>Description :</b> Guérisseur aveugle doté d'un lien exceptionnel avec le Clan des Étoiles.</p>
-            </div>
-
-            <div class="identity-card">
-                <h2>💨 Feuille de Houx</h2>
-                <p><b>Clan :</b> Clan du Tonnerre</p>
-                <p><b>Rang :</b> Guerrière</p>
-                <p><b>Description :</b> Guerrière courageuse attachée au Code du Guerrier.</p>
-            </div>
-
-            <div class="identity-card">
-                <h2>🍃 Feuille de Lune</h2>
-                <p><b>Clan :</b> Clan du Tonnerre</p>
-                <p><b>Rang :</b> Guérisseuse</p>
-                <p><b>Description :</b> Guérisseuse respectée connue pour sa sagesse.</p>
-            </div>
-
-        </div>
-
-    </div>
-
-    </section>
-
-
-    <section class="page" id="territoiresPage">
-
-        <div class="page-content">
-
-            <h1>🌲 Les Territoires</h1>
-
-            <p>En cours.</p>
-
-        </div>
-
-    </section>
-
-
-    <section class="page" id="galeriePage">
-
-        <div class="page-content">
-
-            <h1>🖼️ Galerie</h1>
-
-            <p>En cours.</p>
-
-        </div>
-
-    </section>
-
-
-    <section class="page" id="personnagePage">
-
-        <div class="page-content">
-
-            <h1>🐱 Création du personnage</h1>
-
-            <div id="story-box">
-
-                <label>Nom du chat :</label><br><br>
-
-                <input type="text" id="catName" placeholder="Ex : Étoile de Feu"><br><br>
-
-                <label>Choisis ton clan :</label><br><br>
-
-                <select id="clan">
-
-                    <option>⚡ Clan du Tonnerre</option>
-
-                    <option>🌪 Clan du Vent</option>
-
-                    <option>🌊 Clan de la Rivière</option>
-
-                    <option>🌑 Clan de l'Ombre</option>
-
-                </select><br><br>
-
-                <label>Choisis ton rang :</label><br><br>
-
-                <select id="rank">
-
-                    <option>Apprenti</option>
-
-                    <option>Guerrier</option>
-
-                    <option>Guérisseur</option>
-
-                    <option>Chef</option>
-
-                </select>
-
-                <div class="player-avatar">
-
-                    <img id="avatarImage" src="images/chat-par-defaut.png" alt="Avatar">
-
-                </div>
-
-                <input type="file" id="avatarInput" accept="image/*" onchange="changeAvatar(event)"><br><br>
-
-                <button onclick="createCharacter()">Créer mon personnage</button>
-
-                <div id="characterCard" style="margin-top:30px;"></div>
-
-                <div class="player-stats">
-
-                    <p>⭐ Réputation : <span id="playerRep">0</span></p>
-
-                    <p>🎒 Inventaire : <span id="playerInventory">Vide</span></p>
-
-                </div>
-
-            </div>
-
-            <button class="start-btn" onclick="startGame()">▶ Commencer l'aventure</button>
-
-        </div>
-
-    </section>
-
-
-    <section class="map-section" id="map">
-
-        <img src="carte.jpg" alt="Carte des clans">
-
-    </section>
-
+<script>
 
     <script>
 
-        let player = null;
+        let player=null, conversations=[], activeRoomId=null, simulationTimeoutId=null, nomActuel="";
 
-        
+function $(id){return document.getElementById(id);}
 
-        function toggleMenu(){
+function toggleMenu(){$("sidebar").classList.toggle("active");}
 
-            document.getElementById("sidebar").classList.toggle("active");
-
-        }
-
-
-        function hideAllSections(){
-
-            document.getElementById("hero").style.display = "none";
-
-            document.getElementById("map").classList.remove("active");
-
-            document.querySelectorAll(".page").forEach(page => {
-
-                page.classList.remove("active");
-
-            });
-
-        }
-
-
-        function showMap(){
-
-            hideAllSections();
-
-            document.getElementById("map").classList.add("active");
-
-        }
-
-
-        function showPage(pageId){
-
-            hideAllSections();
-
-            document.getElementById(pageId).classList.add("active");
-
-
-            if(pageId === "histoirePage"){
-
-                showStory(1);
-
-            }
-
-            document.getElementById("sidebar").classList.remove("active");
-
-        }
-
-
-        function changeAvatar(event){
-
-            const file = event.target.files[0];
-
-            if(!file) return;
-
-
-            const reader = new FileReader();
-
-            reader.onload = function(e){
-
-                document.getElementById("avatarImage").src = e.target.result;
-
-            }
-
-            reader.readAsDataURL(file);
-
-        }
-
-
-        function forestMission(){
-
-            gainRep(10);
-
-            document.getElementById("gameText").innerText = "Tu explores la forêt et aides un ancien. +10 réputation";
-
-        }
-
-
-        function patrolMission(){
-
-            gainRep(15);
-
-            document.getElementById("gameText").innerText = "Tu protèges la frontière du clan. +15 réputation";
-
-        }
-
-
-        function huntMission(){
-
-            gainRep(5);
-
-            document.getElementById("gameText").innerText = "Tu attrapes plusieurs souris. +5 réputation";
-
-        }
-
-
-        function startGame(){ 
- if(!player){
-
-                alert("Crée d'abord ton personnage !");
-
-                return;
-
-            }
-
-            showPage("gamePage");
-
-            document.getElementById("gameText").innerHTML = `
-
-                Bienvenue <b>${player.nom}</b>.<br><br>
-
-                Tu es un ${player.rang} du ${player.clan}.<br><br>
-
-                Une nouvelle aventure commence...
-
-            `;
-
-            document.getElementById("gameChoices").innerHTML = `
-
-                <button onclick="forestMission()">🌲 Explorer la forêt</button>
-
-                <button onclick="patrolMission()">🐾 Faire une patrouille</button>
-
-                <button onclick="huntMission()">🐭 Chasser</button>
-
-            `;
-
-        }
-
-
-        function showClan(clan){
-
-            const card = document.getElementById("clanIdentity");
-
-            if(clan === "tonnerre"){
-
-                card.innerHTML = `
-
-                <div class="identity-card">
-
-                    <h2>⚡ Clan du Tonnerre</h2>
-
-                    <p><b>Chef :</b> Étoile de Feu</p>
-
-                    <p><b>Territoire :</b> Forêt dense</p>
-
-                    <p><b>Qualités :</b> Courage, loyauté, honneur</p>
-
-                    <p><b>Proie favorite :</b> Souris et écureuils</p>
-
-                    <p><b>Description :</b> Le Clan du Tonnerre est réputé pour sa bravoure et son respect du Code du Guerrier.</p>
-
-                </div>`;
-
-            } else if(clan === "vent"){
-
-                card.innerHTML = `
-
-                <div class="identity-card">
-
-                    <h2>🌪 Clan du Vent</h2>
-
-                    <p><b>Chef :</b> Étoile Solitaire</p>
-
-                    <p><b>Territoire :</b> Landes ouvertes</p>
-
-                    <p><b>Qualités :</b> Rapidité, endurance</p>
-
-                    <p><b>Proie favorite :</b> Lapins</p>
-
-                    <p><b>Description :</b> Les chats du Vent sont les plus rapides de toute la forêt.</p>
-
-                </div>`;
-
-            } else if(clan === "riviere"){
-
-                card.innerHTML = `
-
-                <div class="identity-card">
-
-                    <h2>🌊 Clan de la Rivière</h2>
-
-                    <p><b>Chef :</b> Étoile de Léopard</p>
-
-                    <p><b>Territoire :</b> Rivières et marais</p>
-
-                    <p><b>Qualités :</b> Natation, pêche</p>
-
-                    <p><b>Proie favorite :</b> Poissons</p>
-
-                    <p><b>Description :</b> Les guerriers de la Rivière sont célèbres pour leurs talents de nageurs.</p>
-
-                </div>`;
-
-            } else if(clan === "ombre"){
-
-                card.innerHTML = `
-
-                <div class="identity-card">
-
-                    <h2>🌑 Clan de l'Ombre</h2>
-
-                    <p><b>Chef :</b> Étoile du Tigre</p>
-
-                    <p><b>Territoire :</b> Marécages sombres</p>
-
-                    <p><b>Qualités :</b> Ruse, discrétion</p>
-
-                    <p><b>Proie favorite :</b> Grenouilles et lézards</p>
-
-                    <p><b>Description :</b> Le Clan de l'Ombre est mystérieux, ambitieux et redouté.</p>
-
-                </div>`;
-
-            }
-
-        }
-
-
-        function endStory(){
-
-            document.getElementById("choices").innerHTML = `<button onclick="showStory(1)">🔄 Recommencer l'histoire</button>`;
-
-        }
-
-
-        function showStory(step){
-
-            const text = document.getElementById("story-text");
-
-            const choices = document.getElementById("choices");
-
-            switch(step){
-
-                case 1:
-
-                    text.innerText = "Tu te réveilles dans la forêt obscure.";
-
-                    choices.innerHTML = `
-
-                        <button onclick="showStory(2)">Aller vers le bruit</button>
-
-                        <button onclick="showStory(3)">Rester caché</button>
-
-                    `;
-
-                break;
-
-                case 2:
-
-                    text.innerText = "Tu avances et découvres un loup violent.";
-
-                    choices.innerHTML = `
-
-                        <button onclick="showStory(4)">L'aider</button>
-
-                        <button onclick="showStory(5)">L'ignorer</button>
-
-                    `;
-
-                break;
-
-                case 3:
-
-                    text.innerText = "Tu restes caché. Une patrouille du Clan de l'Ombre passe devant toi.";
-
-                    choices.innerHTML = `
-
-                        <button onclick="showStory(6)">Les suivre</button>
-
-                        <button onclick="showStory(7)">Attendre leur départ</button>
-
-                    `;
-
-                break;
-
-                case 4:
-
-                    text.innerText = "Tu aides le loup. Après avoir repris des forces, il te parle d'une ancienne prophétie.";
-
-                    choices.innerHTML = `<button onclick="showStory(8)">Écouter la prophétie</button><button onclick="showStory(9)">Continuer ton chemin</button>`;
-
-                break;
-
-                case 5:
-
-                    text.innerText = "Tu ignores le loup et poursuis ta route. Plus loin, tu aperçois un chaton perdu.";
-
-                    choices.innerHTML = `<button onclick="showStory(10)">L'aider</button><button onclick="showStory(11)">L'ignorer</button>`;
-
-                break;
-
-                case 6:
-
-                    text.innerText = "Tu suis discrètement la patrouille jusqu'à un ancien camp abandonné.";
-
-                    choices.innerHTML = `<button onclick="showStory(12)">Entrer dans le camp</button><button onclick="showStory(13)">Observer de loin</button>`;
-
-                break;
-
-                case 7:
-
-                    text.innerText = "Tu attends leur départ. Une étrange odeur te conduit vers un tunnel caché.";
-
-                    choices.innerHTML = `<button onclick="showStory(14)">Explorer le tunnel</button><button onclick="showStory(15)">Retourner au camp</button>`;
-
-                break;
-
-                case 8: text.innerText = "La prophétie annonce l'arrivée d'un grand danger pour les clans."; endStory(); break;
-
-                case 9: text.innerText = "Tu poursuis ton chemin et découvres un nouveau territoire."; endStory(); break;
-
-                case 10: text.innerText = "Le chaton te remercie et rejoint ton clan."; endStory(); break;
-
-                case 11: text.innerText = "Le chaton disparaît dans la forêt."; endStory(); break;
-
-                case 12: text.innerText = "Dans le camp abandonné, tu trouves un ancien trésor."; endStory(); break;
-
-                case 13: text.innerText = "Tu observes de loin et découvres un mystérieux secret."; endStory(); break;
-
-                case 14: text.innerText = "Le tunnel mène à une grotte sacrée du Clan des Étoiles."; endStory(); break;
-
-                case 15: text.innerText = "Tu retournes au camp avec de nombreuses questions."; endStory(); break;
-
-            }
-
-        }
-
-        
-
-        function createCharacter(){
-
-            const name = document.getElementById("catName").value;
-
-            const clan = document.getElementById("clan").value;
-
-            const rank = document.getElementById("rank").value;
-
-
-            if(name === ""){
-
-                alert("Choisis un nom !");
-
-                return;
-
-            }
-
-
-            player = { nom: name, clan: clan, rang: rank, reputation: 0, vie: 100 };
-
-            const avatarSrc = document.getElementById("avatarImage").src;
-
-
-            document.getElementById("characterCard").innerHTML = `
-
-            <div class="player-card">
-
-                <div class="player-avatar"><img src="${avatarSrc}"></div>
-
-                <div class="player-info">
-
-                    <h2>${player.nom}</h2>
-
-                    <p>🐾 Rang : ${player.rang}</p>
-
-                    <p>${player.clan}</p>
-
-                    <p>❤️ Vie : ${player.vie}</p>
-
-                    <p>⭐ Réputation : ${player.reputation}</p>
-
-                    <p>🎒 Inventaire : Vide</p>
-
-                </div>
-
-            </div>`;
-
-        }
-
-
-        function gainRep(amount){
-
-            player.reputation += amount;
-
-            const avatarSrc = document.getElementById("avatarImage").src;
-
-            document.getElementById("characterCard").innerHTML = `
-
-            <div class="player-card">
-
-                <div class="player-avatar"><img src="${avatarSrc}"></div>
-
-                <div class="player-info">
-
-                    <h2>${player.nom}</h2>
-
-                    <p>🐾 Rang : ${player.rang}</p>
-
-                    <p>${player.clan}</p>
-
-                    <p>❤️ Vie : ${player.vie}</p>
-
-                    <p>⭐ Réputation : ${player.reputation}</p>
-
-                    <p>🎒 Inventaire : Vide</p>
-
-                </div>
-
-            </div>`;
-
-        }
-
-
-        /* --- WHATSAPP SIMULATION HUB ENGINE --- */
-
-        const clanChatData = {
-
-    tonnerre: {
-        name: "⚡ Groupe du Tonnerre",
-        members: [
-            {
-                nom: "Plume Grise",
-                statut: "Guerrier expérimenté ⚔️",
-                phrases: [
-                    "La frontière est calme aujourd’hui.",
-                    "J’ai vu des traces près du ruisseau.",
-                    "Quelqu’un a dormi hors du camp cette nuit ?",
-                    "Je pars en patrouille seul.",
-                    "Les apprentis sont trop bruyants.",
-                    "Le gibier est rare aujourd’hui.",
-                    "Restez sur vos gardes.",
-                    "Je sens une odeur étrange.",
-                    "Le Clan des Étoiles nous observe.",
-                    "On devrait renforcer la frontière."
-                ]
-            },
-            {
-                nom: "Pelage de Lion",
-                statut: "Mentor 🐾",
-                phrases: [
-                    "L’entraînement commence maintenant.",
-                    "Restez concentrés.",
-                    "Un guerrier ne baisse jamais sa garde.",
-                    "Les apprentis, suivez-moi.",
-                    "Le respect du code est essentiel.",
-                    "Je surveille vos progrès.",
-                    "La discipline fait la force du clan.",
-                    "Encore un effort.",
-                    "Ne perdez pas votre temps.",
-                    "Bonne chasse aujourd’hui."
-                ]
-            },
-            {
-               nom: "Nuage agile",
-                statut: "Apprenti 😁",
-                phrases: [
-                    "Je suis fatigué...",
-                    "Personne ne peut me suivre.",
-                    "Je vais aider Museau cendré à récolter ses remèdes.",
-                    "Qui veut venir avec moi !",
-                    "Je vais explorer le territoire des bipèdes.",
-                    "Je n’ai pas peur du danger.",
-                    "Je suis le plus fort.",
-                    "Je connais chaque chemin.",
-                    "Quelqu’un vient jouer avec moi ?",
-                    "Je fais caca.",
-                    "J'ai FAIM !!!",
-                    "Quelqu'un a a mangé"
-                ]
-            },
-            {
-                nom: "Museau cendré",
-                statut: "Guerriseuse 🌪",
-                phrases: [
-                    "J’ai couru toute la forêt aujourd’hui !",
-                    "Personne ne peut me suivre.",
-                    "Le vent est parfait pour aller recolter des remedes.",
-                    "Qui veut venir avec moi !",
-                    "Je vais explorer la frontière.",
-                    "Je n’ai pas peur du danger.",
-                    "La vitesse est ma force.",
-                    "Je connais chaque chemin.",
-                    "Quelqu’un vient avec moi ?",
-                    "Je repars immédiatement."
-                ]
-            },
-            {
-                nom: "Griffe de ronce",
-                statut: "Guerrier discret 😺",
-                phrases: [
-                    "Quelqu’un nous observe.",
-                    "Je n’aime pas ces odeurs.",
-                    "Restez silencieux.",
-                    "Je surveille la frontière nord.",
-                    "Le danger approche.",
-                    "Je préfère travailler seul.",
-                    "Ne faites pas de bruit.",
-                    "J’ai entendu des pas.",
-                    "Ce territoire n’est pas sûr.",
-                    "Je vais vérifier."
-                ]
-            }
-        ]
-    },
-
-    vent: {
-        name: "🌪 Groupe du Vent",
-        members: [
-            {
-                nom: "Étoile Solitaire",
-                statut: "Chef 🌾",
-                phrases: [
-                    "La plaine est calme.",
-                    "Nous devons rester rapides.",
-                    "Les chiens sont proches.",
-                    "Le vent nous protège.",
-                    "Je veux un rapport tout de suite.",
-                    "Surveillez l’horizon.",
-                    "Nous devons chasser.",
-                    "Restez en mouvement.",
-                    "Ne vous arrêtez jamais.",
-                    "Le clan doit survivre."
-                ]
-            },
-            {
-                nom: "Plume de jais🐈‍⬛",
-                statut: "Guerrier rapide 💨",
-                phrases: [
-                    "Je cours plus vite que le vent !",
-                    "Personne ne m’attrape.",
-                    "J’ai vu un lapin énorme.",
-                    "La course était incroyable.",
-                    "Je repars chasser.",
-                    "Le terrain est parfait.",
-                    "Je suis déjà loin.",
-                    "Encore plus vite !",
-                    "Je reviens bientôt.",
-                    "J’adore courir."
-                ]
-            }
-        ]
-    },
-
-    riviere: {
-        name: "🌊 Groupe de la Rivière",
-        members: [
-            {
-                nom: "Patte de Brume",
-                statut: "Pêcheur 🐟",
-                phrases: [
-                    "L’eau est parfaite aujourd’hui.",
-                    "J’ai attrapé un gros poisson.",
-                    "Le courant est fort.",
-                    "La rivière est calme.",
-                    "Je surveille les berges.",
-                    "Attention aux rapides.",
-                    "Je plonge à nouveau.",
-                    "Le poisson est abondant.",
-                    "Je rentre au camp.",
-                    "Bonne pêche à tous."
-                ]
-            }
-        ]
-    },
-
-    ombre: {
-        name: "🌑 Groupe de l’Ombre",
-        members: [
-            {
-                nom: "Étoile du Tigre",
-                statut: "Chef 👑",
-                phrases: [
-                    "Le gibier se fait rare.",
-                    "Nous devons être prudents.",
-                    "La patrouille a vu un renard.",
-                    "Le silence est notre arme.",
-                    "Préparez les frontières.",
-                    "Je veux des rapports.",
-                    "Le clan doit rester invisible.",
-                    "Nous contrôlons la nuit.",
-                    "Personne ne nous verra venir.",
-                    "Agissez dans l’ombre."
-                ]
-            },
-            {
-                nom: "Crocs Noirs",
-                statut: "Guerrier 🌑",
-                phrases: [
-                    "Je marche dans l’ombre.",
-                    "Personne ne me voit.",
-                    "J’ai suivi une piste.",
-                    "Le danger est proche.",
-                    "Je surveille les intrus.",
-                    "Ne faites pas confiance.",
-                    "J’écoute la forêt.",
-                    "Je reste caché.",
-                    "Je vais patrouiller.",
-                    "Tout est silencieux."
-                ]
-            }
-        ]
-    }
-};
-
-        let conversations = []; 
-
-        let activeRoomId = null;
-
-        let simulationTimeoutId = null; 
-
-
-        function renderChatHub() {
-
-            const container = document.getElementById("chatListContainer");
-
-            container.innerHTML = "";
-
-            if (conversations.length === 0) {
-
-                container.innerHTML = `<p style="text-align:center; color:#9ca3af; margin-top:20px;">Aucune discussion. Clique sur "+" pour commencer.</p>`;
-
-                return;
-
-            }
-
-            conversations.forEach((room, index) => {
-
-                const clanMeta = clanChatData[room.clanKey];
-
-                const lastMsg = room.messages.length > 0 ? room.messages[room.messages.length - 1].text : "Aucun message";
-
-                const item = document.createElement("div");
-
-                item.className = "chat-item";
-
-                item.onclick = () => openChatRoom(index);
-
-                let badgeHTML = room.unread > 0 ? `<div class="chat-badge">${room.unread}</div>` : "";
-
-                item.innerHTML = `
-
-                    <div class="chat-item-info">
-
-                        <h3>${clanMeta.name}</h3>
-
-                        <p style="color:#6ee7b7; font-size:12px;">Moi : ${room.userName}</p>
-
-                        <p style="text-overflow:ellipsis; overflow:hidden; white-space:nowrap; max-width:400px; color:#9ca3af;">${lastMsg}</p>
-
-                    </div> ${badgeHTML}
-
-                `;
-
-                container.appendChild(item);
-
-            });
-
-        }
-
-
-        function openNewChatForm() {
-
-            document.getElementById("chatHub").classList.remove("active");
-
-            document.getElementById("chatRoomView").classList.remove("active");
-
-            document.getElementById("chatFormView").classList.add("active");
-
-            document.getElementById("cancelChatBtn").style.display = conversations.length === 0 ? "none" : "block";
-
-        }
-
-
-        function cancelChatForm() {
-
-            document.getElementById("chatFormView").classList.remove("active");
-
-            document.getElementById("chatHub").classList.add("active");
-
-            renderChatHub();
-
-        }
-
-
-        function submitCreateChat() {
-
-            const nameInput = document.getElementById("newChatUser").value.trim();
-
-            const rank = document.getElementById("newChatRank").value;
-
-            const clanKey = document.getElementById("newChatClan").value;
-
-            if(nameInput === "") return;
-
-            
-
-            const newIndex = createChatInstance(nameInput, rank, clanKey);
-
-            document.getElementById("newChatUser").value = "";
-
-            document.getElementById("chatFormView").classList.remove("active");
-
-            openChatRoom(newIndex);
-
-        }
-
-
-        function createChatInstance(userName, userRank, clanKey) {
-
-            const clanMeta = clanChatData[clanKey];
-
-            let initialMessages = [];
-
-            let usedPhrases = new Set();
-
-            let randomMember = clanMeta.members[Math.floor(Math.random() * clanMeta.members.length)];
-
-            let randomText = randomMember.phrases[Math.floor(Math.random() * randomMember.phrases.length)];
-
-            
-
-            usedPhrases.add(randomText);
-
-            initialMessages.push({ sender: randomMember.nom, statut: randomMember.statut, text: randomText, isUser: false });
-
-            
-
-            conversations.push({ userName, userRank, clanKey, messages: initialMessages, unread: 0, lastSender: randomMember.nom, usedPhrases });
-
-            return conversations.length - 1;
-
-        }
-
-
-        function openChatRoom(index) {
-
-            activeRoomId = index;
-
-            conversations[index].unread = 0; 
-
-            document.getElementById("chatHub").classList.remove("active");
-
-            document.getElementById("chatFormView").classList.remove("active");
-
-            document.getElementById("chatRoomView").classList.add("active");
-
-            document.getElementById("roomTitle").innerText = clanChatData[conversations[index].clanKey].name;
-
-            document.getElementById("roomIdentity").innerText = `Connecté en tant que : ${conversations[index].userName}`;
-
-            renderRoomMessages();
-
-        }
-
-
-        function renderRoomMessages() {
-
-            if(activeRoomId === null) return;
-
-            const container = document.getElementById("roomMessages");
-
-            container.innerHTML = "";
-
-            conversations[activeRoomId].messages.forEach(msg => {
-
-                const bubble = document.createElement("div");
-
-                bubble.className = msg.isUser ? "chat-bubble user-msg" : "chat-bubble";
-
-                bubble.innerHTML = `<div class="chat-sender">${msg.sender}</div><div class="chat-sender-statut">${msg.statut}</div><div class="chat-text">${msg.text}</div>`;
-
-                container.appendChild(bubble);
-
-            });
-
-            container.scrollTop = container.scrollHeight;
-
-        }
-
-
-        function backToHub() {
-
-            activeRoomId = null;
-
-            document.getElementById("chatRoomView").classList.remove("active");
-
-            document.getElementById("chatHub").classList.add("active");
-
-            renderChatHub();
-
-        }
-
-
-        function currentRoomSendMessage() {
-
-            const input = document.getElementById("roomInput");
-
-            if(input.value.trim() === "" || activeRoomId === null) return;
-
-            conversations[activeRoomId].messages.push({ sender: conversations[activeRoomId].userName, statut: conversations[activeRoomId].userRank, text: input.value.trim(), isUser: true });
-
-            input.value = "";
-
-            renderRoomMessages();
-
-        }
-
-
-        function scheduleNextAutoMessage() {
-
-            setTimeout(() => {
-
-                if (conversations.length > 0) {
-
-                    const rId = Math.floor(Math.random() * conversations.length);
-
-                    const room = conversations[rId];
-
-                    const meta = clanChatData[room.clanKey];
-
-                    const member = meta.members[Math.floor(Math.random() * meta.members.length)];
-
-                    const text = member.phrases[Math.floor(Math.random() * member.phrases.length)];
-
-                    
-
-                    room.messages.push({ sender: member.nom, statut: member.statut, text: text, isUser: false });
-
-                    if (activeRoomId === rId) renderRoomMessages();
-
-                    else { room.unread++; if(document.getElementById("chatHub").classList.contains("active")) renderChatHub(); }
-
-                }
-
-                scheduleNextAutoMessage();
-
-            }, 20000);
-
-        }
-
-
-        scheduleNextAutoMessage();
-
-
-        const originalShowPage = showPage;
-
-        showPage = function(pageId) {
-
-            originalShowPage(pageId);
-
-            if(pageId === "chatPage") {
-
-                if (conversations.length === 0) openNewChatForm();
-
-                else {
-
-                    document.getElementById("chatFormView").classList.remove("active");
-
-                    document.getElementById("chatRoomView").classList.remove("active");
-
-                    document.getElementById("chatHub").classList.add("active");
-
-                    renderChatHub();
-
-                }
-
-            }
-
-        };
-
-
-        function goHome(){
-
-            hideAllSections();
-
-            document.getElementById("hero").style.display = "flex";
-
-            document.getElementById("sidebar").classList.remove("active");
-
-        }
-// LOGIQUE DU GÉNÉRATEUR ET DE LA FICHE (v1.01.05)
-const prefixes = ["Poil", "Cœur", "Pelage", "Plume", "Nuage", "Étoile", "Feuille", "Patte", "Griffe", "Museau", "Œil", "Aile", "Feu", "Tempête", "Givre", "Ombre", "Fleur"];
-const suffixes = ["de Coton", "de Pâquerette", "de Jais", "de Lion", "de Feu", "de Glace", "de Rose", "de Nuit", "de Brume", "de Cerise", "de Miel", "d'Argent", "de Cendres", "de Silex", "de Lys"];
-
-let nomActuel = "";
-
-function genererNom() {
-    const prefi = prefixes[Math.floor(Math.random() * prefixes.length)];
-    const suffi = suffixes[Math.floor(Math.random() * suffixes.length)];
-    nomActuel = `${prefi} ${suffi}`;
-    document.getElementById('nomGenere').innerText = nomActuel;
+function hideAllSections(){
+  $("hero").style.display="none";
+  $("map").classList.remove("active");
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
 }
 
-function copierNomDansFormulaire() {
-    if (nomActuel === "") {
-        alert("🔮 Génère d'abord un nom !");
-        return;
-    }
-    document.getElementById('nomChat').value = nomActuel;
+function showMap(){hideAllSections();$("map").classList.add("active");}
+
+function showPage(id){
+  hideAllSections();
+  $(id).classList.add("active");
+  if(id==="histoirePage")showStory(1);
+  $("sidebar").classList.remove("active");
 }
 
-function creerFiche(event) {
-    event.preventDefault();
+function changeAvatar(e){
+  const f=e.target.files[0]; if(!f)return;
+  const r=new FileReader();
+  r.onload=ev=>$("avatarImage").src=ev.target.result;
+  r.readAsDataURL(f);
+}
 
-    const nom = document.getElementById('nomChat').value;
-    const clan = document.getElementById('clanChat').value;
-    const grade = document.getElementById('gradeChat').value;
-    const physique = document.getElementById('physiqueChat').value;
-    const caractere = document.getElementById('caractereChat').value;
+function forestMission(){gainRep(10);$("gameText").innerText="Forêt +10 répu";}
+function patrolMission(){gainRep(15);$("gameText").innerText="Frontière +15 répu";}
+function huntMission(){gainRep(5);$("gameText").innerText="Chasse +5 répu";}
 
-    const boxResultat = document.getElementById('ficheResultat');
-    const contenu = document.getElementById('contenuFiche');
+function startGame(){
+  if(!player)return alert("Crée ton perso !");
+  showPage("gamePage");
+  $("gameText").innerHTML=`Bienvenue <b>${player.nom}</b><br>${player.rang} du ${player.clan}`;
+  $("gameChoices").innerHTML=`
+  <button onclick="forestMission()">🌲 forêt</button>
+  <button onclick="patrolMission()">🐾 patrouille</button>
+  <button onclick="huntMission()">🐭 chasse</button>`;
+}
 
-    contenu.innerHTML = `
-        <p><strong>🐱 Nom :</strong> ${nom}</p>
-        <p><strong>🛡️ Clan :</strong> ${clan}</p>
-        <p><strong>🏅 Grade :</strong> ${grade}</p>
-        <p><strong>🎨 Physique :</strong> ${physique}</p>
-        <p><strong>❤️ Caractère :</strong> ${caractere}</p>
-    `;
+function showClan(c){
+  const d=$("clanIdentity");
+  const x={
+    tonnerre:`⚡ Clan du Tonnerre Chef Étoile de Feu`,
+    vent:`🌪 Clan du Vent Chef Étoile Solitaire`,
+    riviere:`🌊 Clan de la Rivière Chef Étoile de Léopard`,
+    ombre:`🌑 Clan de l'Ombre Chef Étoile du Tigre`
+  };
+  d.innerHTML=`<div class="identity-card"><h2>${x[c]}</h2></div>`;
+}
 
-    boxResultat.style.display = "block";
+function endStory(){$("choices").innerHTML=`<button onclick="showStory(1)">restart</button>`;}
+
+function showStory(s){
+  const t=$("story-text"), c=$("choices");
+  const S={
+    1:["Tu te réveilles",[2,3]],
+    2:["Tu vois un loup",[4,5]],
+    3:["Patrouille Ombre",[6,7]],
+    4:["Prophétie",[8,9]],
+    5:["Chaton perdu",[10,11]],
+    6:["Camp abandonné",[12,13]],
+    7:["Tunnel",[14,15]],
+    8:["Prophétie danger"],9:["Nouveau territoire"],
+    10:["Chaton rejoint clan"],11:["Chaton disparu"],
+    12:["Trésor"],13:["Secret"],
+    14:["Grotte étoilée"],15:["Retour"]
+  };
+
+  t.innerText=S[s][0];
+
+  if(S[s][1]){
+    c.innerHTML=S[s][1].map(n=>`<button onclick="showStory(${n})">choix</button>`).join("");
+  } else endStory();
+}
+
+function createCharacter(){
+  const n=$("catName").value;
+  if(!n)return alert("Nom !");
+  player={nom:n,clan:$("clan").value,rang:$("rank").value,reputation:0,vie:100};
+  updateCard();
+}
+
+function gainRep(a){if(!player)return; player.reputation+=a; updateCard();}
+
+function updateCard(){
+  const img=$("avatarImage").src;
+  $("characterCard").innerHTML=`
+  <div class="player-card">
+    <img src="${img}">
+    <h2>${player.nom}</h2>
+    <p>${player.clan}</p>
+    <p>${player.rang}</p>
+    <p>❤️ ${player.vie}</p>
+    <p>⭐ ${player.reputation}</p>
+  </div>`;
+}
+
+/* CHAT */
+const clanChatData={ tonnerre:{name:"Tonnerre",members:[{nom:"Plume",statut:"Guerrier",phrases:["OK","Patrouille"]}]} };
+
+function renderChatHub(){
+  const c=$("chatListContainer");
+  if(!conversations.length)return c.innerHTML="Aucun chat";
+  c.innerHTML="";
+  conversations.forEach((r,i)=>{
+    const last=r.messages.at(-1)?.text||"";
+    const d=document.createElement("div");
+    d.className="chat-item";
+    d.onclick=()=>openChatRoom(i);
+    d.innerHTML=`<h3>${r.userName}</h3><p>${last}</p>`;
+    c.appendChild(d);
+  });
+}
+
+function openChatRoom(i){
+  activeRoomId=i;
+  $("chatRoomView").classList.add("active");
+  $("chatHub").classList.remove("active");
+  renderRoomMessages();
+}
+
+function renderRoomMessages(){
+  const c=$("roomMessages");
+  c.innerHTML="";
+  conversations[activeRoomId].messages.forEach(m=>{
+    const d=document.createElement("div");
+    d.innerText=m.text;
+    c.appendChild(d);
+  });
+}
+
+function currentRoomSendMessage(){
+  const i=$("roomInput");
+  if(!i.value.trim())return;
+  conversations[activeRoomId].messages.push({text:i.value});
+  i.value="";
+  renderRoomMessages();
+}
+
+/* NOM RP */
+const prefixes=["Poil","Cœur","Plume","Nuage"];
+const suffixes=["de Feu","de Nuit","de Brume"];
+
+function genererNom(){
+  nomActuel=`${prefixes[Math.random()*prefixes.length|0]} ${suffixes[Math.random()*suffixes.length|0]}`;
+  $("nomGenere").innerText=nomActuel;
+}
+
+function copierNomDansFormulaire(){
+  if(!nomActuel)return alert("Génère d'abord");
+  $("nomChat").value=nomActuel;
+}
+
+function creerFiche(e){
+  e.preventDefault();
+  $("ficheResultat").style.display="block";
+  $("contenuFiche").innerHTML=`
+  <p>${$("nomChat").value}</p>
+  <p>${$("clanChat").value}</p>
+  <p>${$("gradeChat").value}</p>`;
 }
     </script>
-
 </body>
-
 </html>
