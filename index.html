@@ -382,7 +382,10 @@ body{font-family:Arial,Helvetica,sans-serif;background:#0f1115;color:#fff;overfl
 
 function $(id){return document.getElementById(id);}
 
-function toggleMenu(){$("sidebar").classList.toggle("active");}
+/* UI */
+function toggleMenu(){
+  $("sidebar").classList.toggle("active");
+}
 
 function hideAllSections(){
   $("hero").style.display="none";
@@ -390,7 +393,10 @@ function hideAllSections(){
   document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
 }
 
-function showMap(){hideAllSections();$("map").classList.add("active");}
+function showMap(){
+  hideAllSections();
+  $("map").classList.add("active");
+}
 
 function showPage(id){
   hideAllSections();
@@ -399,63 +405,78 @@ function showPage(id){
   $("sidebar").classList.remove("active");
 }
 
+function goHome(){
+  hideAllSections();
+  $("hero").style.display="flex";
+  $("sidebar").classList.remove("active");
+}
+
+/* AVATAR */
 function changeAvatar(e){
-  const f=e.target.files[0]; if(!f)return;
+  const f=e.target.files[0];
+  if(!f)return;
   const r=new FileReader();
   r.onload=ev=>$("avatarImage").src=ev.target.result;
   r.readAsDataURL(f);
 }
 
-function forestMission(){gainRep(10);$("gameText").innerText="Forêt +10 répu";}
-function patrolMission(){gainRep(15);$("gameText").innerText="Frontière +15 répu";}
-function huntMission(){gainRep(5);$("gameText").innerText="Chasse +5 répu";}
+/* GAME */
+function forestMission(){gainRep(10);$("gameText").innerText="Tu explores la forêt +10";}
+function patrolMission(){gainRep(15);$("gameText").innerText="Patrouille +15";}
+function huntMission(){gainRep(5);$("gameText").innerText="Chasse +5";}
 
 function startGame(){
-  if(!player)return alert("Crée ton perso !");
+  if(!player)return alert("Crée d'abord ton personnage !");
   showPage("gamePage");
   $("gameText").innerHTML=`Bienvenue <b>${player.nom}</b><br>${player.rang} du ${player.clan}`;
   $("gameChoices").innerHTML=`
-  <button onclick="forestMission()">🌲 forêt</button>
-  <button onclick="patrolMission()">🐾 patrouille</button>
-  <button onclick="huntMission()">🐭 chasse</button>`;
+    <button onclick="forestMission()">🌲</button>
+    <button onclick="patrolMission()">🐾</button>
+    <button onclick="huntMission()">🐭</button>`;
 }
 
+/* CLANS */
 function showClan(c){
   const d=$("clanIdentity");
-  const x={
-    tonnerre:`⚡ Clan du Tonnerre Chef Étoile de Feu`,
-    vent:`🌪 Clan du Vent Chef Étoile Solitaire`,
-    riviere:`🌊 Clan de la Rivière Chef Étoile de Léopard`,
-    ombre:`🌑 Clan de l'Ombre Chef Étoile du Tigre`
+  const data={
+    tonnerre:"⚡ Clan du Tonnerre",
+    vent:"🌪 Clan du Vent",
+    riviere:"🌊 Clan de la Rivière",
+    ombre:"🌑 Clan de l'Ombre"
   };
-  d.innerHTML=`<div class="identity-card"><h2>${x[c]}</h2></div>`;
+  d.innerHTML=`<div class="identity-card"><h2>${data[c]}</h2></div>`;
 }
 
-function endStory(){$("choices").innerHTML=`<button onclick="showStory(1)">restart</button>`;}
+/* STORY (inchangée logique) */
+function endStory(){
+  $("choices").innerHTML=`<button onclick="showStory(1)">🔄 Recommencer</button>`;
+}
 
 function showStory(s){
   const t=$("story-text"), c=$("choices");
+
   const S={
     1:["Tu te réveilles",[2,3]],
-    2:["Tu vois un loup",[4,5]],
+    2:["Tu avances vers un loup",[4,5]],
     3:["Patrouille Ombre",[6,7]],
     4:["Prophétie",[8,9]],
     5:["Chaton perdu",[10,11]],
     6:["Camp abandonné",[12,13]],
     7:["Tunnel",[14,15]],
-    8:["Prophétie danger"],9:["Nouveau territoire"],
-    10:["Chaton rejoint clan"],11:["Chaton disparu"],
-    12:["Trésor"],13:["Secret"],
-    14:["Grotte étoilée"],15:["Retour"]
+    8:["Grande prophétie"],9:["Nouveau territoire"],
+    10:["Chaton rejoint"],11:["Disparu"],
+    12:["Trésor ancien"],13:["Secret"],
+    14:["Grotte du Clan des Étoiles"],15:["Retour"]
   };
 
   t.innerText=S[s][0];
 
   if(S[s][1]){
     c.innerHTML=S[s][1].map(n=>`<button onclick="showStory(${n})">choix</button>`).join("");
-  } else endStory();
+  }else endStory();
 }
 
+/* PLAYER */
 function createCharacter(){
   const n=$("catName").value;
   if(!n)return alert("Nom !");
@@ -463,7 +484,11 @@ function createCharacter(){
   updateCard();
 }
 
-function gainRep(a){if(!player)return; player.reputation+=a; updateCard();}
+function gainRep(a){
+  if(!player)return;
+  player.reputation+=a;
+  updateCard();
+}
 
 function updateCard(){
   const img=$("avatarImage").src;
@@ -478,27 +503,30 @@ function updateCard(){
   </div>`;
 }
 
-/* CHAT */
-const clanChatData={ tonnerre:{name:"Tonnerre",members:[{nom:"Plume",statut:"Guerrier",phrases:["OK","Patrouille"]}]} };
-
+/* CHAT SYSTEM (inchangé logique) */
 function renderChatHub(){
   const c=$("chatListContainer");
-  if(!conversations.length)return c.innerHTML="Aucun chat";
+  if(!conversations.length)
+    return c.innerHTML="Aucune discussion";
+
   c.innerHTML="";
   conversations.forEach((r,i)=>{
     const last=r.messages.at(-1)?.text||"";
     const d=document.createElement("div");
     d.className="chat-item";
     d.onclick=()=>openChatRoom(i);
-    d.innerHTML=`<h3>${r.userName}</h3><p>${last}</p>`;
+    d.innerHTML=`
+      <h3>${r.userName}</h3>
+      <p>${last}</p>
+    `;
     c.appendChild(d);
   });
 }
 
 function openChatRoom(i){
   activeRoomId=i;
-  $("chatRoomView").classList.add("active");
   $("chatHub").classList.remove("active");
+  $("chatRoomView").classList.add("active");
   renderRoomMessages();
 }
 
@@ -507,6 +535,7 @@ function renderRoomMessages(){
   c.innerHTML="";
   conversations[activeRoomId].messages.forEach(m=>{
     const d=document.createElement("div");
+    d.className=m.isUser?"chat-bubble user-msg":"chat-bubble";
     d.innerText=m.text;
     c.appendChild(d);
   });
@@ -514,15 +543,19 @@ function renderRoomMessages(){
 
 function currentRoomSendMessage(){
   const i=$("roomInput");
-  if(!i.value.trim())return;
-  conversations[activeRoomId].messages.push({text:i.value});
+  if(!i.value.trim()||activeRoomId===null)return;
+  conversations[activeRoomId].messages.push({
+    sender:conversations[activeRoomId].userName,
+    text:i.value,
+    isUser:true
+  });
   i.value="";
   renderRoomMessages();
 }
 
-/* NOM RP */
-const prefixes=["Poil","Cœur","Plume","Nuage"];
-const suffixes=["de Feu","de Nuit","de Brume"];
+/* NOM GENERATOR (inchangé) */
+const prefixes=["Poil","Cœur","Pelage","Plume","Nuage","Étoile"];
+const suffixes=["de Feu","de Nuit","de Brume","de Coton"];
 
 function genererNom(){
   nomActuel=`${prefixes[Math.random()*prefixes.length|0]} ${suffixes[Math.random()*suffixes.length|0]}`;
@@ -530,7 +563,7 @@ function genererNom(){
 }
 
 function copierNomDansFormulaire(){
-  if(!nomActuel)return alert("Génère d'abord");
+  if(!nomActuel)return alert("Génère d'abord !");
   $("nomChat").value=nomActuel;
 }
 
@@ -538,9 +571,12 @@ function creerFiche(e){
   e.preventDefault();
   $("ficheResultat").style.display="block";
   $("contenuFiche").innerHTML=`
-  <p>${$("nomChat").value}</p>
-  <p>${$("clanChat").value}</p>
-  <p>${$("gradeChat").value}</p>`;
+    <p>${$("nomChat").value}</p>
+    <p>${$("clanChat").value}</p>
+    <p>${$("gradeChat").value}</p>
+    <p>${$("physiqueChat").value}</p>
+    <p>${$("caractereChat").value}</p>
+  `;
 }
     </script>
 </body>
