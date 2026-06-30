@@ -3081,14 +3081,18 @@ function generateClanName(){
 }
 
 function createClanCard(){
-
-    const nom =
-        document.getElementById("clanNameInput").value;
+    const nom = document.getElementById("clanNameInput").value;
+    // Ici, on demande au code de lire ce que tu as écrit dans les cases
+    const chef = prompt("Quel est le nom du chef ?");
+    const lieutenant = prompt("Quel est le nom du lieutenant ?");
+    const guerisseur = prompt("Quel est le nom du guérisseur ?");
 
     document.getElementById("clanCardResult").innerHTML = `
         <div class="identity-card">
             <h2>${nom}</h2>
-            <p>🏕️ Clan créé avec succès.</p>
+            <p>👑 Chef : ${chef}</p>
+            <p>🐾 Lieutenant : ${lieutenant}</p>
+            <p>🌿 Guérisseur : ${guerisseur}</p>
         </div>
     `;
 }
