@@ -1313,7 +1313,9 @@
 
             <a onclick="showPage('galeriePage')">🖼 Galerie</a>
 
-           <a onclick="showPage('rpPage')">🐱 Mon personnage</a>
+            <a onclick="showPage('rpPage')">🐱 Mon personnage</a>
+            
+            <a onclick="showPage('createClanPage')">🏕️ Créer ton Clan</a>
 
             <a onclick="showPage('gamePage')">🎮 Aventure</a>
 
@@ -1828,9 +1830,47 @@
         </div>
 
     </section>
+    
+    <section class="page" id="createClanPage">
 
+    <div class="page-content">
 
-    <section class="page" id="gamePage">
+        <h1>🏕️ Créer ton Clan</h1>
+
+        <div id="story-box">
+
+            <h2>🎲 Générateur de Nom de Clan</h2>
+
+            <p id="generatedClanName">
+                Clique sur le bouton pour générer un nom.
+            </p>
+
+            <button onclick="generateClanName()">
+                Générer un nom
+            </button>
+
+            <br><br>
+
+            <label>Nom du clan :</label>
+            <br><br>
+
+            <input type="text" id="clanNameInput">
+
+            <br><br>
+
+            <button onclick="createClanCard()">
+                Créer le clan
+            </button>
+
+<div id="clanCardResult" style="margin-top:25px;"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="page" id="gamePage">
 
         <div class="page-content">
 
@@ -3014,6 +3054,43 @@ function creerFiche(event) {
     `;
 
     boxResultat.style.display = "block";
+}
+        const clanNames = [
+    "Tonnerre",
+    "Vent",
+    "Rivière",
+    "Ombre",
+    "Brume",
+    "Étoiles",
+    "Lune",
+    "Tempête",
+    "Aurore",
+    "Soleil"
+];
+
+function generateClanName(){
+
+    const randomClan =
+        clanNames[Math.floor(Math.random() * clanNames.length)];
+
+    const nom = "Clan de " + randomClan;
+
+    document.getElementById("generatedClanName").innerText = nom;
+
+    document.getElementById("clanNameInput").value = nom;
+}
+
+function createClanCard(){
+
+    const nom =
+        document.getElementById("clanNameInput").value;
+
+    document.getElementById("clanCardResult").innerHTML = `
+        <div class="identity-card">
+            <h2>${nom}</h2>
+            <p>🏕️ Clan créé avec succès.</p>
+        </div>
+    `;
 }
     </script>
 
