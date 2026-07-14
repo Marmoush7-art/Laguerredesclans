@@ -3145,11 +3145,104 @@ function createClanCard(){
         </div>
     `;
 }
-     function startEmojiQuiz(){
+     let emojiQuestions = [
+    {
+        emoji: "🔥⭐",
+        answer: "Étoile de Feu"
+    },
+    {
+        emoji: "🌊🐟",
+        answer: "Clan de la Rivière"
+    },
+    {
+        emoji: "🌪🐇",
+        answer: "Clan du Vent"
+    },
+    {
+        emoji: "🌑🌲",
+        answer: "Clan de l'Ombre"
+    },
+    {
+        emoji: "🌿🍃",
+        answer: "Guérisseur"
+    }
+];
 
-    alert("🐱 Le Quiz Emoji commence !");
+let currentEmojiQuestion = 0;
+let emojiScore = 0;
 
-}   
+
+function startEmojiQuiz(){
+
+    currentEmojiQuestion = 0;
+    emojiScore = 0;
+
+    showEmojiQuestion();
+
+}
+
+
+function showEmojiQuestion(){
+
+    const box = document.getElementById("quizContainer");
+
+    if(currentEmojiQuestion >= emojiQuestions.length){
+
+        box.innerHTML = `
+        <h2>🎉 Quiz terminé !</h2>
+        <p>Ton score : ${emojiScore}/${emojiQuestions.length}</p>
+        `;
+
+        return;
+
+    }
+
+
+    box.innerHTML = `
+
+    <div class="identity-card">
+
+        <h2>Question ${currentEmojiQuestion + 1}</h2>
+
+        <h1 style="font-size:60px;">
+            ${emojiQuestions[currentEmojiQuestion].emoji}
+        </h1>
+
+        <input id="emojiAnswer" 
+        placeholder="Ta réponse...">
+
+        <br><br>
+
+        <button onclick="checkEmojiAnswer()">
+            Valider
+        </button>
+
+    </div>
+
+    `;
+
+}
+
+
+function checkEmojiAnswer(){
+
+    const answer = document.getElementById("emojiAnswer").value;
+
+    const correct = emojiQuestions[currentEmojiQuestion].answer;
+
+
+    if(answer.toLowerCase() === correct.toLowerCase()){
+
+        emojiScore++;
+
+    }
+
+
+    currentEmojiQuestion++;
+
+    showEmojiQuestion();
+
+}
     </script>
 
 </body>
