@@ -1316,6 +1316,8 @@
             <a onclick="showPage('rpPage')">🐱 Mon personnage</a>
             
             <a onclick="showPage('createClanPage')">🏕️ Créer ton Clan</a>
+            
+            <a onclick="showPage('quizPage')">🧠 Quiz</a>
 
             <a onclick="showPage('gamePage')">🎮 Aventure</a>
 
@@ -1887,6 +1889,53 @@
         </div>
 
     </section>
+    <section class="page" id="quizPage">
+
+    <div class="page-content">
+
+        <h1>🧠 Quiz LGDC</h1>
+
+        <p style="color:#9ca3af; margin-bottom:25px;">
+            Teste tes connaissances sur La Guerre des Clans !
+        </p>
+
+        <div class="clans-grid">
+
+            <div class="identity-card">
+
+                <h2>🐱 Quiz Emoji</h2>
+
+                <p>Devine le personnage, le clan ou le rôle grâce aux emojis.</p>
+
+                <br>
+
+                <button onclick="startEmojiQuiz()">
+                    ▶ Commencer
+                </button>
+
+            </div>
+
+            <div class="identity-card">
+
+                <h2>📚 Quiz Classique</h2>
+
+                <p>Réponds à des questions sur l'univers de LGDC.</p>
+
+                <br>
+
+                <button onclick="startClassicQuiz()">
+                    ▶ Commencer
+                </button>
+
+            </div>
+
+        </div>
+
+        <div id="quizContainer" style="margin-top:40px;"></div>
+
+    </div>
+
+</section>
 
 
     <section class="hero" id="hero">
@@ -3096,6 +3145,11 @@ function createClanCard(){
         </div>
     `;
 }
+     function startEmojiQuiz(){
+
+    alert("🐱 Le Quiz Emoji commence !");
+
+}   
     </script>
 
 </body>
