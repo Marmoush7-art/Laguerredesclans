@@ -3145,27 +3145,39 @@ function createClanCard(){
         </div>
     `;
 }
-     let emojiQuestions = [
+     
+        const emojiQuestions = [
+
     {
-        emoji: "🔥⭐",
+        emoji: "🔥🐱👑",
         answer: "Étoile de Feu"
     },
+
+    {
+        emoji: "🌑🐯👑",
+        answer: "Étoile du Tigre"
+    },
+
     {
         emoji: "🌊🐟",
         answer: "Clan de la Rivière"
     },
+
     {
-        emoji: "🌪🐇",
+        emoji: "⚡🌲🐭",
+        answer: "Clan du Tonnerre"
+    },
+
+    {
+        emoji: "💨🐇",
         answer: "Clan du Vent"
     },
+
     {
-        emoji: "🌑🌲",
-        answer: "Clan de l'Ombre"
-    },
-    {
-        emoji: "🌿🍃",
+        emoji: "🌿🐱",
         answer: "Guérisseur"
     }
+
 ];
 
 let currentEmojiQuestion = 0;
@@ -3208,14 +3220,11 @@ function showEmojiQuestion(){
             ${emojiQuestions[currentEmojiQuestion].emoji}
         </h1>
 
-        <input id="emojiAnswer" 
-        placeholder="Ta réponse...">
+       <button onclick="showEmojiCorrection()">
+    👀 Voir la réponse
+</button>
 
-        <br><br>
-
-        <button onclick="checkEmojiAnswer()">
-            Valider
-        </button>
+<p id="emojiCorrection"></p>
 
     </div>
 
@@ -3237,6 +3246,34 @@ function checkEmojiAnswer(){
 
     }
 
+
+    currentEmojiQuestion++;
+
+    showEmojiQuestion();
+
+}
+        function showEmojiCorrection(){
+
+    const question = emojiQuestions[currentEmojiQuestion];
+
+    document.getElementById("emojiCorrection").innerHTML = `
+
+    <br>
+    ✅ Réponse : <b>${question.answer}</b>
+
+    <br><br>
+
+    <button onclick="nextEmojiQuestion()">
+        ➡ Question suivante
+    </button>
+
+    `;
+
+}
+
+
+
+function nextEmojiQuestion(){
 
     currentEmojiQuestion++;
 
