@@ -1313,7 +1313,11 @@
 
             <a onclick="showPage('galeriePage')">🖼 Galerie</a>
 
-           <a onclick="showPage('rpPage')">🐱 Mon personnage</a>
+            <a onclick="showPage('rpPage')">🐱 Mon personnage</a>
+            
+            <a onclick="showPage('createClanPage')">🏕️ Créer ton Clan</a>
+            
+            <a onclick="showPage('quizPage')">🧠 Quiz</a>
 
             <a onclick="showPage('gamePage')">🎮 Aventure</a>
 
@@ -1828,9 +1832,47 @@
         </div>
 
     </section>
+    
+    <section class="page" id="createClanPage">
 
+    <div class="page-content">
 
-    <section class="page" id="gamePage">
+        <h1>🏕️ Créer ton Clan</h1>
+
+        <div id="story-box">
+
+            <h2>🎲 Générateur de Nom de Clan</h2>
+
+            <p id="generatedClanName">
+                Clique sur le bouton pour générer un nom.
+            </p>
+
+            <button onclick="generateClanName()">
+                Générer un nom
+            </button>
+
+            <br><br>
+
+            <label>Nom du clan :</label>
+            <br><br>
+
+            <input type="text" id="clanNameInput">
+
+            <br><br>
+
+            <button onclick="createClanCard()">
+                Créer le clan
+            </button>
+
+<div id="clanCardResult" style="margin-top:25px;"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="page" id="gamePage">
 
         <div class="page-content">
 
@@ -1847,6 +1889,53 @@
         </div>
 
     </section>
+    <section class="page" id="quizPage">
+
+    <div class="page-content">
+
+        <h1>🧠 Quiz LGDC</h1>
+
+        <p style="color:#9ca3af; margin-bottom:25px;">
+            Teste tes connaissances sur La Guerre des Clans !
+        </p>
+
+        <div class="clans-grid">
+
+            <div class="identity-card">
+
+                <h2>🐱 Quiz Emoji</h2>
+
+                <p>Devine le personnage, le clan ou le rôle grâce aux emojis.</p>
+
+                <br>
+
+                <button onclick="startEmojiQuiz()">
+                    ▶ Commencer
+                </button>
+
+            </div>
+
+            <div class="identity-card">
+
+                <h2>📚 Quiz Classique</h2>
+
+                <p>Réponds à des questions sur l'univers de LGDC.</p>
+
+                <br>
+
+                <button onclick="startClassicQuiz()">
+                    ▶ Commencer
+                </button>
+
+            </div>
+
+        </div>
+
+        <div id="quizContainer" style="margin-top:40px;"></div>
+
+    </div>
+
+</section>
 
 
     <section class="hero" id="hero">
@@ -3015,8 +3104,185 @@ function creerFiche(event) {
 
     boxResultat.style.display = "block";
 }
+        const clanNames = [
+    "Tonnerre",
+    "Vent",
+    "Rivière",
+    "Ombre",
+    "Brume",
+    "Étoiles",
+    "Lune",
+    "Tempête",
+    "Aurore",
+    "Soleil"
+];
+
+function generateClanName(){
+
+    const randomClan =
+        clanNames[Math.floor(Math.random() * clanNames.length)];
+
+    const nom = "Clan de " + randomClan;
+
+    document.getElementById("generatedClanName").innerText = nom;
+
+    document.getElementById("clanNameInput").value = nom;
+}
+
+function createClanCard(){
+    const nom = document.getElementById("clanNameInput").value;
+    // Ici, on demande au code de lire ce que tu as écrit dans les cases
+    const chef = prompt("Quel est le nom du chef ?");
+    const lieutenant = prompt("Quel est le nom du lieutenant ?");
+    const guerisseur = prompt("Quel est le nom du guérisseur ?");
+
+    document.getElementById("clanCardResult").innerHTML = `
+        <div class="identity-card">
+            <h2>${nom}</h2>
+            <p>👑 Chef : ${chef}</p>
+            <p>🐾 Lieutenant : ${lieutenant}</p>
+            <p>🌿 Guérisseur : ${guerisseur}</p>
+        </div>
+    `;
+}
+     
+        const emojiQuestions = [
+
+    {
+        emoji: "🔥🐱👑",
+        answer: "Étoile de Feu"
+    },
+
+    {
+        emoji: "🌑🐯👑",
+        answer: "Étoile du Tigre"
+    },
+
+    {
+        emoji: "🌊🐟",
+        answer: "Clan de la Rivière"
+    },
+
+    {
+        emoji: "⚡🌲🐭",
+        answer: "Clan du Tonnerre"
+    },
+
+    {
+        emoji: "💨🐇",
+        answer: "Clan du Vent"
+    },
+
+    {
+        emoji: "🌿🐱",
+        answer: "Guérisseur"
+    }
+
+];
+
+let currentEmojiQuestion = 0;
+let emojiScore = 0;
+
+
+function startEmojiQuiz(){
+
+    currentEmojiQuestion = 0;
+    emojiScore = 0;
+
+    showEmojiQuestion();
+
+}
+
+
+function showEmojiQuestion(){
+
+    const box = document.getElementById("quizContainer");
+
+    if(currentEmojiQuestion >= emojiQuestions.length){
+
+        box.innerHTML = `
+        <h2>🎉 Quiz terminé !</h2>
+        <p>Ton score : ${emojiScore}/${emojiQuestions.length}</p>
+        `;
+
+        return;
+
+    }
+
+
+    box.innerHTML = `
+
+    <div class="identity-card">
+
+        <h2>Question ${currentEmojiQuestion + 1}</h2>
+
+        <h1 style="font-size:60px;">
+            ${emojiQuestions[currentEmojiQuestion].emoji}
+        </h1>
+
+       <button onclick="showEmojiCorrection()">
+    👀 Voir la réponse
+</button>
+
+<p id="emojiCorrection"></p>
+
+    </div>
+
+    `;
+
+}
+
+
+function checkEmojiAnswer(){
+
+    const answer = document.getElementById("emojiAnswer").value;
+
+    const correct = emojiQuestions[currentEmojiQuestion].answer;
+
+
+    if(answer.toLowerCase() === correct.toLowerCase()){
+
+        emojiScore++;
+
+    }
+
+
+    currentEmojiQuestion++;
+
+    showEmojiQuestion();
+
+}
+        function showEmojiCorrection(){
+
+    const question = emojiQuestions[currentEmojiQuestion];
+
+    document.getElementById("emojiCorrection").innerHTML = `
+
+    <br>
+    ✅ Réponse : <b>${question.answer}</b>
+
+    <br><br>
+
+    <button onclick="nextEmojiQuestion()">
+        ➡ Question suivante
+    </button>
+
+    `;
+
+}
+
+
+
+function nextEmojiQuestion(){
+
+    currentEmojiQuestion++;
+
+    showEmojiQuestion();
+
+}
     </script>
 
 </body>
 
-</html>
+</html>v
+       
