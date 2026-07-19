@@ -2240,12 +2240,54 @@ function afficherDefis(){
             <p>
                 📅 Date limite : <b>${defi.date}</b>
             </p>
+            <br>
+
+<button onclick="ouvrirParticipation(${defis.indexOf(defi)})">
+    🖌️ Participer
+</button>
+
+<div id="formParticipation${defis.indexOf(defi)}"></div>
+
+<div id="participations${defis.indexOf(defi)}"></div>
 
         </div>
 
         `;
 
     });
+
+}let participations = [];
+
+
+function ouvrirParticipation(id){
+
+    const zone = document.getElementById("formParticipation" + id);
+
+    zone.innerHTML = `
+
+    <div class="identity-card">
+
+        <h3>🖌️ Ta participation</h3>
+
+        <label>Nom du guerrier :</label><br>
+
+        <input type="text" id="nomParticipant${id}" placeholder="Ex : Étoile de Feu">
+
+        <br><br>
+
+        <label>Ton dessin :</label><br>
+
+        <input type="file" id="imageParticipant${id}" accept="image/*">
+
+        <br><br>
+
+        <button onclick="envoyerParticipation(${id})">
+            ✅ Envoyer
+        </button>
+
+    </div>
+
+    `;
 
 }
 
