@@ -2256,7 +2256,27 @@ function afficherDefis(){
 
     });
 
-}let participations = [];
+}
+
+
+function envoyerParticipation(id){
+
+    const nom = document.getElementById("nomParticipant" + id).value;
+    const image = document.getElementById("imageParticipant" + id).files[0];
+
+    if(nom === "" || !image){
+
+        alert("⚠️ Mets ton nom et ton dessin avant d'envoyer !");
+        return;
+
+    }
+
+    alert("🐾 Participation envoyée pour " + nom + " !");
+
+}
+
+
+let participations = [];
 
 
 function ouvrirParticipation(id){
