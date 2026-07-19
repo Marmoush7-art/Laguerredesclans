@@ -2087,7 +2087,7 @@
 
     </section>
 
-    <section class="page" id="concoursPage">
+   <section class="page" id="concoursPage">
 
     <div class="page-content">
 
@@ -2097,32 +2097,13 @@
             Participe aux défis de la forêt et montre tes talents !
         </p>
 
-        <div class="identity-card">
 
-            <h2>🖌️ Défi de dessin</h2>
+        <div id="defisContainer"></div>
 
-            <p>
-                Aucun concours en cours pour le moment.
-            </p>
-
-            <br>
-
-            <p>
-                Les prochains défis pourront être :
-            </p>
-
-            <ul>
-                <li>🐱 Dessiner un guerrier d'un clan précis</li>
-                <li>🌲 Dessiner un territoire LGDC</li>
-                <li>⭐ Créer ton propre personnage</li>
-            </ul>
-
-        </div>
 
     </div>
 
 </section>
-
 
     <section class="page" id="galeriePage">
 
@@ -2217,7 +2198,56 @@
 
         let player = null;
 
-        
+        const defis = [
+
+    {
+        titre: "🖌️ Dessine un guerrier du Clan du Tonnerre",
+        description: "Crée ton propre dessin d'un guerrier du Clan du Tonnerre.",
+        date: "31/08/2026"
+    },
+
+    {
+        titre: "🌲 Crée ton territoire",
+        description: "Imagine et dessine le territoire d'un nouveau clan.",
+        date: "15/09/2026"
+    }
+
+];
+
+
+function afficherDefis(){
+
+    const container = document.getElementById("defisContainer");
+
+    if(!container) return;
+
+
+    container.innerHTML = "";
+
+
+    defis.forEach(defi => {
+
+        container.innerHTML += `
+
+        <div class="identity-card">
+
+            <h2>${defi.titre}</h2>
+
+            <p>${defi.description}</p>
+
+            <br>
+
+            <p>
+                📅 Date limite : <b>${defi.date}</b>
+            </p>
+
+        </div>
+
+        `;
+
+    });
+
+}
 
         function toggleMenu(){
 
@@ -2255,6 +2285,12 @@
             hideAllSections();
 
             document.getElementById(pageId).classList.add("active");
+
+            if(pageId === "concoursPage"){
+
+    afficherDefis();
+
+}
 
 
             if(pageId === "histoirePage"){
